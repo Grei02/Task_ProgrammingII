@@ -1,0 +1,16 @@
+package cr.ac.una.taskprogrammingii.controller;
+
+import cr.ac.una.taskprogrammingii.App;
+import cr.ac.una.taskprogrammingii.App;
+import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+
+public class PrimaryController {
+
+    @FXML
+    private void switchToSecondary() throws IOException {
+        App.setRoot("secondary");
+    }
+}

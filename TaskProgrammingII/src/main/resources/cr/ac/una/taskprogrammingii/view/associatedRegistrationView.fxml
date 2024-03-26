@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.associatedRegistrationController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.associatedRegistrationController">
    <children>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
                <children>
-                  <Label maxHeight="1.7976931348623157E308" prefHeight="70.0" prefWidth="466.0" text="¡Bienvenido Socio!" textAlignment="CENTER">
+                  <Label maxHeight="1.7976931348623157E308" prefHeight="118.0" prefWidth="423.0" text="¡Bienvenido Socio!" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS" size="50.0" />
                      </font>
@@ -24,12 +24,13 @@
             </HBox>
             <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" VBox.vgrow="SOMETIMES">
                <children>
-                  <Label prefHeight="28.0" prefWidth="524.0" text="Ocupamos que nos das una pequeña ayuda, nos podrias dar tu" textAlignment="CENTER" VBox.vgrow="SOMETIMES">
+                  <Label fx:id="labIncome" prefHeight="28.0" prefWidth="524.0" text="Ocupamos que nos des una pequeña ayuda, nos podrias dar tu" textAlignment="CENTER" VBox.vgrow="SOMETIMES">
                      <font>
                         <Font name="Comic Sans MS" size="14.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="pssFolio" prefHeight="25.0" prefWidth="498.0" />
+                  <PasswordField fx:id="pstFolio" onAction="#onActionPstFolio" prefHeight="25.0" prefWidth="498.0" />
+                  <Button fx:id="btnIncome" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onActionBtnIncome" prefHeight="20.0" prefWidth="130.0" text="Ingresar" VBox.vgrow="SOMETIMES" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -40,12 +41,12 @@
             </VBox>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="65.0" prefWidth="540.0" spacing="10.0" VBox.vgrow="SOMETIMES">
                <children>
-                  <Label fx:id="txtIncomeChange" text="¿Prefieres ingresar tu" HBox.hgrow="SOMETIMES">
+                  <Label fx:id="labIncomeChange" text="¿Prefieres ingresar tu" HBox.hgrow="SOMETIMES">
                      <font>
                         <Font name="Comic Sans MS" size="20.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" text="Si" />
+                  <Button fx:id="btnIncomeChange" mnemonicParsing="false" onAction="#onActionBtnIncomeChange" prefHeight="25.0" prefWidth="32.0" text="Si" />
                </children>
             </HBox>
          </children>

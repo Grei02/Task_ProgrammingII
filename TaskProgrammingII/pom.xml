@@ -18,10 +18,10 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>21.0.2</version>
+            <version>21</version>
         </dependency>
         <dependency>
-            <groupId>io.github.palexdev</groupId>
+             <groupId>io.github.palexdev</groupId>
             <artifactId>materialfx</artifactId>
             <version>11.16.1</version>
         </dependency>
@@ -97,7 +97,7 @@
                             <transformers>
                                 <transformer implementation=
                                                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>cr.ac.una.taskprogrammingii.Main</mainClass>
+                                    <mainClass>cr.ac.una.taskprogrammingii.app.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

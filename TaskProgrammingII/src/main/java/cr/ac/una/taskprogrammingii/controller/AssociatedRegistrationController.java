@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author Sofia Bejarano Mora
  */
-public class AssociatedRegistrationWindowController implements Initializable {
+public class AssociatedRegistrationController implements Initializable {
 
     /**
      * Initializes the controller class.

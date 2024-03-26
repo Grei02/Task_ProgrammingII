@@ -3,67 +3,55 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox prefHeight="506.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.AssociatedRegistrationWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.associatedRegistrationController">
    <children>
-      <BorderPane prefHeight="506.0" prefWidth="1170.0" HBox.hgrow="ALWAYS">
-         <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E6E6FA;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
                <children>
-                  <Label text="Nombre Completo" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets top="45.0" />
-                     </VBox.margin>
+                  <Label maxHeight="1.7976931348623157E308" prefHeight="70.0" prefWidth="466.0" text="¡Bienvenido Socio!" textAlignment="CENTER">
                      <font>
-                        <Font size="40.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="associateName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="36.0" prefWidth="336.0" style="-fx-background-color: #C0C0E0;" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Label text="Folio" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="folio" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="36.0" prefWidth="336.0" style="-fx-background-color: #C0C0E0;" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Button fx:id="associateLoginButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #6A5ACD;" text="Ingresar" textFill="WHITE" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets top="40.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-         </center>
-         <top>
-            <VBox alignment="CENTER" prefHeight="146.0" prefWidth="800.0" style="-fx-background-color: #4B0082;" BorderPane.alignment="CENTER">
-               <children>
-                  <Label text="¡BIENVENIDO!" textFill="#ece9ff" VBox.vgrow="ALWAYS">
-                     <font>
-                        <Font name="Comic Sans MS" size="60.0" />
+                        <Font name="Comic Sans MS" size="50.0" />
                      </font>
                   </Label>
                </children>
+            </HBox>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" VBox.vgrow="SOMETIMES">
+               <children>
+                  <Label prefHeight="28.0" prefWidth="524.0" text="Ocupamos que nos das una pequeña ayuda, nos podrias dar tu" textAlignment="CENTER" VBox.vgrow="SOMETIMES">
+                     <font>
+                        <Font name="Comic Sans MS" size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="pssFolio" prefHeight="25.0" prefWidth="498.0" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" />
+               </padding>
             </VBox>
-         </top>
-      </BorderPane>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="65.0" prefWidth="540.0" spacing="10.0" VBox.vgrow="SOMETIMES">
+               <children>
+                  <Label fx:id="txtIncomeChange" text="¿Prefieres ingresar tu" HBox.hgrow="SOMETIMES">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" text="Si" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </VBox>
    </children>
-</HBox>
+</AnchorPane>

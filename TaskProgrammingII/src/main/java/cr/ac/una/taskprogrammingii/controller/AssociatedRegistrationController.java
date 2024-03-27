@@ -4,11 +4,10 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
-
+import cr.ac.una.taskprogrammingii.util.FlowController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.Initializable;
 
 import java.awt.event.MouseEvent;
@@ -25,7 +24,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Sofia Bejarano Mora
  */
-public class associatedRegistrationController implements Initializable {
+public class associatedRegistrationController extends Controller implements Initializable {
     Boolean activatedEnterFolio= true;
     
    @FXML
@@ -93,5 +92,10 @@ public class associatedRegistrationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         updateLabelsBasedIncomeType();
     }    
+
+    @Override
+    public void initialize() {
+        
+    }
     
 }

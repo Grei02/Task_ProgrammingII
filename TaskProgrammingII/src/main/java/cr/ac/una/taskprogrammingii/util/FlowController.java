@@ -83,7 +83,7 @@ public class FlowController {
 
     public void goMain() {
         try {
-            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/PrincipalView.fxml"), this.idioma)));
+            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/associatedRegistrationView.fxml"), this.idioma)));
             MFXThemeManager.addOn(this.mainStage.getScene(), Themes.DEFAULT, Themes.LEGACY);
             this.mainStage.show();
         } catch (IOException ex) {
@@ -142,7 +142,7 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        stage.getIcons().add(new Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
+        stage.getIcons().add(new Image("cr/ac/una/TaskProgrammingII/resources/LogoUNArojo.png"));
         stage.setTitle(controller.getNombreVista());
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
@@ -162,7 +162,7 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        stage.getIcons().add(new Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
+        stage.getIcons().add(new Image("cr/ac/una/TaskProgrammingII/resources/LogoUNArojo.png"));
         stage.setTitle(controller.getNombreVista());
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {

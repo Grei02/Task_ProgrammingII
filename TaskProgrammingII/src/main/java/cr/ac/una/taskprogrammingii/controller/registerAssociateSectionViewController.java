@@ -38,10 +38,10 @@ public class registerAssociateSectionViewController implements Initializable {
         if((((associated.getAge()==null) || associated.getAge().isBlank()) )||
                 ((associated.getLastName()==null)||(associated.getLastName().isBlank()))||
                 ((associated.getName()==null)||(associated.getName().isBlank()))){
-            ((Stage)btnReady.getScene().getWindow()).close();
+            
         }
         else{
-             
+             ((Stage)btnReady.getScene().getWindow()).close();
         }
     }
     

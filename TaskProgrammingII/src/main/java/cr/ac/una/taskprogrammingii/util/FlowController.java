@@ -81,9 +81,9 @@ public class FlowController {
         return loader;
     }
 
-    public void goMain() {
+    public void goMain(String nameView) {
         try {
-            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("startAssociateSectionView.fxml"), this.idioma)));
+            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/"+nameView+".fxml"), this.idioma)));
             MFXThemeManager.addOn(this.mainStage.getScene(), Themes.DEFAULT, Themes.LEGACY);
             this.mainStage.show();
         } catch (IOException ex) {

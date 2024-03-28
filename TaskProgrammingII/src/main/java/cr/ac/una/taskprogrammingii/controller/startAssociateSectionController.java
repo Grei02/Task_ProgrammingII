@@ -4,6 +4,9 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+
+
+import cr.ac.una.taskprogrammingii.App;
 import cr.ac.una.taskprogrammingii.util.FlowController;
 
 import java.net.URL;
@@ -18,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import cr.ac.una.taskprogrammingii.util.FlowController;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -64,7 +69,9 @@ public class startAssociateSectionController extends Controller implements Initi
     
     @FXML
     void onActionBtnRegister(ActionEvent event) {
-        
+       FlowController.getInstance().goMain("registerAssociateSectionView");
+       ((Stage)btnRegister.getScene().getWindow()).close();
+       
     }
 
     @FXML

@@ -6,18 +6,43 @@ package cr.ac.una.taskprogrammingii.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author Sofia Bejarano Mora
- */
+
 public class registerAssociateSectionViewController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    private String name;
+    private String lastName;
+    private String age;
+    
+    @FXML
+    private TextField txtUserAge;
+
+    @FXML
+    private TextField txtUserLastName;
+
+    @FXML
+    private TextField txtuserName;
+    
+    @FXML
+    void onActionTxtUserAge(ActionEvent event) {
+        age=txtUserAge.getText();
+        System.out.println("Texto ingresado: " + age);
+    }
+
+    @FXML
+    void onActionTxtUserLastName(ActionEvent event) {
+        lastName=txtUserLastName.getText();
+    }
+
+    @FXML
+    void onActionTxtuserName(ActionEvent event) {
+        name=txtUserLastName.getText();
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 public abstract class Controller {
 
-    private Stage stage;
+    Stage stage;
     private String accion;
     private String nombreVista;
 

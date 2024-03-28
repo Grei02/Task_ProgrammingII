@@ -24,15 +24,18 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Sofia Bejarano Mora
  */
-public class associatedRegistrationController extends Controller implements Initializable {
-    Boolean activatedEnterFolio= true;
+public class startAssociateSectionController extends Controller implements Initializable {
+   private Boolean activatedEnterFolio= true;
     
    @FXML
     private Button btnIncome;
 
     @FXML
     private Button btnIncomeChange;
-
+    
+    @FXML
+    private Button btnRegister;
+    
     @FXML
     private PasswordField pstFolio;
 
@@ -57,6 +60,11 @@ public class associatedRegistrationController extends Controller implements Init
     void onActionBtnIncomeChange(ActionEvent event) {
         activatedEnterFolio=!activatedEnterFolio;
        updateLabelsBasedIncomeType();
+    }
+    
+    @FXML
+    void onActionBtnRegister(ActionEvent event) {
+        
     }
 
     @FXML

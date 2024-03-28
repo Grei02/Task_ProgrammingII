@@ -6,8 +6,8 @@ package cr.ac.una.taskprogrammingii.controller;
 
 
 
-import cr.ac.una.taskprogrammingii.App;
-import cr.ac.una.taskprogrammingii.util.FlowController;
+//import cr.ac.una.taskprogrammingii.App;
+//import cr.ac.una.taskprogrammingii.util.FlowController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,8 +70,7 @@ public class startAssociateSectionController extends Controller implements Initi
     @FXML
     void onActionBtnRegister(ActionEvent event) {
        FlowController.getInstance().goMain("registerAssociateSectionView");
-       ((Stage)btnRegister.getScene().getWindow()).close();
-       
+       //((Stage)btnRegister.getScene().getWindow()).close();
     }
 
     @FXML

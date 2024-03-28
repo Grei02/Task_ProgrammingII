@@ -12,19 +12,49 @@ public class associated {
     private String name;
     private String lastName;
     private String folio;
-    private Integer age;
+    private String age;
     
-    private associated(){
+    public associated(){
         name=null;
         lastName=null;
         folio=null;
         age=null;
     }
-    private associated(String name,String lastName,String folio,Integer age){
+    public associated(String name,String lastName,String folio,String age){
         this.name=name;
         this.lastName=lastName;
         this.folio=folio;
         this.age=age;
     }
+    
+    public String getName(){
+        return name;
+    }
+    public String getLastName(){
+        return lastName;
+    }
+    public String getFolio(){
+        return folio;
+    }
+    public String getAge(){
+        return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFolio(String folio) {
+        this.folio = folio;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+    
     
 }

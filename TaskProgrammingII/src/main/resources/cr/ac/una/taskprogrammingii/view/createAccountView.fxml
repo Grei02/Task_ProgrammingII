@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.taskprogrammingii.controller.CreateAccountController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="184.0" text="Crear cuentas " BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Californian FB Bold" size="30.0" />
+               </font>
+            </Label>
+         </top>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+         <bottom>
+            <HBox alignment="BOTTOM_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MFXButton text="Cancelar" />
+                  <MFXButton text="Guardar " />
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="275.0" prefWidth="540.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Nombre de la cuenta ">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <MFXTextField alignment="CENTER" floatMode="ABOVE" prefHeight="27.0" prefWidth="219.0" />
+                  <Label text="Agregar imagen  de la cuenta ">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="116.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

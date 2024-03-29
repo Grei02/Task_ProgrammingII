@@ -47,7 +47,7 @@ public class startAssociateSectionController extends Controller implements Initi
     @FXML
     private AnchorPane root;
 
-      @FXML
+   @FXML
     private Label labIncome;
 
     @FXML
@@ -70,7 +70,7 @@ public class startAssociateSectionController extends Controller implements Initi
     @FXML
     void onActionBtnRegister(ActionEvent event) {
        FlowController.getInstance().goMain("registerAssociateSectionView");
-       //((Stage)btnRegister.getScene().getWindow()).close();
+       ((Stage)btnRegister.getScene().getWindow()).close();
     }
 
     @FXML

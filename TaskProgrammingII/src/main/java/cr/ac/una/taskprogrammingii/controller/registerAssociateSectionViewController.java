@@ -34,6 +34,9 @@ public class registerAssociateSectionViewController implements Initializable {
     
     @FXML
     void onActionBtnReady(ActionEvent event) {
+        associated.setName(txtuserName.getText());
+        associated.setLastName(txtUserLastName.getText());
+        associated.setAge(txtUserAge.getText());
         
         if((((associated.getAge()==null) || associated.getAge().isBlank()) )||
                 ((associated.getLastName()==null)||(associated.getLastName().isBlank()))||
@@ -42,24 +45,6 @@ public class registerAssociateSectionViewController implements Initializable {
         }
         else{
              ((Stage)btnReady.getScene().getWindow()).close();
-        }
-    }
-    
-    @FXML
-    void onActionTxtUserAge(ActionEvent event) {
-        associated.setAge(txtUserAge.getText());
-    }
-
-    @FXML
-    void onActionTxtUserLastName(ActionEvent event) {
-        associated.setLastName(txtUserLastName.getText());
-       
-    }
-
-    @FXML
-    void onActionTxtuserName(ActionEvent event){
-        if(!txtuserName.getText().isBlank()){
-         associated.setName(txtuserName.getText());
         }
     }
     

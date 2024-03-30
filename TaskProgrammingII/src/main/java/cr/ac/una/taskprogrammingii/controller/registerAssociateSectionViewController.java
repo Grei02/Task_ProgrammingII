@@ -33,9 +33,10 @@ public class registerAssociateSectionViewController implements Initializable {
     private TextField txtuserName;
     
     @FXML
-    private Button btnSave;
+    private Button btnSave;;
     
-    void onActionSave(ActionEvent event) {
+    @FXML
+    void onActionbtnSave(ActionEvent event) {
         associated.setName(txtuserName.getText());
         associated.setLastName(txtUserLastName.getText());
         associated.setAge(txtUserAge.getText());

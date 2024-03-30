@@ -6,6 +6,9 @@ package cr.ac.una.taskprogrammingii.controller;
 
 import cr.ac.una.taskprogrammingii.model.associated;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,7 +21,7 @@ import javafx.stage.Stage;
 
 public class registerAssociateSectionViewController implements Initializable {
     
-     private associated associated=new associated();
+     private final associated associated=new associated();
     
     @FXML
     private TextField txtUserAge;
@@ -30,21 +33,19 @@ public class registerAssociateSectionViewController implements Initializable {
     private TextField txtuserName;
     
     @FXML
-    private Button btnReady;
+    private Button btnSave;
     
-    @FXML
-    void onActionBtnReady(ActionEvent event) {
+    void onActionSave(ActionEvent event) {
         associated.setName(txtuserName.getText());
         associated.setLastName(txtUserLastName.getText());
         associated.setAge(txtUserAge.getText());
         
-        if((((associated.getAge()==null) || associated.getAge().isBlank()) )||
-                ((associated.getLastName()==null)||(associated.getLastName().isBlank()))||
-                ((associated.getName()==null)||(associated.getName().isBlank()))){
-            
+         if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
+             
+              saveToFile(associated);
         }
         else{
-             ((Stage)btnReady.getScene().getWindow()).close();
+             ((Stage)btnSave.getScene().getWindow()).close();
         }
     }
     
@@ -52,5 +53,19 @@ public class registerAssociateSectionViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
       
     }    
-    
+    private void saveToFile(associated associated) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("estudiantes_asociados.txt", true))) {
+            writer.write("Nombre: " + associated.getName());
+            writer.newLine();
+            writer.write("Apellido: " + associated.getLastName());
+            writer.newLine();
+            writer.write("Edad: " + associated.getAge());
+            writer.newLine();
+            writer.write("--------------------");
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

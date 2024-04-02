@@ -4,11 +4,12 @@
  */
 package cr.ac.una.taskprogrammingii.model;
 
-/**
- *
- * @author Sofia Bejarano Mora
- */
-public class associated {
+import cr.ac.una.taskprogrammingii.model.FileManager;
+import java.io.Serializable;
+
+public class associated implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String name;
     private String lastName;
     private String folio;
@@ -56,5 +57,7 @@ public class associated {
         this.age = age;
     }
     
-    
+    public void imprimir(){
+        System.out.println(name+lastName+age);
+    }
 }

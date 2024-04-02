@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.registerAssociateSectionViewController">
    <children>
-      <VBox layoutX="250.0" layoutY="68.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="250.0" layoutY="68.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" prefHeight="76.0" prefWidth="560.0">
                <children>
@@ -27,10 +27,10 @@
                   </Label>
                </children>
             </VBox>
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="560.0" spacing="20.0" VBox.vgrow="SOMETIMES">
                <children>
                   <Label text="Nombre:" />
-                  <TextField fx:id="txtuserName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="438.0" HBox.hgrow="SOMETIMES" />
+                  <TextField fx:id="txtuserName" prefHeight="25.0" prefWidth="438.0" HBox.hgrow="SOMETIMES" />
                </children>
             </HBox>
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="560.0" spacing="20.0" VBox.vgrow="SOMETIMES">
@@ -39,13 +39,13 @@
                   <TextField fx:id="txtUserLastName" prefHeight="25.0" prefWidth="438.0" />
                </children>
             </HBox>
-            <HBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="560.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="560.0" spacing="20.0" VBox.vgrow="SOMETIMES">
                <children>
                   <Label text="Edad:" />
                   <TextField fx:id="txtUserAge" prefHeight="14.0" prefWidth="61.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="10.0" prefWidth="570.0" spacing="20.0">
+            <HBox alignment="TOP_CENTER" prefHeight="10.0" prefWidth="570.0" spacing="20.0">
                <children>
                   <Button mnemonicParsing="false" text="Regresar al inicio" />
                   <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionbtnSave" prefHeight="25.0" prefWidth="97.0" text="Guardar " />

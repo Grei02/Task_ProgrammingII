@@ -5,6 +5,7 @@
 package cr.ac.una.taskprogrammingii.controller;
 
 import cr.ac.una.taskprogrammingii.model.associated;
+import cr.ac.una.taskprogrammingii.model.FileManager;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -21,7 +22,8 @@ import javafx.stage.Stage;
 
 public class registerAssociateSectionViewController implements Initializable {
     
-     private final associated associated=new associated();
+     private associated associated=new associated();
+     private FileManager fileManager= new FileManager();
     
     @FXML
     private TextField txtUserAge;
@@ -42,31 +44,32 @@ public class registerAssociateSectionViewController implements Initializable {
         associated.setAge(txtUserAge.getText());
         
          if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
-             
-              saveToFile(associated);
+             fileManager.serialization(associated);
+             fileManager.deserialize().get(0).imprimir();
+             //saveToFile(associated);
         }
         else{
-             ((Stage)btnSave.getScene().getWindow()).close();
+            // ((Stage)btnSave.getScene().getWindow()).close();
         }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       
-    }    
-    private void saveToFile(associated associated) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("estudiantes_asociados.txt", true))) {
-            writer.write("Nombre: " + associated.getName());
-            writer.newLine();
-            writer.write("Apellido: " + associated.getLastName());
-            writer.newLine();
-            writer.write("Edad: " + associated.getAge());
-            writer.newLine();
-            writer.write("--------------------");
-            writer.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//    }    
+//    private void saveToFile(associated associated) {
+//        try (BufferedWriter writer = new BufferedWriter(new FileWriter("estudiantes_asociados.txt", true))) {
+//            writer.write("Nombre: " + associated.getName());
+//            writer.newLine();
+//            writer.write("Apellido: " + associated.getLastName());
+//            writer.newLine();
+//            writer.write("Edad: " + associated.getAge());
+//            writer.newLine();
+//            writer.write("--------------------");
+//            writer.newLine();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 }

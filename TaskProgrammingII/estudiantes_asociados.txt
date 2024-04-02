@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Nombre: wwede
 Apellido: fsefsef
 Edad: efsef
@@ -5,4 +6,153 @@ Edad: efsef
 Nombre: wwede
 Apellido: fsefsef
 Edad: efsef
+=======
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos Jimenez
+Edad: 19
+--------------------
+Nombre: Greichel 
+Apellido: Campos 
+Edad: 1
+>>>>>>> Stashed changes
 --------------------

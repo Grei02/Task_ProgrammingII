@@ -4,32 +4,24 @@
  */
 package cr.ac.una.taskprogrammingii.model;
 
-<<<<<<< Updated upstream
 import cr.ac.una.taskprogrammingii.model.FileManager;
 import java.io.Serializable;
 
 public class associated implements Serializable {
     private static final long serialVersionUID = 1L;
 
-=======
-/**
- *
- * @author Sofia Bejarano Mora
- */
-public class Associated {
->>>>>>> Stashed changes
     private String name;
     private String lastName;
     private String folio;
     private String age;
     
-    public Associated(){
+    public associated(){
         name=null;
         lastName=null;
         folio=null;
         age=null;
     }
-    public Associated(String name,String lastName,String folio,String age){
+    public associated(String name,String lastName,String folio,String age){
         this.name=name;
         this.lastName=lastName;
         this.folio=folio;

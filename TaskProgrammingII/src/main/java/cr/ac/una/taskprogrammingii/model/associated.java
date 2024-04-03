@@ -4,7 +4,7 @@
  */
 package cr.ac.una.taskprogrammingii.model;
 
-import cr.ac.una.taskprogrammingii.model.FileManager;
+
 import java.io.Serializable;
 
 public class associated implements Serializable {

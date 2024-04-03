@@ -15,7 +15,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="76.0" prefWidth="560.0">
                <children>
-                  <Label text="¡Es momento de iniciar una nueva aventura y ya tenemos tu primera mision!">
+                  <Label prefHeight="23.0" prefWidth="534.0" text="¡Es momento de iniciar una nueva aventura y ya tenemos tu primera mision!">
                      <font>
                         <Font name="Comic Sans MS" size="20.0" />
                      </font>
@@ -47,7 +47,6 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="10.0" prefWidth="570.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" text="Regresar al inicio" />
                   <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionbtnSave" prefHeight="25.0" prefWidth="97.0" text="Guardar " />
                </children>
             </HBox>

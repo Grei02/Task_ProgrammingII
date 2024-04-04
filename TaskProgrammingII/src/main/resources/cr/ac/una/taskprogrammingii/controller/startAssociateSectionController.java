@@ -1,39 +1,39 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ */
 package cr.ac.una.taskprogrammingii.controller;
 
-import cr.ac.una.taskprogrammingii.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
  *
- * @author Sofia Bejarano Mora
+ * @author USUARIO PZ UNA
  */
-public class StartAssociateSectionController extends Controller implements Initializable {
+public class startAssociateSectionController implements Initializable {
+
     @FXML
     private AnchorPane root;
     @FXML
     private MFXButton btnNext;
 
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }
-
-    @Override
-    public void initialize() {
-    }
+        // TODO
+    }    
 
     @FXML
     private void onActionBtnNext(ActionEvent event) {
-        FlowController.getInstance().goMain("registerAssociateSectionView");
-        ((Stage) btnNext.getScene().getWindow()).close();
     }
+    
 }
-

@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
  *
  * @author Sofia Bejarano Mora
  */
-public class StartAssociateSectionController extends Controller implements Initializable {
+public class startAssociateSectionController extends Controller implements Initializable {
     @FXML
     private AnchorPane root;
     @FXML

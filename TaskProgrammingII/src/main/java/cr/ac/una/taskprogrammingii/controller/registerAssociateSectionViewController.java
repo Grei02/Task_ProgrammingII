@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-public class registerAssociateSectionViewController implements Initializable {
+public class registerAssociateSectionViewController extends Controller implements Initializable {
     
      private associated associated=new associated();
      private FileManager fileManager= new FileManager();
@@ -70,6 +70,11 @@ public class registerAssociateSectionViewController implements Initializable {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+    }
+
+    @Override
+    public void initialize() {
+
     }
 
 }

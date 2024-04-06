@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -47,30 +48,16 @@ public class registerAssociateSectionViewController extends Controller implement
          if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
              fileManager.serialization(associated);
              fileManager.deserialize().get(0).imprimir();
-          //   mensaje.showConfirmation(titulo, "registerAssociateSectionView", mensaje);
+            mensaje.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
         }
         else{
-            
+            mensaje.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");
         }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      
-//    }    
-//    private void saveToFile(associated associated) {
-//        try (BufferedWriter writer = new BufferedWriter(new FileWriter("estudiantes_asociados.txt", true))) {
-//            writer.write("Nombre: " + associated.getName());
-//            writer.newLine();
-//            writer.write("Apellido: " + associated.getLastName());
-//            writer.newLine();
-//            writer.write("Edad: " + associated.getAge());
-//            writer.newLine();
-//            writer.write("--------------------");
-//            writer.newLine();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
     }
 
     @Override

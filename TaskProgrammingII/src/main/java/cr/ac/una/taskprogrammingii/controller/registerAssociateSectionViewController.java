@@ -62,7 +62,6 @@ public class registerAssociateSectionViewController extends Controller implement
 
     @Override
     public void initialize() {
-
     }
 
 }

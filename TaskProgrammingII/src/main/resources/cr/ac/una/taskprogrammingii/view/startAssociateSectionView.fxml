@@ -18,7 +18,7 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <ImageView id="ImageView" fitHeight="361.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" styleClass="backgroundView" />
+            <ImageView fitHeight="361.0" fitWidth="611.0" pickOnBounds="true" preserveRatio="true" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="btnNext" onAction="#onActionBtnNext" text="Siguiente" />

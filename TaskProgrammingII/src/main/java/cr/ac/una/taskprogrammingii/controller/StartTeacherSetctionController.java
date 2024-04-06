@@ -4,23 +4,22 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import cr.ac.una.taskprogrammingii.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author USUARIO PZ UNA
  */
-public class startAssociateSectionController implements Initializable {
+public class StartTeacherSetctionController extends Controller implements Initializable {
 
-    @FXML
-    private AnchorPane root;
     @FXML
     private MFXButton btnNext;
 
@@ -33,7 +32,12 @@ public class startAssociateSectionController implements Initializable {
     }    
 
     @FXML
-    private void onActionBtnNext(ActionEvent event) {
+    private void OnActionBtnNext(ActionEvent event) {
+        FlowController.getInstance().goMain("registerAssociateSectionView");
+        ((Stage) btnNext.getScene().getWindow()).close();
     }
-    
+
+    @Override
+    public void initialize() {
+    }
 }

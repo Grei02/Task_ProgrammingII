@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 /**
@@ -14,33 +13,15 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-   // private static Scene scene;
+    private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
         FlowController.getInstance().InitializeFlow(stage, null);
-        FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+        FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
     }
-    
-//    @Override
-//    public void start(Stage stage) throws IOException {
-//        Parent root= FXMLLoader.load(getClass().getResource("view/associatedRegistrationView.fxml")); //consultar al profe que por que es app.class
-//       Scene scene=new Scene(root);
-//       stage.setScene(scene);
-//       stage.show();
-//    }
-//
-//    public static void setRoot(String fxml) throws IOException {
-//        scene.setRoot(loadFXML(fxml));
-//    }
-//
-//    private static Parent loadFXML(String fxml) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/"+fxml + ".fxml"));
-//        return fxmlLoader.load();
-//    }
 
     public static void main(String[] args) {
-        
         launch();
     }
 

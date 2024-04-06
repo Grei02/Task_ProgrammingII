@@ -4,12 +4,10 @@
  */
 package cr.ac.una.taskprogrammingii;
 
-/**
- *
- * @author Sofia Bejarano Mora
- */
 public class Main {
-     public static void main(String[] args) {
+    public static void main(String[] args) {
         App.main(args);
     }
 }
+   
+

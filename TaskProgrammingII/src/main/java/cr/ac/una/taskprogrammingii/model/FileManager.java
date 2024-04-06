@@ -4,7 +4,7 @@
  */
 package cr.ac.una.taskprogrammingii.model;
 
-import cr.ac.una.taskprogrammingii.model.associated;
+import cr.ac.una.taskprogrammingii.model.Associated;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,9 +15,9 @@ import java.util.List;
 
 
 public class FileManager {
-    private List <associated> listAssociated= new ArrayList<>(); 
+    private List <Associated> listAssociated= new ArrayList<>(); 
      
-    public void serialization(associated associated){
+    public void serialization(Associated associated){
      
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("listUser.txt"))) {
             listAssociated.add(associated);
@@ -27,7 +27,7 @@ public class FileManager {
             e.printStackTrace();
         }
     }
-    public List<associated> deserialize(){
+    public List<Associated> deserialize(){
          try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("listUser.txt"))) {
             listAssociated = (List) ois.readObject();
              System.out.println(listAssociated.get(0));

@@ -6,22 +6,26 @@ package cr.ac.una.taskprogrammingii.model;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class associated implements Serializable {
+public class Associated implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
     private String lastName;
     private String folio;
     private String age;
+    private List<Account> acountList=new ArrayList<>();
     
-    public associated(){
+    public Associated(){
         name=null;
         lastName=null;
         folio=null;
         age=null;
+        acountList=null;
     }
-    public associated(String name,String lastName,String folio,String age){
+    public Associated(String name,String lastName,String folio,String age){
         this.name=name;
         this.lastName=lastName;
         this.folio=folio;

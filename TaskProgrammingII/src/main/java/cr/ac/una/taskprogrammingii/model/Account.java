@@ -4,10 +4,34 @@
  */
 package cr.ac.una.taskprogrammingii.model;
 
-/**
- *
- * @author Sofia Bejarano Mora
- */
 public class Account {
+    private String type;
+    private Integer amount;
+
+    public Account() {
+        type = null;
+        amount = null;
+    }
+    
+    public Account(String type, Integer amount) {
+        this.type = type;
+        this.amount = amount;
+    }
+    
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
     
 }

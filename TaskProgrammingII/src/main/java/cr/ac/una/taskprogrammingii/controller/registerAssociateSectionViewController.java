@@ -4,8 +4,9 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
-import cr.ac.una.taskprogrammingii.model.associated;
+import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
+import cr.ac.una.taskprogrammingii.util.Mensaje;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -22,9 +23,9 @@ import javafx.stage.Stage;
 
 public class registerAssociateSectionViewController extends Controller implements Initializable {
     
-     private associated associated=new associated();
+     private Associated associated=new Associated();
      private FileManager fileManager= new FileManager();
-    
+    private Mensaje mensaje=new Mensaje();
     @FXML
     private TextField txtUserAge;
 
@@ -46,10 +47,10 @@ public class registerAssociateSectionViewController extends Controller implement
          if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
              fileManager.serialization(associated);
              fileManager.deserialize().get(0).imprimir();
-             //saveToFile(associated);
+          //   mensaje.showConfirmation(titulo, "registerAssociateSectionView", mensaje);
         }
         else{
-            // ((Stage)btnSave.getScene().getWindow()).close();
+            
         }
     }
     

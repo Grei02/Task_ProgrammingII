@@ -4,10 +4,9 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
-import cr.ac.una.taskprogrammingii.model.Account;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +17,7 @@ import javafx.fxml.Initializable;
  *
  * @author USUARIO PZ UNA
  */
-public class CreateAccountController extends Controller   implements Initializable {
+public class EditWindowController extends Controller implements Initializable {
 
     @FXML
     private MFXButton btnSave;
@@ -26,8 +25,6 @@ public class CreateAccountController extends Controller   implements Initializab
     /**
      * Initializes the controller class.
      */
-    private List<Account> accountList;
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -36,11 +33,9 @@ public class CreateAccountController extends Controller   implements Initializab
 
     @Override
     public void initialize() {
-    }
+       }
 
     @FXML
-    private void OnActionBtnSave(ActionEvent event) {
-        
+    private void onActionBtnSave(ActionEvent event) {
     }
-    
 }

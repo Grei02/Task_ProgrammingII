@@ -11,6 +11,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -25,18 +27,22 @@ public class PrincipalViewController extends Controller implements Initializable
     private MFXButton btnAccountStatement;
     @FXML
     private MFXButton btnDeposit;
+    @FXML
+    private MFXButton btnCreateAccount;
 
+    private boolean isProfessor=true;
+    @FXML
+    private MFXButton btnEdit;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        setButtonVisibility();
     }    
 
     @Override
     public void initialize() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @FXML
@@ -53,5 +59,34 @@ public class PrincipalViewController extends Controller implements Initializable
     private void onActionBtnDeposit(ActionEvent event) {
         FlowController.getInstance().goView("DepositInAccountView");
     }
+
+    @FXML
+    private void OnActionBtnCreateAccount(ActionEvent event) {
+         FlowController.getInstance().goView("createAccountView");
+    }    
+     @FXML
+    private void onActionBtnEdit(ActionEvent event) {
+         FlowController.getInstance().goView("editWindowView");
+    }
+
+    private void setButtonVisibility() {
+        if (isProfessor) {
+            // Si es profesor, oculta todos los botones excepto btnCreateAccount
+            btnRegister.setVisible(false);
+            btnAccountStatement.setVisible(false);
+            btnDeposit.setVisible(false);
+            btnCreateAccount.setVisible(true);
+        } else {
+            // Si es estudiante, muestra todos los botones excepto btnCreateAccount
+            btnRegister.setVisible(true);
+            btnAccountStatement.setVisible(true);
+            btnDeposit.setVisible(true);
+            btnCreateAccount.setVisible(false);
+        }
+    }
+
+   
+   
+
     
 }

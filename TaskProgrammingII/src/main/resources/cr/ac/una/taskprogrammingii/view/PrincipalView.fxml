@@ -7,8 +7,10 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="866.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.PrincipalViewController">
    <left>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="146.0" spacing="10.0" BorderPane.alignment="TOP_CENTER">
+      <VBox alignment="CENTER" prefHeight="550.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="TOP_CENTER">
          <children>
+            <MFXButton fx:id="btnCreateAccount" onAction="#OnActionBtnCreateAccount" styleClass="mfx-button" text="Crear cuenta " />
+            <MFXButton fx:id="btnEdit" onAction="#onActionBtnEdit" text="Mantenimiento Cooperativa " />
             <MFXButton fx:id="btnRegister" onAction="#onActionBtnRegister" prefHeight="25.0" prefWidth="103.0" styleClass="mfx-button" stylesheets="@Style.css" text="Registrar" />
             <MFXButton fx:id="btnAccountStatement" onAction="#onActionBtnAccountStatement" prefHeight="25.0" prefWidth="147.0" styleClass="mfx-button" stylesheets="@Style.css" text="Estado Cuenta" />
             <MFXButton fx:id="btnDeposit" onAction="#onActionBtnDeposit" styleClass="mfx-button" stylesheets="@Style.css" text="Depositar" />

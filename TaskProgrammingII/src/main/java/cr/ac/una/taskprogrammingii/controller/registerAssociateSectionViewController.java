@@ -6,6 +6,7 @@ package cr.ac.una.taskprogrammingii.controller;
 
 import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
+import cr.ac.una.taskprogrammingii.util.FlowController;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 
 import java.io.BufferedWriter;
@@ -41,6 +42,7 @@ public class registerAssociateSectionViewController extends Controller implement
     
     @FXML
     void onActionbtnSave(ActionEvent event) {
+        
         associated.setName(txtuserName.getText());
         associated.setLastName(txtUserLastName.getText());
         associated.setAge(txtUserAge.getText());
@@ -48,10 +50,12 @@ public class registerAssociateSectionViewController extends Controller implement
          if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
              fileManager.serialization(associated);
              fileManager.deserialize().get(0).imprimir();
-            mensaje.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
+             mensaje.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
+
         }
         else{
-            mensaje.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");
+             FlowController.getInstance().goViewInWindow("PhotographyView");
+            //mensaje.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");
         }
     }
     

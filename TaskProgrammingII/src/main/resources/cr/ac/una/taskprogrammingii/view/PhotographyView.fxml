@@ -14,14 +14,14 @@
          <children>
             <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="380.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox fx:id="pnlHbox" prefHeight="278.0" prefWidth="100.0" />
+                  <ImageView fx:id="imvCamera" fitHeight="240.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true" />
                   <MFXButton fx:id="bntTakePhoto" onAction="#onActionBntTakePhoto" prefHeight="34.0" prefWidth="125.0" text="TOMAR FOTO" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
             <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="277.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fx:id="imagenView" fitHeight="192.0" fitWidth="205.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imvPhotography" fitHeight="192.0" fitWidth="205.0" pickOnBounds="true" preserveRatio="true" />
                   <MFXButton fx:id="btnSavePhoto" onAction="#onActionBtnSavePhoto" text="GUARDAR FOTO" />
                </children>
             </VBox>

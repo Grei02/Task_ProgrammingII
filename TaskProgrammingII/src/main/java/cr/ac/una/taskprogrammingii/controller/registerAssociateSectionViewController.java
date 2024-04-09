@@ -27,7 +27,7 @@ public class registerAssociateSectionViewController extends Controller implement
     
      private Associated associated=new Associated();
      private FileManager fileManager= new FileManager();
-    private Mensaje mensaje=new Mensaje();
+     private Mensaje message=new Mensaje();
     @FXML
     private TextField txtUserAge;
 
@@ -50,12 +50,14 @@ public class registerAssociateSectionViewController extends Controller implement
          if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
              fileManager.serialization(associated);
             // fileManager.deserialize().get(0).imprimir();
-             mensaje.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
+             //mensaje.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
+            // fileManager.deserialize().get(0).imprimir();
+             message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
 
         }
         else{
              FlowController.getInstance().goViewInWindow("PhotographyView");
-            //mensaje.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");
+             message.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");
         }
     }
     

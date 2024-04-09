@@ -4,31 +4,22 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
-import cr.ac.una.taskprogrammingii.util.FlowController;
-
+import cr.ac.una.taskprogrammingii.util.Mensaje;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
-import com.github.sarxos.webcam.WebcamResolution;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
 import java.awt.Dimension;
-import java.io.IOException;
-import java.awt.FlowLayout;
-import java.awt.Frame;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
@@ -42,16 +33,14 @@ import javax.imageio.ImageIO;
  */
 public class PhotographyController extends Controller implements Initializable {
 
-    private Integer height=200,width=300,counter=0;
+    Image imageTakePhoto;
+    Image image;
     Boolean checkedCamara=true;
-    private BufferedImage ruta;
-    private  Dimension dimension=new Dimension(height,width);
-    private Dimension dimensionResolution=WebcamResolution.VGA.getSize();
+    private Mensaje message=new Mensaje();
+    private BufferedImage bufferedImage;
+    private  Dimension dimension=new Dimension(200,300);
     private Webcam webcam=Webcam.getDefault();
     private WebcamPanel webcamPanel= new WebcamPanel(webcam, dimension, false);
-    private BufferedImage bufferedImage;
-    Image image;
-     
     
     @FXML
     private MFXButton bntTakePhoto;
@@ -67,17 +56,21 @@ public class PhotographyController extends Controller implements Initializable {
 
     @FXML
     void onActionBntTakePhoto(ActionEvent event) {
-        image = SwingFXUtils.toFXImage(bufferedImage, null);
-        imvPhotography.setImage(image);
+        imageTakePhoto = SwingFXUtils.toFXImage(bufferedImage, null);
+        imvPhotography.setImage(imageTakePhoto);
     }
 
     @FXML
     void onActionBtnSavePhoto(ActionEvent event) {
-        savePhoto();
-        webcamPanel.stop();
-        webcam.close();
-        ((Stage) btnSavePhoto.getScene().getWindow()).close();
-       
+        if(imageTakePhoto!=null){
+            savePhoto();
+            webcamPanel.stop();
+            webcam.close();
+            ((Stage) btnSavePhoto.getScene().getWindow()).close();
+        }
+        else{
+            message.show(Alert.AlertType.INFORMATION, "Aviso", "No se a registrado tu foto");
+        }
     }
     public void camera(){
         webcam.open();
@@ -91,8 +84,9 @@ public class PhotographyController extends Controller implements Initializable {
                 }
             }
         };
-        thread.setDaemon(true);
+        if(checkedCamara){
         thread.start();
+        }
     }
     
     public void savePhoto(){

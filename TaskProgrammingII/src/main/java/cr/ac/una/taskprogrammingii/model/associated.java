@@ -60,8 +60,4 @@ public class Associated implements Serializable {
     public void setAge(String age) {
         this.age = age;
     }
-    
-    public void imprimir(){
-        System.out.println(name+lastName+age);
-    }
 }

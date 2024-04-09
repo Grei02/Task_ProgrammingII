@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 .backgroundView  {
   
-    -fx-background-image: url("\cr\ac\una\taskprogrammingii\resources\background\startAssociete.png");
+    -fx-background-image: url("../cr/ac/una/taskprogrammingii/resources/background/startAssociete.png");
     -fx-width: 100%;
     height: 400px;
     -fx-background-size: cover;

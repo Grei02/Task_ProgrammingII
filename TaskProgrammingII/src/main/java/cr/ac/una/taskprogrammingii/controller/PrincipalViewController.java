@@ -30,7 +30,7 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private MFXButton btnCreateAccount;
 
-    private boolean isProfessor=false;
+    private boolean isProfessor=true;
     @FXML
     private MFXButton btnEdit;
     /**
@@ -83,13 +83,6 @@ public class PrincipalViewController extends Controller implements Initializable
             btnDeposit.setVisible(true);
             btnCreateAccount.setVisible(false);
             btnEdit.setVisible(false);
-                    
-            
         }
-    }
-
-   
-   
-
-    
+    }    
 }

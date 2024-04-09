@@ -18,7 +18,6 @@ public class FileManager {
     private List <Associated> listAssociated= new ArrayList<>(); 
      
     public void serialization(Associated associated){
-     
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("listUser.txt"))) {
             listAssociated.add(associated);
             oos.writeObject(listAssociated);

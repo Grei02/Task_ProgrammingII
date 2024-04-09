@@ -49,7 +49,7 @@ public class registerAssociateSectionViewController extends Controller implement
         
          if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
              fileManager.serialization(associated);
-             fileManager.deserialize().get(0).imprimir();
+            // fileManager.deserialize().get(0).imprimir();
              mensaje.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
 
         }

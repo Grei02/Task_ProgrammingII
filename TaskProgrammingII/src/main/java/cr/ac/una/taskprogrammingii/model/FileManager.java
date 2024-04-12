@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FileManager {
+public class FileManager <T>{
     private List <T> list= new ArrayList<>(); 
      
     public void serialization(Associated associated){
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("listUser.txt"))) {
-             list.add( list);
+             list.add( associated);
             oos.writeObject( list);
             System.out.println("Objeto serializado con éxito.");
         } catch (IOException e) {

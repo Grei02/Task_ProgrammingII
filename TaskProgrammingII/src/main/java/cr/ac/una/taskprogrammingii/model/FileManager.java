@@ -17,16 +17,16 @@ import java.util.List;
 public class FileManager <T>{
     private List <T> list= new ArrayList<>(); 
      
-    public void serialization(Associated associated){
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("listUser.txt"))) {
-             list.add( associated);
+    public void serialization(T object, String filename){
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("filename.txt"))) {
+             list.add(  object );
             oos.writeObject( list);
             System.out.println("Objeto serializado con éxito.");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public List<Associated> deserialize(){
+    public List<T> deserialize(){
          try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("listUser.txt"))) {
            list= (List) ois.readObject();
              //System.out.println(l list.get(0));

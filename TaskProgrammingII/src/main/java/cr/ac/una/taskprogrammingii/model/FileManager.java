@@ -15,12 +15,12 @@ import java.util.List;
 
 
 public class FileManager {
-    private List <Associated> listAssociated= new ArrayList<>(); 
+    private List <T> list= new ArrayList<>(); 
      
     public void serialization(Associated associated){
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("listUser.txt"))) {
-            listAssociated.add(associated);
-            oos.writeObject(listAssociated);
+             list.add( list);
+            oos.writeObject( list);
             System.out.println("Objeto serializado con éxito.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -28,11 +28,11 @@ public class FileManager {
     }
     public List<Associated> deserialize(){
          try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("listUser.txt"))) {
-            listAssociated = (List) ois.readObject();
-             System.out.println(listAssociated.get(0));
+           list= (List) ois.readObject();
+             //System.out.println(l list.get(0));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return listAssociated;
+        return list;
     }
 }

@@ -18,7 +18,7 @@ public class FileManager <T>{
     private List <T> list= new ArrayList<>(); 
      
     public void serialization(T object, String filename){
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("filename.txt"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
              list.add(  object );
             oos.writeObject( list);
             System.out.println("Objeto serializado con éxito.");

@@ -44,3 +44,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   -fx-background-radius: 10px;
   -fx-background-insets: 0px;
 }
+
+.jfx-panelfondo{
+    -fx-effect:dropshadow(gaussian,rgba(0.0,0.0,0.0,0.15),10.0,0.7,0.0,1.5);
+    -fx-background-color: #bd9efd;
+}
+
+.jfx-backgroundImage{
+    -fx-image:url("../resources/prueba.png");
+    -fx-width: 100%;
+    -fx-height: 100%;
+}

@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
@@ -52,7 +53,13 @@ public class PhotographyController extends Controller implements Initializable {
     private ImageView imvCamera;
 
     @FXML
+    private ImageView imvBackgroundImage;
+    
+    @FXML
     private ImageView imvPhotography;
+    
+    @FXML
+    private AnchorPane root;
 
     @FXML
     void onActionBntTakePhoto(ActionEvent event) {
@@ -103,6 +110,8 @@ public class PhotographyController extends Controller implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         imvBackgroundImage.fitHeightProperty().bind(root.heightProperty());
+        imvBackgroundImage.fitWidthProperty().bind(root.widthProperty());
         camera();
     }    
 

@@ -16,11 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-/**
- * FXML Controller class
- *
- * @author USUARIO PZ UNA
- */
 public class CreateAccountController extends Controller   implements Initializable {
 
     @FXML
@@ -32,21 +27,21 @@ public class CreateAccountController extends Controller   implements Initializab
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<String> accounts = fileManager.deserialize();
+        List<List<String>> accounts = fileManager.deserialize("accountTypeList.txt");
     }    
     @Override
     public void initialize() {
     }
     
-  private void OnActionBtnSave(ActionEvent event) {
-    String newAccount = txtNameAccount.getText();
-    if (!newAccount.isEmpty()) {
-        List<String> accounts = fileManager.deserialize();
-        accounts.add(newAccount);
-        fileManager.serialization(accounts, "accounts.txt");
-        System.out.println("Cuenta guardada con éxito.");
-    } else {
-        System.out.println("El nombre de la cuenta no puede estar vacío.");
-    }
-}
+//  private void OnActionBtnSave(ActionEvent event) {
+//    String newAccount = txtNameAccount.getText();
+//    if (!newAccount.isEmpty()) {
+//        List<String> accounts = fileManager.deserialize();
+//        accounts.add(newAccount);
+//        fileManager.serialization(accounts, "accounts.txt");
+//        System.out.println("Cuenta guardada con éxito.");
+//    } else {
+//        System.out.println("El nombre de la cuenta no puede estar vacío.");
+//    }
+//}
 }

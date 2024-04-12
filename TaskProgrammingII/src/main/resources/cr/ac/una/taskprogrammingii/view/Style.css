@@ -51,7 +51,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .jfx-backgroundImage{
-    -fx-image:url("../resources/prueba.png");
-    -fx-width: 100%;
-    -fx-height: 100%;
+    -fx-image:url("../resources/BackgroundFotography.png");
+/*    -fx-width: 100%;
+    -fx-height: 100%;*/
 }

@@ -29,6 +29,7 @@ public class registerAssociateSectionViewController extends Controller implement
      private Associated associated=new Associated();
      private FileManager fileManager= new FileManager();
      private Mensaje message=new Mensaje();
+     
     @FXML
     private Button btnSave;
 

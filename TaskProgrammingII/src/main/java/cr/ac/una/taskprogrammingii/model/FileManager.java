@@ -26,13 +26,15 @@ public class FileManager <T>{
             e.printStackTrace();
         }
     }
-    public List<T> deserialize(){
-         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("listUser.txt"))) {
-           list= (List) ois.readObject();
-             //System.out.println(l list.get(0));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
+    public List<String> deserialize() {
+    List<String> list = new ArrayList<>(); 
+    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("listUser.txt"))) {
+        list = (List<String>) ois.readObject();
+         System.out.println(list.get(0));
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+    return list;
+}
+
 }

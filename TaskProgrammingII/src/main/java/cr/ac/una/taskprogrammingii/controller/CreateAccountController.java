@@ -5,10 +5,9 @@
 package cr.ac.una.taskprogrammingii.controller;
 
 import cr.ac.una.taskprogrammingii.model.Account;
+import cr.ac.una.taskprogrammingii.model.FileManager;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -27,49 +26,27 @@ public class CreateAccountController extends Controller   implements Initializab
     @FXML
     private MFXButton btnSave;
 
-    /**
-     * Initializes the controller class.
-     */
-    private List<String> typeAccount;
+    private FileManager<List<String>> fileManager = new FileManager<>();
     @FXML
     private MFXTextField txtNameAccount;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        List<String> accounts = fileManager.deserialize();
     }    
-    
     @Override
     public void initialize() {
-        
-    }
-
-    @FXML
-    private void OnActionBtnSave(ActionEvent event) {
-        //guardarCuenta();
     }
     
-//    private void guardarCuenta() {
-//         String newAccount = txtNameAccount.getText();
-//        if (!newAccount.isEmpty()) {
-//            String nuevaCuenta = new String(newAccount);
-//            
-//            // Si 'typeAccount' aún no se ha inicializado, inicialízalo
-//            if (typeAccount == null) {
-//                typeAccount = new ArrayList<>();
-//            }
-//           
-//            typeAccount.add(nuevaCuenta);
-//            
-//            // Luego puedes realizar las operaciones adicionales que necesites con la lista de cuentas
-//            // Por ejemplo, imprimir la lista de cuentas en la consola
-//            System.out.println("Lista de cuentas:");
-//            for (Account cuenta : typeAccount) {
-//                System.out.println(cuenta.getNombre());
-//            }
-//        } else {
-//            System.out.println("El nombre de la cuenta no puede estar vacío.");
-//        }
-//    
- 
+  private void OnActionBtnSave(ActionEvent event) {
+    String newAccount = txtNameAccount.getText();
+    if (!newAccount.isEmpty()) {
+        List<String> accounts = fileManager.deserialize();
+        accounts.add(newAccount);
+        fileManager.serialization(accounts, "accounts.txt");
+        System.out.println("Cuenta guardada con éxito.");
+    } else {
+        System.out.println("El nombre de la cuenta no puede estar vacío.");
+    }
+}
 }

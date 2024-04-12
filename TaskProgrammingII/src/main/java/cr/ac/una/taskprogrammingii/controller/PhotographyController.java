@@ -72,6 +72,7 @@ public class PhotographyController extends Controller implements Initializable {
             message.show(Alert.AlertType.INFORMATION, "Aviso", "No se a registrado tu foto");
         }
     }
+    
     public void camera(){
         webcam.open();
         Thread thread=new Thread(){

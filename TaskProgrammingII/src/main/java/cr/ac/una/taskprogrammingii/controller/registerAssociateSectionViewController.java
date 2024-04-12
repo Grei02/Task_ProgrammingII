@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
@@ -29,6 +30,15 @@ public class registerAssociateSectionViewController extends Controller implement
      private FileManager fileManager= new FileManager();
      private Mensaje message=new Mensaje();
     @FXML
+    private Button btnSave;
+
+    @FXML
+    private Button btnTakePhoto;
+
+    @FXML
+    private ImageView imvUserImage;
+
+    @FXML
     private TextField txtUserAge;
 
     @FXML
@@ -36,9 +46,11 @@ public class registerAssociateSectionViewController extends Controller implement
 
     @FXML
     private TextField txtuserName;
-    
+
     @FXML
-    private Button btnSave;;
+    void onActionBtnTakePhoto(ActionEvent event) {
+        
+    }
     
     @FXML
     void onActionbtnSave(ActionEvent event) {
@@ -49,9 +61,6 @@ public class registerAssociateSectionViewController extends Controller implement
         
          if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
              fileManager.serialization(associated);
-            // fileManager.deserialize().get(0).imprimir();
-             //mensaje.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
-            // fileManager.deserialize().get(0).imprimir();
              message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
 
         }

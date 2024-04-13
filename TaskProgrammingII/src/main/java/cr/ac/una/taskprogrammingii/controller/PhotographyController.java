@@ -90,7 +90,7 @@ public class PhotographyController extends Controller implements Initializable {
                  image = SwingFXUtils.toFXImage(bufferedImage, null);
                  imvCamera.setImage(image);
                  try{
-                 Thread.sleep(7);
+                 Thread.sleep(10);
                 }
                  catch (Exception e){
                       System.out.println("Error:"+e);

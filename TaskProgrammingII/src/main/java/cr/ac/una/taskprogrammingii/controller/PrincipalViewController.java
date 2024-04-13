@@ -83,6 +83,7 @@ public class PrincipalViewController extends Controller implements Initializable
             btnDeposit.setVisible(true);
             btnCreateAccount.setVisible(false);
             btnEdit.setVisible(false);
+            
         }
     }    
 }

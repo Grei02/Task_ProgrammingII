@@ -50,7 +50,7 @@ public class registerAssociateSectionViewController extends Controller implement
 
     @FXML
     void onActionBtnTakePhoto(ActionEvent event) {
-        
+        FlowController.getInstance().goViewInWindowModal("PhotographyView", stage, Boolean.FALSE);
     }
     
     @FXML

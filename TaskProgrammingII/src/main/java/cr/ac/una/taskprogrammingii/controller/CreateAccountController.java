@@ -32,12 +32,12 @@ public class CreateAccountController extends Controller   implements Initializab
     if (!newAccount.isEmpty()) {
         fileManager.serialization(newAccount, "accounts.txt");
         System.out.println("Cuenta guardada con éxito.");
+    
     } else {
         System.out.println("El nombre de la cuenta no puede estar vacío.");
         System.out.println(fileManager.deserialize("accounts.txt").get(2));
     }
 }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         

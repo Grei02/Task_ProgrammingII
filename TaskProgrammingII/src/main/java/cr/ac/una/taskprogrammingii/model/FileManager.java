@@ -15,17 +15,22 @@ import java.util.List;
 
 
 public class FileManager <T> {
-    private List <T> list= new ArrayList<>(); 
+    //private List <T> list= new ArrayList<>(); 
      
-    public void serialization(T object, String filename){
+    public void serialization(/*T object, String filename*/List <T> list){
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-            deserialize(filename);
-             list.add(object );
             oos.writeObject(list);
             System.out.println("Objeto serializado con éxito.");
         } catch (IOException e) {
             e.printStackTrace();
         }
+//            deserialize(filename);
+//             list.add(object );
+//            oos.writeObject(list);
+//            System.out.println("Objeto serializado con éxito.");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
     
     public List<T> deserialize(String filename) {

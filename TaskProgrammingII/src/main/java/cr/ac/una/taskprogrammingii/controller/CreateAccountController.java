@@ -36,9 +36,7 @@ public class CreateAccountController extends Controller   implements Initializab
 //  private void OnActionBtnSave(ActionEvent event) {
 //    String newAccount = txtNameAccount.getText();
 //    if (!newAccount.isEmpty()) {
-//        List<String> accounts = fileManager.deserialize();
-//        accounts.add(newAccount);
-//        fileManager.serialization(accounts, "accounts.txt");
+//        fileManager.serialization(newAccount, "accounts.txt");
 //        System.out.println("Cuenta guardada con éxito.");
 //    } else {
 //        System.out.println("El nombre de la cuenta no puede estar vacío.");

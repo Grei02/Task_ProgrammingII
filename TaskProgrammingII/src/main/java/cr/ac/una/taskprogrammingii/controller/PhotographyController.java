@@ -89,6 +89,12 @@ public class PhotographyController extends Controller implements Initializable {
                 bufferedImage = webcam.getImage();
                  image = SwingFXUtils.toFXImage(bufferedImage, null);
                  imvCamera.setImage(image);
+                 try{
+                 Thread.sleep(7);
+                }
+                 catch (Exception e){
+                      System.out.println("Error:"+e);
+                  }
                 }
             }
         };

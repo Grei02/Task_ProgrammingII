@@ -35,7 +35,7 @@ public class CreateAccountController extends Controller   implements Initializab
     
     } else {
         System.out.println("El nombre de la cuenta no puede estar vacío.");
-        System.out.println(fileManager.deserialize("accounts.txt").get(2));
+        System.out.println(fileManager.deserialize("accounts.txt").get(3));
     }
 }
     @Override

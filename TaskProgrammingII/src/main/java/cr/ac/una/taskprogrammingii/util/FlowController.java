@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package cr.ac.una.taskprogrammingii.util;
-import cr.ac.una.taskprogrammingii.model.Associated;
 
 import cr.ac.una.taskprogrammingii.App;
 import java.io.IOException;
@@ -84,7 +83,7 @@ public class FlowController {
         return loader;
     }
 
-    public void goMain(String nameView) {
+    public void goMain() {
         try {
             this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/PrincipalView.fxml"), this.idioma)));
             MFXThemeManager.addOn(this.mainStage.getScene(), Themes.DEFAULT, Themes.LEGACY);

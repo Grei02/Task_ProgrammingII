@@ -31,6 +31,7 @@ public class PrincipalViewController extends Controller implements Initializable
     private MFXButton btnCreateAccount;
 
     private boolean isProfessor=true;
+    
     @FXML
     private MFXButton btnEdit;
     /**
@@ -64,6 +65,7 @@ public class PrincipalViewController extends Controller implements Initializable
     private void OnActionBtnCreateAccount(ActionEvent event) {
          FlowController.getInstance().goView("createAccountView");
     }    
+    
      @FXML
     private void onActionBtnEdit(ActionEvent event) {
          FlowController.getInstance().goView("editWindowView");

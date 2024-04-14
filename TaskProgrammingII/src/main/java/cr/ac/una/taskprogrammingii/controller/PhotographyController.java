@@ -120,5 +120,4 @@ public class PhotographyController extends Controller implements Initializable {
         imvBackgroundImage.fitWidthProperty().bind(root.widthProperty());
         camera();
     }
-
 }

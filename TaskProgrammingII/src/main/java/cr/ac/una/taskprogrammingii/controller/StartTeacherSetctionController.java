@@ -33,7 +33,7 @@ public class StartTeacherSetctionController extends Controller implements Initia
 
     @FXML
     private void OnActionBtnNext(ActionEvent event) {
-        FlowController.getInstance().goMain("registerAssociateSectionView");
+        FlowController.getInstance().goMain();
         ((Stage) btnNext.getScene().getWindow()).close();
     }
 

@@ -4,6 +4,7 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import cr.ac.una.taskprogrammingii.util.FlowController;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
@@ -42,6 +43,7 @@ public class PhotographyController extends Controller implements Initializable {
     private  Dimension dimension=new Dimension(200,300);
     private Webcam webcam=Webcam.getDefault();
     private WebcamPanel webcamPanel= new WebcamPanel(webcam, dimension, false);
+    private Thread thread;
     
     @FXML
     private MFXButton bntTakePhoto;
@@ -70,9 +72,12 @@ public class PhotographyController extends Controller implements Initializable {
     @FXML
     void onActionBtnSavePhoto(ActionEvent event) {
         if(imageTakePhoto!=null){
-            savePhoto();
-            webcamPanel.stop();
-            webcam.close();
+            FlowController.getInstance().setBufferedImage(bufferedImage);
+           webcamPanel.stop();
+           webcam.close();
+           imvPhotography.setImage(null);
+           imageTakePhoto=null;
+           bufferedImage=null;
             ((Stage) btnSavePhoto.getScene().getWindow()).close();
         }
         else{
@@ -82,7 +87,8 @@ public class PhotographyController extends Controller implements Initializable {
     
     public void camera(){
         webcam.open();
-        Thread thread=new Thread(){
+        webcamPanel.start();
+         thread=new Thread(){
             public void run(){
                 webcamPanel.start();
                 while (checkedCamara){
@@ -103,27 +109,16 @@ public class PhotographyController extends Controller implements Initializable {
         }
     }
     
-    public void savePhoto(){
-     String rutaRaiz = System.getProperty("user.dir");
-     File savePhoto = new File(rutaRaiz+"\\FotosAsociados\\foto.png");
-      try {
-          ImageIO.write(bufferedImage, "png", savePhoto);
-      }
-      catch (Exception e){
-          System.out.println("Error:"+e);
-      }
-    }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         imvBackgroundImage.fitHeightProperty().bind(root.heightProperty());
-        imvBackgroundImage.fitWidthProperty().bind(root.widthProperty());
-        camera();
+        
     }    
 
     @Override
     public void initialize() {
-        
+        imvBackgroundImage.fitHeightProperty().bind(root.heightProperty());
+        imvBackgroundImage.fitWidthProperty().bind(root.widthProperty());
+        camera();
     }
 
 }

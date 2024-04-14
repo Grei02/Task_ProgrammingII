@@ -16,6 +16,7 @@ public class Associated implements Serializable {
     private String lastName;
     private String folio;
     private String age;
+    private String addressPhotography;
     private List<Account> acountList=new ArrayList<>();
     
     public Associated(){
@@ -23,6 +24,7 @@ public class Associated implements Serializable {
         lastName=null;
         folio=null;
         age=null;
+        addressPhotography=null;
         acountList=null;
     }
     public Associated(String name,String lastName,String folio,String age){
@@ -32,18 +34,6 @@ public class Associated implements Serializable {
         this.age=age;
     }
     
-    public String getName(){
-        return name;
-    }
-    public String getLastName(){
-        return lastName;
-    }
-    public String getFolio(){
-        return folio;
-    }
-    public String getAge(){
-        return age;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -60,4 +50,25 @@ public class Associated implements Serializable {
     public void setAge(String age) {
         this.age = age;
     }
+    
+     public void setAddressPhotography(String addressPhotography) {
+       this.addressPhotography = addressPhotography;
+    }    
+     
+     public String getName(){
+        return name;
+    }
+    public String getLastName(){
+        return lastName;
+    }
+    public String getFolio(){
+        return folio;
+    }
+    public String getAge(){
+        return age;
+    }
+    public String getAddressPhotography() {
+        return System.getProperty("user.dir")+addressPhotography;
+    }
+
 }

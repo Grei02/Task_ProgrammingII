@@ -32,6 +32,8 @@ public class EditWindowController extends Controller implements Initializable {
 //    private MFXTextField txtNameCoop;
 //    @FXML
 //    private ImageView imageView;
+    @FXML
+    private MFXTextField txtNameCoop;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -46,7 +48,16 @@ public class EditWindowController extends Controller implements Initializable {
     private void onActionBtnSave(ActionEvent event) {
        
     }
+
+    @FXML
+    private void OnActionTxtNameCoop(ActionEvent event) {
+    }
+
+    @FXML
+    private void onImageClicked(MouseEvent event) {
+    }
 }
+
 
 
     

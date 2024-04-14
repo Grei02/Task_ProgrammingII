@@ -16,6 +16,10 @@ import java.util.List;
 
 
 public class FileManager<T> {
+
+    public static FileManager getInstance() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     public void serializationAdd(T object, String filename) {
         List<T> list = deserialize(filename); 
         list.add(object); 
@@ -38,6 +42,10 @@ public class FileManager<T> {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public void removeAccount(String accountToRemove, String accountstxt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 

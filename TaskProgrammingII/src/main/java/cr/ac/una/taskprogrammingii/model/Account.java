@@ -7,9 +7,7 @@ package cr.ac.una.taskprogrammingii.model;
 import java.io.Serializable;
 
 public class Account implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
-    
+   
     private String type;
     private Integer amount;
     
@@ -18,7 +16,7 @@ public class Account implements Serializable {
         amount = null;
     }
     
-    public Account(String type, Integer amount,String logoImage) {
+    public Account(String type, Integer amount) {
         this.type = type;
         this.amount = amount;
     }

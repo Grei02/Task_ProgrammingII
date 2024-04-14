@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.taskprogrammingii.controller.AccountMaintenanceController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.AccountMaintenanceController">
    <children>
       <StackPane layoutX="110.0" layoutY="70.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,14 +18,14 @@
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Mantenimiento de cuentas " />
-                  <MFXLegacyTableView prefHeight="339.0" prefWidth="601.0">
+                  <MFXLegacyTableView fx:id="tbvAccountsList" prefHeight="333.0" prefWidth="601.0">
                      <columns>
-                        <TableColumn prefWidth="600.0" text="Cuentas " />
+                        <TableColumn fx:id="tbcAccountsColumn" prefWidth="600.0" text="Cuentas " />
                      </columns>
                   </MFXLegacyTableView>
                   <HBox alignment="CENTER" prefHeight="48.0" prefWidth="601.0">
                      <children>
-                        <MFXButton fx:id="btnEdit" onAction="#OnActionBtnEdit" text="Eliminar " />
+                        <MFXButton fx:id="btnDelete" onAction="#OnActionBtnDelete" text="Eliminar " />
                      </children>
                   </HBox>
                </children>

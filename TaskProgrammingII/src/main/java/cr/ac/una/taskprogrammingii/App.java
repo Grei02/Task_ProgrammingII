@@ -18,7 +18,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FlowController.getInstance().InitializeFlow(stage, null);
-        FlowController.getInstance().goViewInWindow("registerAssociateSectionView");
+        //FlowController.getInstance().goViewInWindow("registerAssociateSectionView");
+        FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
+        
     }
 
     public static void main(String[] args) {

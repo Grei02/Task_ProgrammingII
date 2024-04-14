@@ -25,19 +25,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
-
-
-
-/**
- * FXML Controller class
- *
- * @author Sofia Bejarano Mora
- */
 public class PhotographyController extends Controller implements Initializable {
 
     Image imageTakePhoto;
     Image image;
-    Boolean checkedCamara=true;
+    Boolean checkedCamera=true;
     private Mensaje message=new Mensaje();
     private BufferedImage bufferedImage;
     private  Dimension dimension=new Dimension(200,300);
@@ -72,7 +64,7 @@ public class PhotographyController extends Controller implements Initializable {
     @FXML
     void onActionBtnSavePhoto(ActionEvent event) {
         if(imageTakePhoto!=null){
-            FlowController.getInstance().setBufferedImage(bufferedImage);
+           FlowController.getInstance().setBufferedImage(bufferedImage);
            webcamPanel.stop();
            webcam.close();
            imvPhotography.setImage(null);
@@ -91,12 +83,12 @@ public class PhotographyController extends Controller implements Initializable {
          thread=new Thread(){
             public void run(){
                 webcamPanel.start();
-                while (checkedCamara){
+                while (checkedCamera){
                 bufferedImage = webcam.getImage();
                  image = SwingFXUtils.toFXImage(bufferedImage, null);
                  imvCamera.setImage(image);
                  try{
-                 Thread.sleep(10);
+                 Thread.sleep(100);
                 }
                  catch (Exception e){
                       System.out.println("Error:"+e);
@@ -104,7 +96,7 @@ public class PhotographyController extends Controller implements Initializable {
                 }
             }
         };
-        if(checkedCamara){
+        if(checkedCamera){
         thread.start();
         }
     }

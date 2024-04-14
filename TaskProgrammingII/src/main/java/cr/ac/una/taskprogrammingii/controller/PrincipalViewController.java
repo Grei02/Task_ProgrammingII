@@ -20,18 +20,21 @@ import javafx.scene.layout.VBox;
  * @author USUARIO PZ UNA
  */
 public class PrincipalViewController extends Controller implements Initializable {
+    
+      private boolean isProfessor=true;
 
     @FXML
     private MFXButton btnRegister;
+    
     @FXML
     private MFXButton btnAccountStatement;
+    
     @FXML
     private MFXButton btnDeposit;
+    
     @FXML
     private MFXButton btnCreateAccount;
-
-    private boolean isProfessor=true;
-    
+   
     @FXML
     private MFXButton btnEdit;
     /**

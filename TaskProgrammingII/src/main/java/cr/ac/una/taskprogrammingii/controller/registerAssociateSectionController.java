@@ -8,6 +8,8 @@ import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.util.FlowController;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
+import io.github.palexdev.materialfx.utils.SwingFXUtils;
+import java.awt.image.BufferedImage;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,12 +20,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
@@ -53,6 +57,12 @@ public class registerAssociateSectionController extends Controller implements In
 
     @FXML
     private TextField txtuserName;
+    
+    @FXML
+    private TextField txtUserFolio;
+    
+    @FXML
+    private TextField labFolio;
 
     @FXML
     void onActionBtnTakePhoto(ActionEvent event) {
@@ -63,11 +73,11 @@ public class registerAssociateSectionController extends Controller implements In
         if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
             createFolio();
             FlowController.getInstance().goViewInWindow("PhotographyView");
-            
         }
         else{
             message.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");
         } 
+      
     }
     
     @FXML
@@ -121,17 +131,28 @@ public class registerAssociateSectionController extends Controller implements In
       }
     }
     
+    public void showPhoto(){
+         if(FlowController.getInstance().getBufferedImage()!=null){
+            BufferedImage bufferedImage=FlowController.getInstance().getBufferedImage();
+             Image userImage= SwingFXUtils.toFXImage(bufferedImage, null);
+             imvUserImage.setImage(userImage);
+            }
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //       associatedList=fileManager.deserialize("ListAssociated.txt");
 //       txtuserName.setText(associatedList.get(2).getName());
-//       txtUserLastName.setText(associatedList.get(2).getLastName());;
+//       txtUserLastName.setText(associatedList.get(2).getLastName());
 //       txtUserAge.setText(associatedList.get(2).getAge());
 //        System.out.println(associatedList.get(2).getFolio());
+//        Image userImage= new Image("file:///"+associatedList.get(2).getAddressPhotography());
+//        imvUserImage.setImage(userImage);
     }
 
     @Override
     public void initialize() {
+        showPhoto();
     }
 
 }

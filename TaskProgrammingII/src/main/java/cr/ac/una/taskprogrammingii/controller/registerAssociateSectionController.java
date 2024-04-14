@@ -139,6 +139,12 @@ public class registerAssociateSectionController extends Controller implements In
             }
     }
     
+    public void userCard(){
+        String address=System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf";
+        String backgroundImagePath="cr/ac/una/taskprogrammingii/resources/UserCard.png";
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //       associatedList=fileManager.deserialize("ListAssociated.txt");
@@ -152,7 +158,6 @@ public class registerAssociateSectionController extends Controller implements In
 
     @Override
     public void initialize() {
-        showPhoto();
     }
 
 }

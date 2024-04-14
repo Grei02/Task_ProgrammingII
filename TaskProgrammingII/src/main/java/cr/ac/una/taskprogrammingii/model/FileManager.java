@@ -16,15 +16,13 @@ import java.util.List;
 
 
 public class FileManager<T> {
-    public void serialization(T object, String filename) {
+    public void serializationAdd(T object, String filename) {
         List<T> list = deserialize(filename); 
         list.add(object); 
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
             oos.writeObject(list); 
             System.out.println("Objeto serializado con éxito.");
-    // String quintoElemento = (String) list.get(6);
-    //System.out.println("Quinto elemento: " + quintoElemento);
         } catch (IOException e) {
             e.printStackTrace();
         }

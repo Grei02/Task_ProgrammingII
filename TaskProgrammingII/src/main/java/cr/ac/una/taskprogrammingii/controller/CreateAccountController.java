@@ -30,7 +30,7 @@ public class CreateAccountController extends Controller   implements Initializab
     void OnActionBtnSave(ActionEvent event) {
     String newAccount = txtNameAccount.getText();
     if (!newAccount.isEmpty()) {
-        fileManager.serialization(newAccount, "accounts.txt");
+        fileManager.serializationAdd(newAccount, "accounts.txt");
         System.out.println("Cuenta guardada con éxito.");
     
     } else {

@@ -63,6 +63,7 @@ public class registerAssociateSectionController extends Controller implements In
         if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
             createFolio();
             FlowController.getInstance().goViewInWindow("PhotographyView");
+            
         }
         else{
             message.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");
@@ -74,9 +75,11 @@ public class registerAssociateSectionController extends Controller implements In
          if (FlowController.getInstance().getBufferedImage()!=null) {
              savePhoto();
              FlowController.getInstance().setBufferedImage(null);
-             fileManager.serialization(associated,"ListAssociated.txt");
+             fileManager.serializationAdd(associated,"ListAssociated.txt");
              message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
-             
+             txtuserName.setText(null);
+             txtUserLastName.setText(null);
+             txtUserAge.setText(null);
         }
         else{
             message.show(Alert.AlertType.WARNING, "Alerta", "Para guardar debes tomarte una foto.");

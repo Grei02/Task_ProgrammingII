@@ -35,11 +35,22 @@
           <artifactId>slf4j-simple</artifactId>
           <version>1.7.12</version>
         </dependency>
-        <dependency>
+        
+          <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>5.5.13.3</version>
+            <artifactId>kernel</artifactId>
+            <version>7.0.4</version>
         </dependency>
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>io</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>layout</artifactId>
+                <version>7.0.4</version>
+            </dependency>
     </dependencies>
     <build>
         <plugins>

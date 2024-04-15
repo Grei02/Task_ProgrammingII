@@ -4,12 +4,26 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import com.itextpdf.io.font.PdfEncodings;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.util.FlowController;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
+import java.awt.Desktop;
 import java.awt.image.BufferedImage;
+
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -81,9 +95,11 @@ public class registerAssociateSectionController extends Controller implements In
     }
     
     @FXML
-    void onActionbtnSave(ActionEvent event) {
+    void onActionbtnSave(ActionEvent event) throws IOException  {
          if (FlowController.getInstance().getBufferedImage()!=null) {
              savePhoto();
+             userCard();
+             Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
              FlowController.getInstance().setBufferedImage(null);
              fileManager.serializationAdd(associated,"ListAssociated.txt");
              message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
@@ -141,8 +157,50 @@ public class registerAssociateSectionController extends Controller implements In
     
     public void userCard(){
         String address=System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf";
-        String backgroundImagePath="cr/ac/una/taskprogrammingii/resources/UserCard.png";
-        
+        String backgroundImagePath="src/main/resources/cr/ac/una/taskprogrammingii/resources/UserCard.png";
+        String addresAssociatedPhotograsphs="AssociatedPhotographs/"+associated.getFolio()+".png";
+        Document document;
+        try{
+            PdfWriter writePdf=  new PdfWriter(address);
+            PdfDocument pdf= new PdfDocument(writePdf);
+            PageSize pdfSize= new PageSize(549, 303);
+            
+            pdf.setDefaultPageSize(pdfSize);
+            document=new Document(pdf);
+            
+            ImageData backgroundImage=ImageDataFactory.create(backgroundImagePath);
+            PdfCanvas canva= new PdfCanvas(pdf.addNewPage());
+            canva.addImage(backgroundImage, 0,0,pdfSize.getWidth(), false);
+            
+            ImageData imageDataUser =ImageDataFactory.create(addresAssociatedPhotograsphs);
+            canva.addImage(imageDataUser,new Rectangle(420, 100, 115, 91), false);
+            
+            Paragraph paragraphName=new Paragraph("Nombre: "+associated.getName()+" "+associated.getLastName())
+                .setFontSize(14)
+                .setMarginTop(97)
+                .setMarginLeft(35);
+            
+            Paragraph paragraphAge=new Paragraph("Edad: "+associated.getAge())
+                .setFontSize(14)
+                .setMarginTop(6)
+                .setMarginLeft(35);
+            
+            Paragraph paragraphFolio=new Paragraph("Folio: "+associated.getFolio())
+                .setFontSize(14)
+                .setMarginTop(6)
+                .setMarginLeft(35);
+            
+            
+            
+            document.add(paragraphName);
+            document.add(paragraphAge);
+            document.add(paragraphFolio);
+            
+            document.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
     
     @Override

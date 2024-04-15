@@ -70,6 +70,7 @@ public class PhotographyController extends Controller implements Initializable {
            imvPhotography.setImage(null);
            imageTakePhoto=null;
            bufferedImage=null;
+           FlowController.getInstance().goView("registerAssociateSectionView");
             ((Stage) btnSavePhoto.getScene().getWindow()).close();
         }
         else{

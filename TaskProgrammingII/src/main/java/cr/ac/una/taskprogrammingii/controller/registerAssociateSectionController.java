@@ -10,6 +10,7 @@ import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -157,11 +158,12 @@ public class registerAssociateSectionController extends Controller implements In
     public void userCard(){
         String address=System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf";
         String backgroundImagePath="src/main/resources/cr/ac/una/taskprogrammingii/resources/UserCard.png";
+        String addresAssociatedPhotograsphs="AssociatedPhotographs/"+associated.getFolio()+".png";
         Document document;
         try{
             PdfWriter writePdf=  new PdfWriter(address);
             PdfDocument pdf= new PdfDocument(writePdf);
-            PageSize pdfSize= new PageSize(539, 303);
+            PageSize pdfSize= new PageSize(549, 303);
             
             pdf.setDefaultPageSize(pdfSize);
             document=new Document(pdf);
@@ -170,14 +172,29 @@ public class registerAssociateSectionController extends Controller implements In
             PdfCanvas canva= new PdfCanvas(pdf.addNewPage());
             canva.addImage(backgroundImage, 0,0,pdfSize.getWidth(), false);
             
+            ImageData imageDataUser =ImageDataFactory.create(addresAssociatedPhotograsphs);
+            canva.addImage(imageDataUser,new Rectangle(420, 100, 115, 91), false);
             
-            Paragraph paragraphName=new Paragraph(associated.getName()+associated.getLastName())
-                .setFontSize(18)
-                .setMarginTop(120)
-                .setMarginLeft(180);
+            Paragraph paragraphName=new Paragraph("Nombre: "+associated.getName()+" "+associated.getLastName())
+                .setFontSize(14)
+                .setMarginTop(97)
+                .setMarginLeft(35);
+            
+            Paragraph paragraphAge=new Paragraph("Edad: "+associated.getAge())
+                .setFontSize(14)
+                .setMarginTop(6)
+                .setMarginLeft(35);
+            
+            Paragraph paragraphFolio=new Paragraph("Folio: "+associated.getFolio())
+                .setFontSize(14)
+                .setMarginTop(6)
+                .setMarginLeft(35);
+            
             
             
             document.add(paragraphName);
+            document.add(paragraphAge);
+            document.add(paragraphFolio);
             
             document.close();
         }

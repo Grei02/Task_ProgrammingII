@@ -43,9 +43,16 @@ public class FileManager<T> {
         }
         return list;
     }
-
-    public void removeAccount(String accountToRemove, String accountstxt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
+     public void removeAccount(T element, String filename) {
+        List<T> list = deserialize(filename);
+        list.remove(element);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+            oos.writeObject(list);
+            System.out.println("Elemento eliminado con éxito.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+     }
 }
 

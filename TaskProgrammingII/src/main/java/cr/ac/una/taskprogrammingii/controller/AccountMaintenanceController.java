@@ -4,6 +4,7 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.FileManager;
 //import io.github.palexdev.materialfx.controls.MFXAlert;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -24,10 +25,10 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 
 public class AccountMaintenanceController extends Controller implements Initializable {
-
-    private FileManager<String> fileManager = new FileManager<>();
+ 
+    private FileManager<Account> fileManager = new FileManager<>();
     @FXML
-    private TableView<String> tbvAccountsList;
+    private TableView<Account> tbvAccountsList;
     @FXML
     private MFXButton btnDelete;
      @FXML
@@ -36,8 +37,8 @@ public class AccountMaintenanceController extends Controller implements Initiali
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        tbcAccountsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
-        List<String> accounts = fileManager.deserialize("accounts.txt");
-        ObservableList<String> accountsObservableList = FXCollections.observableArrayList(accounts);
+        List<Account> accounts = fileManager.deserialize("accounts.txt");
+        ObservableList<Account> accountsObservableList = FXCollections.observableArrayList(accounts);
         tbvAccountsList.setItems(accountsObservableList);
     }
      @Override
@@ -53,7 +54,8 @@ public class AccountMaintenanceController extends Controller implements Initiali
             alert.setHeaderText(null);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                String accountToRemove = tbvAccountsList.getItems().remove(selectedIndex);
+                Account accountToRemove = tbvAccountsList.getItems().remove(selectedIndex);
+               fileManager.removeAccount(accountToRemove, "accounts.txt"); 
             }
         } 
        

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -21,7 +22,8 @@ import javafx.scene.layout.VBox;
  */
 public class PrincipalViewController extends Controller implements Initializable {
     
-      private boolean isProfessor=true;
+      private boolean isProfessor=false;
+      private boolean isAssociate=false;
 
     @FXML
     private MFXButton btnRegister;
@@ -37,8 +39,12 @@ public class PrincipalViewController extends Controller implements Initializable
    
     @FXML
     private MFXButton btnEdit;
+    
     @FXML
     private MFXButton btnAccountMant;
+    
+    @FXML
+    private BorderPane root;
     /**
      * Initializes the controller class.
      */

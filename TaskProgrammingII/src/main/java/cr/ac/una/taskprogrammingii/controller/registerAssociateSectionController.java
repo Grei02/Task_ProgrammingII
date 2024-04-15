@@ -54,7 +54,7 @@ public class registerAssociateSectionController extends Controller implements In
      private Mensaje message=new Mensaje();
      private List<Associated> associatedList=new ArrayList<>();
      
-    @FXML
+        @FXML
     private Button btnSave;
 
     @FXML
@@ -71,12 +71,6 @@ public class registerAssociateSectionController extends Controller implements In
 
     @FXML
     private TextField txtuserName;
-    
-    @FXML
-    private TextField txtUserFolio;
-    
-    @FXML
-    private TextField labFolio;
 
     @FXML
     void onActionBtnTakePhoto(ActionEvent event) {
@@ -86,7 +80,7 @@ public class registerAssociateSectionController extends Controller implements In
         
         if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
             createFolio();
-            FlowController.getInstance().goViewInWindow("PhotographyView");
+            FlowController.getInstance().goView("PhotographyView");
         }
         else{
             message.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");

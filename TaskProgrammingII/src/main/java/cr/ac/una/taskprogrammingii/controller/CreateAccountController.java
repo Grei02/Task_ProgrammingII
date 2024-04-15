@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 public class CreateAccountController extends Controller   implements Initializable {
 
@@ -30,14 +31,28 @@ public class CreateAccountController extends Controller   implements Initializab
     void OnActionBtnSave(ActionEvent event) {
     String newAccount = txtNameAccount.getText();
     if (!newAccount.isEmpty()) {
-        fileManager.serialization(newAccount, "accounts.txt");
-        System.out.println("Cuenta guardada con éxito.");
-    
+        List<String> existingAccounts = fileManager.deserialize("accounts.txt");
+        if (!existingAccounts.contains(newAccount)) {
+            fileManager.serialization(newAccount, "accounts.txt");
+           Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setContentText("Cuenta guardada con éxito.");
+            successAlert.setHeaderText(null);
+            successAlert.showAndWait();
+             txtNameAccount.setText("");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("La cuenta ya está registrada.");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
     } else {
-        System.out.println("El nombre de la cuenta no puede estar vacío.");
-        System.out.println(fileManager.deserialize("accounts.txt").get(3));
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText("El nombre de la cuenta no puede estar vacío.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
     }
 }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         

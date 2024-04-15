@@ -16,7 +16,7 @@
             <Label styleClass="jfx-titulo-label" stylesheets="@Style.css" text="Mantemimiento de Cooperativa " />
             <MFXTextField fx:id="txtNameCoop" floatingText="Modificar nombre de la cooperativa " prefHeight="49.0" prefWidth="553.0" />
             <Label text="Modificar el logo de cooperativa " />
-            <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgLogoCoop" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <MFXButton text="Cancelar " />

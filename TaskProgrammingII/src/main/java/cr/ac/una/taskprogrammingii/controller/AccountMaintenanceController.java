@@ -33,6 +33,8 @@ public class AccountMaintenanceController extends Controller implements Initiali
     private MFXButton btnDelete;
      @FXML
     private TableColumn<String, String> tbcAccountsColumn;
+    @FXML
+    private MFXButton btnrefreshWindown;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,5 +62,26 @@ private void OnActionBtnDelete(ActionEvent event) {
         }
     }
 }
+
+    @FXML
+    private void OnActionBtnRefreshWindown(ActionEvent event) {
+        List<Account> updatedAccounts = fileManager.deserialize("accounts.txt");
+    ObservableList<Account> currentAccounts = tbvAccountsList.getItems();
+    
+    if (!updatedAccounts.equals(currentAccounts)) {
+        currentAccounts.setAll(updatedAccounts);
+        // Opcional: Mostrar un mensaje de éxito indicando que se actualizaron los datos.
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Los datos se han actualizado correctamente.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    } else {
+        // Mostrar un mensaje indicando que no hay actualizaciones.
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("No hay actualizaciones registradas.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+    }
    
 }

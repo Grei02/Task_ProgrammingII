@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : USUARIO PZ UNA
 */
 .backgroundView  {
-    -fx-background-image: url("../resources/background/startAssociete.png");
+    -fx-background-image: url("../resources/startAssociete.png");
     -fx-width: 100%;
     -fx-height: 400px;
     -fx-background-size: cover;
@@ -44,14 +44,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   -fx-background-radius: 10px;
   -fx-background-insets: 0px;
 }
+.btnExit{
+  -fx-background-color: #ff0000;
+  -fx-background-radius: 10px;
+  -fx-background-insets: 0px;
+}
 
 .jfx-panelfondo{
     -fx-effect:dropshadow(gaussian,rgba(0.0,0.0,0.0,0.15),10.0,0.7,0.0,1.5);
     -fx-background-color: #bd9efd;
 }
+.jdx-bagroundITeacher{
+     -fx-image:url("../resources/startTeacher.png");
+}
 
 .jfx-backgroundImage{
     -fx-image:url("../resources/BackgroundFotography.png");
-/*    -fx-width: 100%;
-    -fx-height: 100%;*/
+
+}
+.jfx-btn-refreshWindown>ImageView{
+    -fx-image:url("../resources/ButtonRefresh.png");
 }

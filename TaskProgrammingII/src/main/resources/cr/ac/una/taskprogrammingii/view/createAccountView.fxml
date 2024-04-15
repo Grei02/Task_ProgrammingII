@@ -16,7 +16,7 @@
             <MFXTextField fx:id="txtNameAccount" alignment="CENTER" floatingText="Nombre de la cuenta " prefHeight="49.0" prefWidth="620.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <MFXButton text="Cancelar " />
+                  <MFXButton styleClass="btnExit" text="Cancelar " />
                   <MFXButton fx:id="btnSave" onAction="#OnActionBtnSave" styleClass="btnSave" text="Guardar" />
                </children>
             </HBox>

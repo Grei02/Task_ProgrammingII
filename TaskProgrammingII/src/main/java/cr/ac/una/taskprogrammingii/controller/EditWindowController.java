@@ -57,7 +57,7 @@ public class EditWindowController extends Controller implements Initializable {
         }
     }
 }
-
+    
 private void guardarCambios(String nombre, Image logo) {
     System.out.println("Nombre de la cooperativa guardado: " + nombre);
     System.out.println("Logo de la cooperativa guardado.");

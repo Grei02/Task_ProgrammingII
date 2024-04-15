@@ -19,7 +19,7 @@
             <ImageView fx:id="imgLogoCoop" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <MFXButton text="Cancelar " />
+                  <MFXButton styleClass="btnExit" text="Cancelar " />
                   <MFXButton fx:id="btnSave" onAction="#onActionBtnSave" styleClass="btnSave" stylesheets="@Style.css" text="Guardar " />
                </children>
             </HBox>

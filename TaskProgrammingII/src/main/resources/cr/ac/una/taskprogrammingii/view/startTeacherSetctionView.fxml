@@ -10,16 +10,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.StartTeacherSetctionController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="37.0" prefHeight="365.0" prefWidth="653.0">
-         <padding>
-            <Insets right="10.0" top="10.0" />
-         </padding>
+      <VBox alignment="TOP_CENTER" layoutX="15.0" layoutY="15.0" prefHeight="365.0" prefWidth="708.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
             <Label styleClass="jfx-titulo-label" stylesheets="@Style.css" text="¡Bienvenido Docente!" />
-            <ImageView fitHeight="292.0" fitWidth="688.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="292.0" fitWidth="559.0" pickOnBounds="true" preserveRatio="true" styleClass="jdx-bagroundITeacher" />
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="38.0" layoutY="289.0" prefHeight="101.0" prefWidth="690.0">
+      <HBox alignment="CENTER" layoutX="38.0" layoutY="358.0" prefHeight="32.0" prefWidth="690.0">
          <children>
             <MFXButton fx:id="btnNext" alignment="CENTER" onAction="#OnActionBtnNext" styleClass="mfx-button" stylesheets="@Style.css" text="Siguiente" />
          </children>

@@ -46,19 +46,19 @@ public class AccountMaintenanceController extends Controller implements Initiali
     }
 
     @FXML
-    private void OnActionBtnDelete(ActionEvent event) {
-        int selectedIndex = tbvAccountsList.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("¿Está seguro de que desea eliminar esta cuenta?");
-            alert.setHeaderText(null);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                Account accountToRemove = tbvAccountsList.getItems().remove(selectedIndex);
-               fileManager.removeAccount(accountToRemove, "accounts.txt"); 
-            }
-        } 
-       
+private void OnActionBtnDelete(ActionEvent event) {
+    int selectedIndex = tbvAccountsList.getSelectionModel().getSelectedIndex();
+    if (selectedIndex >= 0) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("¿Está seguro de que desea eliminar esta cuenta?");
+        alert.setHeaderText(null);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            ObservableList<Account> accounts = tbvAccountsList.getItems();
+            accounts.remove(selectedIndex);
+            fileManager.serializationRemove(accounts,"accounts.txt");
+        }
     }
+}
    
 }

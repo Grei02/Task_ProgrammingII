@@ -11,6 +11,7 @@
          <children>
             <MFXButton fx:id="btnCreateAccount" onAction="#OnActionBtnCreateAccount" styleClass="mfx-button" text="Crear cuenta " />
             <MFXButton fx:id="btnEdit" onAction="#onActionBtnEdit" text="Mantenimiento Cooperativa " />
+            <MFXButton fx:id="btnAccountMant" onAction="#OnActionBtnAccountMant" text="Mantenimiento Cuentas " />
             <MFXButton fx:id="btnRegister" onAction="#onActionBtnRegister" prefHeight="25.0" prefWidth="103.0" styleClass="mfx-button" stylesheets="@Style.css" text="Registrar" />
             <MFXButton fx:id="btnAccountStatement" onAction="#onActionBtnAccountStatement" prefHeight="25.0" prefWidth="147.0" styleClass="mfx-button" stylesheets="@Style.css" text="Estado Cuenta" />
             <MFXButton fx:id="btnDeposit" onAction="#onActionBtnDeposit" styleClass="mfx-button" stylesheets="@Style.css" text="Depositar" />

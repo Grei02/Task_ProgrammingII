@@ -37,6 +37,8 @@ public class PrincipalViewController extends Controller implements Initializable
    
     @FXML
     private MFXButton btnEdit;
+    @FXML
+    private MFXButton btnAccountMant;
     /**
      * Initializes the controller class.
      */
@@ -76,19 +78,23 @@ public class PrincipalViewController extends Controller implements Initializable
 
     private void setButtonVisibility() {
         if (isProfessor) {
-            // Si es profesor, oculta todos los botones excepto btnCreateAccount
             btnRegister.setVisible(false);
             btnAccountStatement.setVisible(false);
             btnDeposit.setVisible(false);
             btnCreateAccount.setVisible(true);
+           
         } else {
-            // Si es estudiante, muestra todos los botones excepto btnCreateAccount
+            
             btnRegister.setVisible(true);
             btnAccountStatement.setVisible(true);
             btnDeposit.setVisible(true);
             btnCreateAccount.setVisible(false);
             btnEdit.setVisible(false);
-            
         }
     }    
+
+    @FXML
+    private void OnActionBtnAccountMant(ActionEvent event) {
+        FlowController.getInstance().goView("AccountMaintenanceView");
+    }
 }

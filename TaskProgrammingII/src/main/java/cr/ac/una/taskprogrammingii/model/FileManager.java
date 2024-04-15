@@ -17,10 +17,7 @@ import java.util.List;
 
 public class FileManager<T> {
 
-    public static FileManager getInstance() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    public void serializationAdd(T object, String filename) {
+    public void serialization(T object, String filename) {
         List<T> list = deserialize(filename); 
         list.add(object); 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
@@ -44,15 +41,18 @@ public class FileManager<T> {
         return list;
     }
     
-     public void removeAccount(T element, String filename) {
-        List<T> list = deserialize(filename);
-        list.remove(element);
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-            oos.writeObject(list);
-            System.out.println("Elemento eliminado con éxito.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-     }
+     public void serializationRemove(List<T> elementsToRemove, String filename) {
+    List<T> list = deserialize(filename);
+    list.removeAll(elementsToRemove);
+    
+    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+        
+        oos.writeObject(list);
+        System.out.println("Elemento(s) eliminado(s) con éxito.");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 }
 

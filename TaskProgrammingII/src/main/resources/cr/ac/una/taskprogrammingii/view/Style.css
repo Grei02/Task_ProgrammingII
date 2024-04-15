@@ -65,3 +65,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .jfx-btn-refreshWindown>ImageView{
     -fx-image:url("../resources/ButtonRefresh.png");
 }
+/*jfx-panelfondo{
+    -fx-effect:dropshadow(gaussian,rgba(0.0,0.0,0.0,0.15),10.0,0.7,0.0,1.5);
+    -fx-background-color: #ecc663
+}*/
+jfx-AnchorPane{
+     -fx-background-color: white;
+     -fx-border-color: #ecc663;
+     -fx-border-width: 10px;
+}

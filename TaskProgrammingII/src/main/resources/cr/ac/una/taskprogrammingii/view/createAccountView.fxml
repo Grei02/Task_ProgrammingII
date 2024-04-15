@@ -8,11 +8,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.CreateAccountController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="800.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.CreateAccountController">
    <children>
-      <VBox alignment="CENTER" layoutX="210.0" layoutY="21.0" prefHeight="200.0" prefWidth="385.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" prefHeight="55.0" prefWidth="800.0" spacing="15.0" AnchorPane.bottomAnchor="645.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="jfx-titulo-label" text="Crea cuenta " />
+            <Label styleClass="jfx-titulo-label" text="Crea cuenta " VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="210.0" layoutY="54.0" prefHeight="368.0" prefWidth="800.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="54.0">
+         <children>
             <MFXTextField fx:id="txtNameAccount" alignment="CENTER" floatingText="Nombre de la cuenta " prefHeight="49.0" prefWidth="620.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>

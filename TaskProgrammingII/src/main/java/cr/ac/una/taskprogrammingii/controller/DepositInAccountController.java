@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import io.github.palexdev.materialfx.controls.MFXSpinner;
 import io.github.palexdev.materialfx.controls.models.spinner.IntegerSpinnerModel;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -26,7 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 
-public class DepositInAccountController extends Controller implements Initializable {
+public class DepositInAccountController extends Controller implements Initializable   {
     private Deposits deposit=new Deposits();
     private FileManager fileManager= new FileManager();
     private Mensaje message=new Mensaje();
@@ -75,19 +76,32 @@ public class DepositInAccountController extends Controller implements Initializa
     
     @FXML
     private TextField txtFolioUser;
-
-    ObservableList <String> items=null;
     
     @FXML
     void onActionBtnCancel(ActionEvent event) {
-        initializeSpinner();
-        txtFolioUser.setText(null);
-        enableSpinner(true);
+        resetScreen();
     }
     
     @FXML
     void onActionbtnSave(ActionEvent event) {
-        
+        Associated associated=deposit.getAssociated();
+        String typeAccouny = cmbAccountTypes.getValue();
+        if(checkDeposit()){
+            setAmounts();
+            deposit.calculateTotal();
+            fileManager.serialization(deposit,"DepositList.txt");
+            resetScreen();
+        }
+        else{
+            message.show(Alert.AlertType.WARNING, "Aviso", "No estas depositando ningun monto.");
+        }
+    }
+    
+     @FXML
+    void onActionCmbAccountTypes(ActionEvent event) {
+        cmbAccountTypes.setDisable(true);
+        disableSpinner(false);
+        btnSave.setDisable(false);
     }
     
     @FXML
@@ -102,19 +116,50 @@ public class DepositInAccountController extends Controller implements Initializa
             }
         }
         if(deposit.getAssociated()!=null){
-            enableSpinner(false);
-            System.out.println("Nombre: "+deposit.getAssociated().getName());
-            message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Se ha encontrado el asociado, ahora por favor escoger la cuenta a la que desea hacer el deposito");
+            cmbAccountTypes.setDisable(false);
+            txtFolioUser.setDisable(true);
             StartCmbAccountTypes();
+            message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Se ha encontrado el asociado, ahora por favor escoger la cuenta a la que desea hacer el deposito");
         }
         else{
-            message.show(Alert.AlertType.WARNING, "Aviso", "No se ha encontrado ningun asociado, intente de nuevo");
+            message.show(Alert.AlertType.WARNING, "Aviso", "No se ha encontrado ningun asociado, intente de nuevo.");
             txtFolioUser.setText(null);
         }
     }
     
-    public void enableSpinner(Boolean enable){
-        txtFolioUser.setDisable(!enable);
+    public boolean checkDeposit(){
+        if((spn5Coins.getValue()!=0)||(spn10Coins.getValue()!=0)||(spn25Coins.getValue()!=0)||(spn50Coins.getValue()!=0)||
+                (spn100Coins.getValue()!=0)||(spn500Coins.getValue()!=0)||(spn1000Bills.getValue()!=0)||(spn2000Bills.getValue()!=0)||
+                (spn5000Bills.getValue()!=0)||(spn10000Bills.getValue()!=0)||(spn20000Bills.getValue()!=0)){
+            return true;
+        }
+        return false;
+    } 
+    
+   public void setAmounts(){
+       deposit.setCoin5(spn5Coins.getValue());
+       deposit.setCoin10(spn10Coins.getValue());
+       deposit.setCoin25(spn25Coins.getValue());
+       deposit.setCoin50(spn50Coins.getValue());
+       deposit.setCoin100(spn100Coins.getValue());
+       deposit.setCoin500(spn500Coins.getValue());
+       deposit.setBill1000(spn1000Bills.getValue());
+       deposit.setBill2000(spn2000Bills.getValue());
+       deposit.setBill5000(spn5000Bills.getValue());
+       deposit.setBill10000(spn10000Bills.getValue());
+       deposit.setBill20000(spn20000Bills.getValue());
+   }
+    
+    public void resetScreen(){
+        initializeSpinner();
+        cmbAccountTypes.setValue(null);
+        txtFolioUser.setText(null);
+        txtFolioUser.setDisable(false);
+        disableSpinner(true);
+        cmbAccountTypes.setDisable(true);
+    }
+    
+    public void disableSpinner(Boolean enable){
         spn10000Bills.setDisable(enable);
         spn1000Bills.setDisable(enable);
         spn100Coins.setDisable(enable);
@@ -167,15 +212,9 @@ public class DepositInAccountController extends Controller implements Initializa
     @Override
     public void initialize() {
         initializeSpinner();
-        enableSpinner(true);
-        
-//      this.spines.setSpinnerModel(new IntegerSpinnerModel (0));
-//      List <String> list=new ArrayList<>();
-//      list.add("Hola");
-//      list.add("Sofia");
-//      list.add("Bejarano");
-//      items=FXCollections.observableArrayList(list);
-//      cmbAccountTypes.setItems(items);
+        disableSpinner(true);
+        cmbAccountTypes.setDisable(true);
+        btnSave.setDisable(true);
     }
     
 }

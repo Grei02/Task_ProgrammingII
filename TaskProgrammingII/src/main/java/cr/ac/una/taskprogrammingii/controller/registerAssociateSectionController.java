@@ -97,10 +97,10 @@ public class registerAssociateSectionController extends Controller implements In
              Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
              FlowController.getInstance().setBufferedImage(null);
              
-             List <Account> cuentalista=new ArrayList<>();
-             cuentalista.add(new Account("hola",0));
-             cuentalista.add(new Account("adios",0));
-             associated.setAcountList(cuentalista);
+//             List <Account> cuentalista=new ArrayList<>();
+//             cuentalista.add(new Account("hola",0));
+//             cuentalista.add(new Account("adios",0));
+//             associated.setAcountList(cuentalista);
              
              fileManager.serialization(associated,"ListAssociated.txt");
              message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");

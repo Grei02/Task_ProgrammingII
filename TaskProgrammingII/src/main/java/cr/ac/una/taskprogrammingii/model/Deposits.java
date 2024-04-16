@@ -5,9 +5,11 @@
 package cr.ac.una.taskprogrammingii.model;
 
 import cr.ac.una.taskprogrammingii.model.Associated;
+import java.io.Serializable;
 import java.util.logging.Logger;
 
-public class Deposits {
+public class Deposits implements Serializable{
+    
     private Associated associated;
     private Integer coin5;
     private Integer coin10;

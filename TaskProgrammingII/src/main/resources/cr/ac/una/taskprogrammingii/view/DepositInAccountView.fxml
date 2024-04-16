@@ -24,7 +24,7 @@
                         <Label text="Folio: " />
                         <TextField fx:id="txtFolioUser" onAction="#onActiontxtFolioUser" />
                         <Label text="Tipo de cuenta" />
-                        <MFXComboBox fx:id="cmbAccountTypes" />
+                        <MFXComboBox fx:id="cmbAccountTypes" onAction="#onActionCmbAccountTypes" />
                         <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionbtnSave" text="Guardar" />
                      </children>
                   </HBox>

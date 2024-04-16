@@ -60,8 +60,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 .jfx-backgroundImage{
     -fx-image:url("../resources/BackgroundFotography.png");
-
+    -fx-fit-width: 100%;
+    -fx-fit-height: 100%;
+    -fx-background-size: cover; 
+    -fx-background-repeat:no-repeat;
+     -fx-background-position:center center;
 }
+
 .jfx-btn-refreshWindown>ImageView{
     -fx-image:url("../resources/ButtonRefresh.png");
 }

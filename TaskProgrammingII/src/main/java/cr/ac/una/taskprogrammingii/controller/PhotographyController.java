@@ -111,7 +111,5 @@ public class PhotographyController extends Controller implements Initializable {
     @Override
     public void initialize() {
        camera();
-       imvBackgroundImage.fitHeightProperty().bind(root.heightProperty());
-       imvBackgroundImage.fitWidthProperty().bind(root.widthProperty());
     }
 }

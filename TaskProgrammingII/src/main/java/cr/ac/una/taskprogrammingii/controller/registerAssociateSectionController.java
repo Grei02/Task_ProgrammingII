@@ -19,6 +19,7 @@ import com.itextpdf.layout.element.Paragraph;
 import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
+import cr.ac.una.taskprogrammingii.util.AppContext;
 import cr.ac.una.taskprogrammingii.util.FlowController;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
@@ -92,11 +93,11 @@ public class registerAssociateSectionController extends Controller implements In
     
     @FXML
     void onActionbtnSave(ActionEvent event) throws IOException  {
-         if (FlowController.getInstance().getBufferedImage()!=null) {
+         if ((BufferedImage)AppContext.getInstance().get("bufferedImageAssociated")!=null) {
              savePhoto();
              userCard();
              Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
-             FlowController.getInstance().setBufferedImage(null);
+             AppContext.getInstance().set("bufferedImageAssociated", null);
              
 //             List <Account> cuentalista=new ArrayList<>();
 //             cuentalista.add(new Account("hola",0));
@@ -143,7 +144,7 @@ public class registerAssociateSectionController extends Controller implements In
      File savePhoto = new File(routeRoot+dirección);
      associated.setAddressPhotography(dirección);
       try {
-          ImageIO.write(FlowController.getInstance().getBufferedImage(), "png", savePhoto);
+          ImageIO.write((BufferedImage)AppContext.getInstance().get("bufferedImageAssociated"), "png", savePhoto);
       }
       catch (Exception e){
           System.out.println("Error:"+e);
@@ -151,8 +152,8 @@ public class registerAssociateSectionController extends Controller implements In
     }
     
     public void showPhoto(){
-         if(FlowController.getInstance().getBufferedImage()!=null){
-            BufferedImage bufferedImage=FlowController.getInstance().getBufferedImage();
+         if((BufferedImage)AppContext.getInstance().get("bufferedImageAssociated")!=null){
+            BufferedImage bufferedImage=(BufferedImage)AppContext.getInstance().get("bufferedImageAssociated");
              Image userImage= SwingFXUtils.toFXImage(bufferedImage, null);
              imvUserImage.setImage(userImage);
             }

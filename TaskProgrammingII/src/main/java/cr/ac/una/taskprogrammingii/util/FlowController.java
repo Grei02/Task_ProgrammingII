@@ -31,7 +31,6 @@ public class FlowController {
     private static Stage mainStage;
     private static ResourceBundle idioma;
     private static HashMap<String, FXMLLoader> loaders = new HashMap<>();
-    private BufferedImage bufferedImage = null;
 
     private FlowController() {
     }
@@ -202,13 +201,5 @@ public class FlowController {
     public void salir() {
         this.mainStage.close();
     }
-    
-    public BufferedImage getBufferedImage(){
-        return bufferedImage;
-    }
-    
-    public void setBufferedImage(BufferedImage bufferedImage){
-        this.bufferedImage=bufferedImage;
-    }
-
+   
 }

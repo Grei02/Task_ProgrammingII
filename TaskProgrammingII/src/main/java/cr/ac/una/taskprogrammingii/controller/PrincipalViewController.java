@@ -22,7 +22,7 @@ import javafx.scene.layout.VBox;
  */
 public class PrincipalViewController extends Controller implements Initializable {
     
-      private boolean isProfessor=true;
+      private boolean isProfessor=false;
       private boolean isAssociate=false;
 
     @FXML

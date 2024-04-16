@@ -8,6 +8,7 @@ import cr.ac.una.taskprogrammingii.util.FlowController;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
+import cr.ac.una.taskprogrammingii.util.AppContext;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
 import java.awt.Dimension;
@@ -64,7 +65,7 @@ public class PhotographyController extends Controller implements Initializable {
     @FXML
     void onActionBtnSavePhoto(ActionEvent event) {
         if(imageTakePhoto!=null){
-           FlowController.getInstance().setBufferedImage(bufferedImage);
+           AppContext.getInstance().set("bufferedImageAssociated", bufferedImage);
            webcamPanel.stop();
            webcam.close();
            imvPhotography.setImage(null);

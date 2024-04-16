@@ -10,6 +10,7 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import javafx.scene.control.Alert;
 public class CreateAccountController extends Controller   implements Initializable {
 
     private FileManager fileManager = new FileManager<>();
+    List<String> listDeserialization= new ArrayList<>();
    
     @FXML
     private MFXButton btnSave;
@@ -33,7 +35,9 @@ public class CreateAccountController extends Controller   implements Initializab
     if (!newAccount.isEmpty()) {
         List<String> existingAccounts = fileManager.deserialize("accounts.txt");
         if (!existingAccounts.contains(newAccount)) {
-            fileManager.serialization(newAccount, "accounts.txt");
+            listDeserialization=fileManager.deserialize("accounts.txt");
+            listDeserialization.add(newAccount);
+            fileManager.serialization(listDeserialization, "accounts.txt");
            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
             successAlert.setContentText("Cuenta guardada con éxito.");
             successAlert.setHeaderText(null);

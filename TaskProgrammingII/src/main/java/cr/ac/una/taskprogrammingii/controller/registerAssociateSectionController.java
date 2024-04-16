@@ -54,6 +54,7 @@ public class registerAssociateSectionController extends Controller implements In
      private FileManager fileManager= new FileManager();
      private Mensaje message=new Mensaje();
      private List<Associated> associatedList=new ArrayList<>();
+     private List<Associated> listDeserialization= new ArrayList<>();
      
         @FXML
     private Button btnSave;
@@ -101,8 +102,9 @@ public class registerAssociateSectionController extends Controller implements In
 //             cuentalista.add(new Account("hola",0));
 //             cuentalista.add(new Account("adios",0));
 //             associated.setAcountList(cuentalista);
-             
-             fileManager.serialization(associated,"ListAssociated.txt");
+             listDeserialization= fileManager.deserialize("ListAssociated.txt");
+             listDeserialization.add(associated);
+             fileManager.serialization(listDeserialization,"ListAssociated.txt");
              message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
              txtuserName.setText(null);
              txtUserLastName.setText(null);

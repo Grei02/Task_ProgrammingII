@@ -71,7 +71,6 @@ public class PhotographyController extends Controller implements Initializable {
            imageTakePhoto=null;
            bufferedImage=null;
            FlowController.getInstance().goView("registerAssociateSectionView");
-            ((Stage) btnSavePhoto.getScene().getWindow()).close();
         }
         else{
             message.show(Alert.AlertType.INFORMATION, "Aviso", "No se a registrado tu foto");
@@ -90,7 +89,7 @@ public class PhotographyController extends Controller implements Initializable {
                  image = SwingFXUtils.toFXImage(bufferedImage, null);
                  imvCamera.setImage(image);
                  try{
-                 Thread.sleep(100);
+                 Thread.sleep(10);
                 }
                  catch (InterruptedException e){
                       System.out.println("Error:"+e);

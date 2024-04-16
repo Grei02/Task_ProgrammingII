@@ -31,6 +31,7 @@ public class DepositInAccountController extends Controller implements Initializa
     private Deposits deposit=new Deposits();
     private FileManager fileManager= new FileManager();
     private Mensaje message=new Mensaje();
+    private List<Deposits> listDeserialization= new ArrayList<>();
     
         @FXML
     private Button btnCancel;
@@ -89,7 +90,9 @@ public class DepositInAccountController extends Controller implements Initializa
         if(checkDeposit()){
             setAmounts();
             deposit.calculateTotal();
-            fileManager.serialization(deposit,"DepositList.txt");
+            listDeserialization=fileManager.deserialize("DepositList.txt");
+            listDeserialization.add(deposit);
+            fileManager.serialization(listDeserialization,"DepositList.txt");
             resetScreen();
         }
         else{

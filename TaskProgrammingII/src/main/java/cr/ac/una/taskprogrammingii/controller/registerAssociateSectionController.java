@@ -16,6 +16,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.util.FlowController;
@@ -95,6 +96,12 @@ public class registerAssociateSectionController extends Controller implements In
              userCard();
              Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
              FlowController.getInstance().setBufferedImage(null);
+             
+             List <Account> cuentalista=new ArrayList<>();
+             cuentalista.add(new Account("hola",0));
+             cuentalista.add(new Account("adios",0));
+             associated.setAcountList(cuentalista);
+             
              fileManager.serialization(associated,"ListAssociated.txt");
              message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
              txtuserName.setText(null);

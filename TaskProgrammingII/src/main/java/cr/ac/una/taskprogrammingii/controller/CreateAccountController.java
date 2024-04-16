@@ -38,7 +38,7 @@ public class CreateAccountController extends Controller   implements Initializab
             successAlert.setContentText("Cuenta guardada con éxito.");
             successAlert.setHeaderText(null);
             successAlert.showAndWait();
-             txtNameAccount.setText("");
+            txtNameAccount.setText("");
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("La cuenta ya está registrada.");

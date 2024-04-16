@@ -71,4 +71,12 @@ public class Associated implements Serializable {
         return System.getProperty("user.dir")+addressPhotography;
     }
 
+    public List<Account> getAcountList() {
+        return acountList;
+    }
+
+    public void setAcountList(List<Account> acountList) {
+        this.acountList = acountList;
+    }
+
 }

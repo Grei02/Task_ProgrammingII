@@ -46,13 +46,13 @@ public class FileManager<T> {
     list.removeAll(elementsToRemove);
     
     try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-        
         oos.writeObject(list);
         System.out.println("Elemento(s) eliminado(s) con éxito.");
     } catch (IOException e) {
         e.printStackTrace();
-    }
-}
+    
+        }
+     }
 
 }
 

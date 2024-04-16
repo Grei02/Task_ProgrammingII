@@ -82,6 +82,7 @@ public class PhotographyController extends Controller implements Initializable {
         webcam.open();
         webcamPanel.start();
          thread=new Thread(){
+            @Override
             public void run(){
                 webcamPanel.start();
                 while (checkedCamera){
@@ -91,10 +92,10 @@ public class PhotographyController extends Controller implements Initializable {
                  try{
                  Thread.sleep(100);
                 }
-                 catch (Exception e){
+                 catch (InterruptedException e){
                       System.out.println("Error:"+e);
                   }
-                }
+              }
             }
         };
         if(checkedCamera){
@@ -109,8 +110,8 @@ public class PhotographyController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
+       camera();
        imvBackgroundImage.fitHeightProperty().bind(root.heightProperty());
        imvBackgroundImage.fitWidthProperty().bind(root.widthProperty());
-        camera();
     }
 }

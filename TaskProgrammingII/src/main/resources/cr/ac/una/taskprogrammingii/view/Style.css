@@ -65,6 +65,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .jfx-btn-refreshWindown>ImageView{
     -fx-image:url("../resources/ButtonRefresh.png");
 }
+
+.jfx-imv-5colones{
+    -fx-image:url("../resources/5colones.png");
+}
+
+.jfx-imv-10colones{
+    -fx-image:url("../resources/10colones.png");
+}
+
+.jfx-imv-25colones{
+    -fx-image:url("../resources/25colones.png");
+}
+
+.jfx-imv-50colones{
+    -fx-image:url("../resources/50colones.png");
+}
+
+.jfx-imv-100colones{
+    -fx-image:url("../resources/100colones.png");
+}
+
+.jfx-imv-500colones{
+    -fx-image:url("../resources/500colones.png");
+}
+
+.jfx-imv-1000colones{
+    -fx-image:url("../resources/1000colones.png");
+}
+
+.jfx-imv-2000colones{
+    -fx-image:url("../resources/2000colones.png");
+}
+
+.jfx-imv-5000colones{
+    -fx-image:url("../resources/5000colones.png");
+}
+
+.jfx-imv-10000colones{
+    -fx-image:url("../resources/10000colones.png");
+}
+
+.jfx-imv-20000colones{
+    -fx-image:url("../resources/20000colones.png");
+}
 /*jfx-panelfondo{
     -fx-effect:dropshadow(gaussian,rgba(0.0,0.0,0.0,0.15),10.0,0.7,0.0,1.5);
     -fx-background-color: #ecc663

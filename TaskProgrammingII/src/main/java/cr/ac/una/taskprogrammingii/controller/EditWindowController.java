@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import javafx.scene.image.ImageView;
+import cr.ac.una.taskprogrammingii.util.Mensaje;
 
 /**
  * FXML Controller class
@@ -27,7 +28,7 @@ import javafx.scene.image.ImageView;
  * @author USUARIO PZ UNA
  */
 public class EditWindowController extends Controller implements Initializable {
-   
+   Mensaje message;
     @FXML
     private MFXTextField txtNameCoop;
     @FXML
@@ -46,14 +47,15 @@ public class EditWindowController extends Controller implements Initializable {
    
     if (!newName.isEmpty() && imgLogoCoop.getImage() != null) {
         guardarCambios(newName, imgLogoCoop.getImage());
-        mostrarMensajeExito();
+         message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Los cambios se han guardado exitosamente.");
+      
     } else {
         if (newName.isEmpty() && imgLogoCoop.getImage() == null) {
-            mostrarMensajeError("Error: Falta ingresar el nombre de la cooperativa y seleccionar un logo.");
+             message.show(Alert.AlertType.ERROR, "Error:", "Falta ingresar el nombre de la cooperativa y seleccionar un logo.");
         } else if (newName.isEmpty()) {
-            mostrarMensajeError("Error: Falta ingresar el nombre de la cooperativa.");
+             message.show(Alert.AlertType.ERROR, "Error:", "Falta ingresar el nombre de la cooperativa.");
         } else {
-            mostrarMensajeError("Error: Falta seleccionar un logo.");
+             message.show(Alert.AlertType.ERROR, "Error:", "Falta seleccionar un logo.");
         }
     }
 }
@@ -63,25 +65,10 @@ private void guardarCambios(String nombre, Image logo) {
     System.out.println("Logo de la cooperativa guardado.");
 }
 
-private void mostrarMensajeExito() {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Éxito");
-    alert.setHeaderText(null);
-    alert.setContentText("Los cambios se han guardado exitosamente.");
-    alert.showAndWait();
-}
-
-private void mostrarMensajeError(String mensaje) {
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Error");
-    alert.setHeaderText(null);
-    alert.setContentText(mensaje);
-    alert.showAndWait();
-}
     @FXML
     private void onImageClicked(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Seleccione una imagen");
+       // fileChooser.setTitle("Seleccione una imagen");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif");
         fileChooser.getExtensionFilters().add(extFilter);
         File selectedFile = fileChooser.showOpenDialog(null);

@@ -6,9 +6,7 @@ package cr.ac.una.taskprogrammingii.controller;
 
 import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.FileManager;
-//import io.github.palexdev.materialfx.controls.MFXAlert;
 import io.github.palexdev.materialfx.controls.MFXButton;
-//import io.github.palexdev.materialfx.controls.enums.AlertType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,9 +21,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
+import cr.ac.una.taskprogrammingii.util.Mensaje;
 
 public class AccountMaintenanceController extends Controller implements Initializable {
- 
+  Mensaje message;
     private FileManager<Account> fileManager = new FileManager<>();
     @FXML
     private TableView<Account> tbvAccountsList;
@@ -70,17 +69,10 @@ private void OnActionBtnDelete(ActionEvent event) {
     
     if (!updatedAccounts.equals(currentAccounts)) {
         currentAccounts.setAll(updatedAccounts);
-        // Opcional: Mostrar un mensaje de éxito indicando que se actualizaron los datos.
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Los datos se han actualizado correctamente.");
-        alert.setHeaderText(null);
-        alert.showAndWait();
+        message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Los datos se han actualizado correctamente.");
+  
     } else {
-        // Mostrar un mensaje indicando que no hay actualizaciones.
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("No hay actualizaciones registradas.");
-        alert.setHeaderText(null);
-        alert.showAndWait();
+        message.show(Alert.AlertType.INFORMATION, "Confirmacion", "No hay actualizaciones registradas.");
     }
     }
    

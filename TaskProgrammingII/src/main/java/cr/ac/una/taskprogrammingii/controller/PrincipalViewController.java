@@ -23,7 +23,7 @@ import javafx.scene.layout.VBox;
 public class PrincipalViewController extends Controller implements Initializable {
     
       private boolean isProfessor=false;
-      private boolean isAssociate=false;
+      private boolean isAssociate=true;
 
     @FXML
     private MFXButton btnRegister;
@@ -89,7 +89,7 @@ public class PrincipalViewController extends Controller implements Initializable
             btnDeposit.setVisible(false);
             btnCreateAccount.setVisible(true);
            
-        } else {
+        } else if ( isAssociate) {
             
             btnRegister.setVisible(true);
             btnAccountStatement.setVisible(true);

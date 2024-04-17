@@ -7,24 +7,27 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="966.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.PrincipalViewController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="966.0" styleClass="jfx-panelfondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.PrincipalViewController">
    <left>
       <VBox alignment="CENTER" prefHeight="550.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <HBox prefHeight="479.0" prefWidth="190.0">
+            <HBox prefHeight="643.0" prefWidth="190.0" spacing="5.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="500.0" prefWidth="172.0" spacing="15.0">
+                  <VBox alignment="CENTER" prefHeight="504.0" prefWidth="172.0" spacing="15.0">
                      <children>
-                        <MFXButton fx:id="btnCreateAccount" onAction="#OnActionBtnCreateAccount" styleClass="mfx-button" text="Crear cuenta " />
-                        <MFXButton fx:id="btnEdit" onAction="#onActionBtnEdit" text="Mantenimiento Cooperativa " />
-                        <MFXButton fx:id="btnAccountMant" onAction="#OnActionBtnAccountMant" text="Mantenimiento Cuentas " />
-                        <MFXButton fx:id="btnRegister" onAction="#onActionBtnRegister" prefHeight="25.0" prefWidth="103.0" styleClass="mfx-button" stylesheets="@Style.css" text="Registrar" />
-                        <MFXButton fx:id="btnAccountStatement" onAction="#onActionBtnAccountStatement" prefHeight="25.0" prefWidth="147.0" styleClass="mfx-button" stylesheets="@Style.css" text="Estado Cuenta" />
-                        <MFXButton fx:id="btnDeposit" onAction="#onActionBtnDeposit" styleClass="mfx-button" stylesheets="@Style.css" text="Depositar" />
+                        <MFXButton fx:id="btnCreateAccount" buttonType="RAISED" onAction="#OnActionBtnCreateAccount" styleClass="mfx-button" text="Crear cuenta " />
+                        <MFXButton fx:id="btnEdit" buttonType="RAISED" onAction="#onActionBtnEdit" text="Mantenimiento Cooperativa " />
+                        <MFXButton fx:id="btnAccountMant" buttonType="RAISED" onAction="#OnActionBtnAccountMant" text="Mantenimiento Cuentas " />
+                        <MFXButton fx:id="btnRegister" buttonType="RAISED" onAction="#onActionBtnRegister" prefHeight="25.0" prefWidth="103.0" styleClass="mfx-button" stylesheets="@Style.css" text="Registrar" />
+                        <MFXButton fx:id="btnAccountStatement" buttonType="RAISED" onAction="#onActionBtnAccountStatement" prefHeight="25.0" prefWidth="147.0" styleClass="mfx-button" stylesheets="@Style.css" text="Estado Cuenta" />
+                        <MFXButton fx:id="btnDeposit" buttonType="RAISED" onAction="#onActionBtnDeposit" styleClass="mfx-button" stylesheets="@Style.css" text="Depositar" />
                      </children>
                   </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="450.0" prefWidth="26.0" styleClass="jfx-panelfondo" />
+                  <Separator orientation="VERTICAL" prefHeight="507.0" prefWidth="12.0" styleClass="jfx-panelfondo" />
                </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
             </HBox>
          </children>
          <padding>

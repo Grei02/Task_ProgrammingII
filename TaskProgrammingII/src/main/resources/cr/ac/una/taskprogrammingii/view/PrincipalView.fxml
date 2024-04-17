@@ -36,7 +36,7 @@
       </VBox>
    </left>
    <center>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="550.0" prefWidth="685.0" BorderPane.alignment="CENTER" />
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="685.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <HBox alignment="CENTER" prefHeight="4.0" prefWidth="866.0" BorderPane.alignment="CENTER" />

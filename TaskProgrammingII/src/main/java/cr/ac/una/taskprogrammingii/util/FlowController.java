@@ -24,6 +24,7 @@ import cr.ac.una.taskprogrammingii.controller.Controller;
 import io.github.palexdev.materialfx.css.themes.MFXThemeManager;
 import io.github.palexdev.materialfx.css.themes.Themes;
 import java.awt.image.BufferedImage;
+import javafx.scene.layout.AnchorPane;
 
 public class FlowController {
 
@@ -115,6 +116,11 @@ public class FlowController {
                 VBox vBox = ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter());
                 vBox.getChildren().clear();
                 vBox.getChildren().add(loader.getRoot());
+
+//                if (loader.getRoot() instanceof AnchorPane) {
+//                    
+//                }
+                
                 break;
             case "Top":
                 break;
@@ -135,7 +141,7 @@ public class FlowController {
         controller.setStage(stage);
         stage.getScene().setRoot(loader.getRoot());
         MFXThemeManager.addOn(stage.getScene(), Themes.DEFAULT, Themes.LEGACY);
-        
+
     }
 
     public void goViewInWindow(String viewName) {
@@ -143,7 +149,7 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        stage.getIcons().add(new Image("cr/ac/una/taskprogrammingii/resources/LogoUNArojo.png")); 
+        stage.getIcons().add(new Image("cr/ac/una/taskprogrammingii/resources/LogoUNArojo.png"));
         stage.setTitle(controller.getNombreVista());
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
@@ -185,15 +191,15 @@ public class FlowController {
     public Controller getController(String viewName) {
         return getLoader(viewName).getController();
     }
-    
-    public void limpiarLoader(String view){
+
+    public void limpiarLoader(String view) {
         this.loaders.remove(view);
     }
 
     public static void setIdioma(ResourceBundle idioma) {
         FlowController.idioma = idioma;
     }
-    
+
     public void initialize() {
         this.loaders.clear();
     }
@@ -201,5 +207,5 @@ public class FlowController {
     public void salir() {
         this.mainStage.close();
     }
-   
+
 }

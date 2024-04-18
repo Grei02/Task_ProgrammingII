@@ -25,7 +25,7 @@ import cr.ac.una.taskprogrammingii.util.Mensaje;
 
 public class AccountMaintenanceController extends Controller implements Initializable {
     
-  Mensaje message;
+    Mensaje message = new Mensaje();
     private FileManager<Account> fileManager = new FileManager<>();
     @FXML
     private TableView<Account> tbvAccountsList;

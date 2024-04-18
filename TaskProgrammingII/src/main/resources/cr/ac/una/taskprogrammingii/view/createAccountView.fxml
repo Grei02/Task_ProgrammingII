@@ -12,7 +12,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="55.0" prefWidth="800.0" spacing="15.0" AnchorPane.bottomAnchor="645.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="jfx-titulo-label" text="Crea cuenta " VBox.vgrow="ALWAYS" />
+            <Label styleClass="jfx-titulo-label" text="Crear Tipo de Cuenta " VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
       <VBox alignment="CENTER" layoutX="210.0" layoutY="54.0" prefHeight="368.0" prefWidth="800.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="54.0">

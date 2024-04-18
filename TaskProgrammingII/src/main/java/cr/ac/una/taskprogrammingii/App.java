@@ -19,8 +19,8 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FlowController.getInstance().InitializeFlow(stage, null);
      // FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
-     FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
-       //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+    // FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
+     FlowController.getInstance().goViewInWindow("startAssociateSectionView");
         
     }
 

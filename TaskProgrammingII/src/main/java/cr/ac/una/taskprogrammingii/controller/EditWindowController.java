@@ -28,7 +28,7 @@ import cr.ac.una.taskprogrammingii.util.Mensaje;
  * @author USUARIO PZ UNA
  */
 public class EditWindowController extends Controller implements Initializable {
-   Mensaje message;
+   Mensaje message = new Mensaje();
     @FXML
     private MFXTextField txtNameCoop;
     @FXML

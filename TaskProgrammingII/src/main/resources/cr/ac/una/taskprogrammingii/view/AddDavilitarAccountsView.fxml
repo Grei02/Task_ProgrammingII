@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.taskprogrammingii.controller.AddDavilitarAccountsController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="168.0" layoutY="109.0" prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Crear cuentas  a asociados " VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Buscar asociado " />
+                  <MFXComboBox />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="320.0" prefWidth="600.0" spacing="5.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <MFXLegacyTableView onDragDetected="#onDragDetectedFromPrimaryTable" onDragDropped="#onDragDroppedFromPrimaryTable" onDragOver="#onDragOverFromPrimaryTable" prefHeight="259.0" prefWidth="248.0">
+                     <columns>
+                        <TableColumn prefWidth="247.0" text="Cuentas disponibles" />
+                     </columns>
+                  </MFXLegacyTableView>
+                  <MFXLegacyTableView onDragDetected="#onDragDetectedFromSecondaryTable" onDragDropped="#onDragDroppedFromSecondaryTable" onDragOver="#onDragOverFromSecondaryTable" prefHeight="316.0" prefWidth="249.0">
+                     <columns>
+                        <TableColumn prefWidth="247.0" text="Cuentas del asociado" />
+                     </columns>
+                  </MFXLegacyTableView>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

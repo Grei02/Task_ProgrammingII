@@ -116,10 +116,6 @@ public class FlowController {
                 VBox vBox = ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter());
                 vBox.getChildren().clear();
                 vBox.getChildren().add(loader.getRoot());
-
-//                if (loader.getRoot() instanceof AnchorPane) {
-//                    
-//                }
                 
                 break;
             case "Top":

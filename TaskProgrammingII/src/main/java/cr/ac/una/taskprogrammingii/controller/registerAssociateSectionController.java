@@ -92,9 +92,6 @@ public class registerAssociateSectionController extends Controller implements In
         associated.setSecondLastName(txtSecondUserLastName.getText().trim());
         if(!existsAssociate()){
             permissionsTakePhotos();
-            String fullName=associated.getName().toUpperCase().replace(" ", " ")+associated.getLastName().toUpperCase().replace(" ", " ")+
-                associated.getSecondLastName().toUpperCase().replace(" ", " ");
-        System.out.println(fullName);
         }
         else{
             message.show(Alert.AlertType.WARNING, "Alerta", "Ya hay una persona registrada con el mismo nombre");
@@ -157,7 +154,7 @@ public class registerAssociateSectionController extends Controller implements In
         if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()&&
                 !associated.getSecondLastName().isBlank()) {
             createFolio();
-            FlowController.getInstance().goView("PhotographyView");
+            FlowController.getInstance().goViewInWindowModal("PhotographyView", stage, Boolean.FALSE);
         }
         else{
             message.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");

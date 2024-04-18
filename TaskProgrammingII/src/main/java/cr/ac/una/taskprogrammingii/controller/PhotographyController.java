@@ -66,16 +66,20 @@ public class PhotographyController extends Controller implements Initializable {
     void onActionBtnSavePhoto(ActionEvent event) {
         if(imageTakePhoto!=null){
            AppContext.getInstance().set("bufferedImageAssociated", bufferedImage);
+           close();
+           ((Stage)btnSavePhoto.getScene().getWindow()).close();
+        }
+        else{
+            message.show(Alert.AlertType.INFORMATION, "Aviso", "No se a registrado tu foto");
+        }
+    }
+    
+    public void close(){
            webcamPanel.stop();
            webcam.close();
            imvPhotography.setImage(null);
            imageTakePhoto=null;
            bufferedImage=null;
-           FlowController.getInstance().goView("registerAssociateSectionView");
-        }
-        else{
-            message.show(Alert.AlertType.INFORMATION, "Aviso", "No se a registrado tu foto");
-        }
     }
     
     public void camera(){
@@ -111,5 +115,8 @@ public class PhotographyController extends Controller implements Initializable {
     @Override
     public void initialize() {
        camera();
+       
+        imvBackgroundImage.fitHeightProperty().bind(root.heightProperty());
+        imvBackgroundImage.fitWidthProperty().bind(root.widthProperty());
     }
 }

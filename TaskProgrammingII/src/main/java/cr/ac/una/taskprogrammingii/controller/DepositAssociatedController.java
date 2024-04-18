@@ -26,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 
 public class DepositAssociatedController extends Controller implements Initializable   {
@@ -39,6 +40,9 @@ public class DepositAssociatedController extends Controller implements Initializ
 
     @FXML
     private Button btnSave;
+    
+    @FXML
+    private AnchorPane root;
     
     @FXML
     private MFXComboBox<String> cmbAccountTypes;

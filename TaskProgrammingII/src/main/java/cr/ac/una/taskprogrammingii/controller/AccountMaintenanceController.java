@@ -24,6 +24,7 @@ import javafx.beans.property.SimpleStringProperty;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 
 public class AccountMaintenanceController extends Controller implements Initializable {
+    
   Mensaje message;
     private FileManager<Account> fileManager = new FileManager<>();
     @FXML

@@ -14,6 +14,7 @@ public class Associated implements Serializable {
 
     private String name;
     private String lastName;
+    private String secondLastName;
     private String folio;
     private String age;
     private String addressPhotography;
@@ -22,14 +23,16 @@ public class Associated implements Serializable {
     public Associated(){
         name=null;
         lastName=null;
+        secondLastName=null;
         folio=null;
         age=null;
         addressPhotography=null;
         acountList=null;
     }
-    public Associated(String name,String lastName,String folio,String age){
+    public Associated(String name,String lastName,String secondLastName,String folio,String age){
         this.name=name;
         this.lastName=lastName;
+        this.secondLastName=secondLastName;
         this.folio=folio;
         this.age=age;
     }
@@ -45,6 +48,14 @@ public class Associated implements Serializable {
 
     public void setFolio(String folio) {
         this.folio = folio;
+    }
+
+    public String getSecondLastName() {
+        return secondLastName;
+    }
+
+    public void setSecondLastName(String secondLastName) {
+        this.secondLastName = secondLastName;
     }
 
     public void setAge(String age) {

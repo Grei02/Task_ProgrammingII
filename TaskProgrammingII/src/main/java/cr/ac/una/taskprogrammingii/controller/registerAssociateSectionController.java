@@ -59,7 +59,10 @@ public class registerAssociateSectionController extends Controller implements In
      private List<Associated> associatedList=new ArrayList<>();
      private List<Associated> listDeserialization= new ArrayList<>();
      
-        @FXML
+    @FXML
+    private Button btnCancel;
+     
+    @FXML
     private Button btnSave;
 
     @FXML
@@ -85,15 +88,18 @@ public class registerAssociateSectionController extends Controller implements In
         associated.setName(txtuserName.getText().trim());
         associated.setLastName(txtUserLastName.getText().trim());
         associated.setAge(Integer.toString(spnAge.getValue()));
-        
-        if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
-            createFolio();
-            FlowController.getInstance().goView("PhotographyView");
+        associated.setSecondLastName(txtSecondUserLastName.getText().trim());
+        if(!existsAssociate()){
+            permissionsTakePhotos();
+            String fullName=associated.getName().toUpperCase().replace(" ", " ")+associated.getLastName().toUpperCase().replace(" ", " ")+
+                associated.getSecondLastName().toUpperCase().replace(" ", " ");
+        System.out.println(fullName);
         }
         else{
-            message.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");
-        } 
-      
+            message.show(Alert.AlertType.WARNING, "Alerta", "Ya hay una persona registrada con el mismo nombre");
+            cleanComponents();
+        }
+       
     }
     
     @FXML
@@ -102,8 +108,6 @@ public class registerAssociateSectionController extends Controller implements In
              savePhoto();
              userCard();
              Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
-             AppContext.getInstance().set("bufferedImageAssociated", null);
-             
 //             List <Account> cuentalista=new ArrayList<>();
 //             cuentalista.add(new Account("hola",0));
 //             cuentalista.add(new Account("adios",0));
@@ -112,14 +116,51 @@ public class registerAssociateSectionController extends Controller implements In
              listDeserialization.add(associated);
              fileManager.serialization(listDeserialization,"ListAssociated.txt");
              message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
-             txtuserName.setText(null);
-             txtUserLastName.setText(null);
-             spnAge.setValue(0);
-            // txtUserAge.setText(null);
+             cleanComponents();
         }
         else{
             message.show(Alert.AlertType.WARNING, "Alerta", "Para guardar debes tomarte una foto.");
         }
+    }
+    
+    @FXML
+    void onAntionBtnCancel(ActionEvent event) {
+        cleanComponents();
+    }
+    
+    public void cleanComponents(){
+             AppContext.getInstance().set("bufferedImageAssociated", null);
+             txtuserName.setText(null);
+             txtUserLastName.setText(null);
+             txtSecondUserLastName.setText(null);
+             txtFolio.setText(null);
+             spnAge.setValue(0);
+    }
+    
+    public Boolean existsAssociate(){
+        String fullNameCompare;
+        associatedList=fileManager.deserialize("ListAssociated.txt");
+        String fullName=associated.getName().toUpperCase().replace(" ", " ")+associated.getLastName().toUpperCase().replace(" ", " ")+
+                associated.getSecondLastName().toUpperCase().replace(" ", " ");
+         for(Associated compareAssociated:associatedList){
+              fullNameCompare=compareAssociated.getName().toUpperCase().replace(" ", " ")+compareAssociated.getLastName().toUpperCase().replace(" ", " ")+
+                compareAssociated.getSecondLastName().toUpperCase().replace(" ", " ");
+            if(fullNameCompare.equals(fullName)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void permissionsTakePhotos(){
+        if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()&&
+                !associated.getSecondLastName().isBlank()) {
+            createFolio();
+            FlowController.getInstance().goView("PhotographyView");
+        }
+        else{
+            message.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");
+        } 
     }
     
     private void createFolio() {
@@ -138,7 +179,7 @@ public class registerAssociateSectionController extends Controller implements In
     private Boolean existsFolio(String folio){
         associatedList=fileManager.deserialize("ListAssociated.txt");
         for(Associated compareAssociated:associatedList){
-            if(compareAssociated.getFolio()==folio){
+            if(compareAssociated.getFolio().equals(folio)){
                 return true;
             }
         }
@@ -186,7 +227,7 @@ public class registerAssociateSectionController extends Controller implements In
             ImageData imageDataUser =ImageDataFactory.create(addresAssociatedPhotograsphs);
             canva.addImage(imageDataUser,new Rectangle(420, 100, 115, 91), false);
             
-            Paragraph paragraphName=new Paragraph("Nombre: "+associated.getName()+" "+associated.getLastName())
+            Paragraph paragraphName=new Paragraph("Nombre: "+associated.getName()+" "+associated.getLastName()+" "+associated.getSecondLastName())
                 .setFontSize(14)
                 .setMarginTop(97)
                 .setMarginLeft(35);
@@ -220,6 +261,7 @@ public class registerAssociateSectionController extends Controller implements In
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        initializeComponents();
 //       associatedList=fileManager.deserialize("ListAssociated.txt");
 //       txtuserName.setText(associatedList.get(2).getName());
 //       txtUserLastName.setText(associatedList.get(2).getLastName());
@@ -231,7 +273,7 @@ public class registerAssociateSectionController extends Controller implements In
 
     @Override
     public void initialize() {
-         initializeComponents();
+         
          
     }
 

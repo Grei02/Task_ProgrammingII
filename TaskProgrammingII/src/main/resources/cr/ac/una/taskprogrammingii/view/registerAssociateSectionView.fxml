@@ -64,6 +64,7 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="10.0" prefWidth="570.0" spacing="20.0">
                <children>
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onAntionBtnCancel" text="Cancelar" />
                   <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionbtnSave" prefHeight="25.0" prefWidth="97.0" styleClass="btnSave" stylesheets="@Style.css" text="Guardar " />
                </children>
             </HBox>

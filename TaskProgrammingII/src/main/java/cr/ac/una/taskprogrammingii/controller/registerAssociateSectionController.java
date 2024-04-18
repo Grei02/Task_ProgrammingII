@@ -110,7 +110,7 @@ public class registerAssociateSectionController extends Controller implements In
              Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
 //             List <Account> cuentalista=new ArrayList<>();
 //             cuentalista.add(new Account("hola",0));
-//             cuentalista.add(new Account("adios",0));
+//             cuentalista.add(new Account("Ahorro a la vista",0));
 //             associated.setAcountList(cuentalista);
              listDeserialization= fileManager.deserialize("ListAssociated.txt");
              listDeserialization.add(associated);
@@ -134,7 +134,7 @@ public class registerAssociateSectionController extends Controller implements In
              txtUserLastName.setText(null);
              txtSecondUserLastName.setText(null);
              txtFolio.setText(null);
-             spnAge.setValue(0);
+             spnAge.setValue(5);
     }
     
     public Boolean existsAssociate(){
@@ -257,7 +257,7 @@ public class registerAssociateSectionController extends Controller implements In
     
     public void initializeComponents(){
         txtFolio.setDisable(true);
-        spnAge.setSpinnerModel (new IntegerSpinnerModel (0));
+        spnAge.setSpinnerModel (new IntegerSpinnerModel (5));
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -273,7 +273,6 @@ public class registerAssociateSectionController extends Controller implements In
 
     @Override
     public void initialize() {
-         
          
     }
 

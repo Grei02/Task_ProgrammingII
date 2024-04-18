@@ -27,7 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 
-public class DepositInAccountController extends Controller implements Initializable   {
+public class DepositAssociatedController extends Controller implements Initializable   {
     private Deposits deposit=new Deposits();
     private FileManager fileManager= new FileManager();
     private Mensaje message=new Mensaje();

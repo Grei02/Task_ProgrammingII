@@ -69,7 +69,7 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnDeposit(ActionEvent event) {
-        FlowController.getInstance().goView("DepositInAccountView");
+        FlowController.getInstance().goView("DepositAssociatedView");
     }
 
     @FXML

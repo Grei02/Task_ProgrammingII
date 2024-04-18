@@ -22,6 +22,8 @@ import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.util.AppContext;
 import cr.ac.una.taskprogrammingii.util.FlowController;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
+import io.github.palexdev.materialfx.controls.MFXSpinner;
+import io.github.palexdev.materialfx.controls.models.spinner.IntegerSpinnerModel;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
@@ -64,10 +66,13 @@ public class registerAssociateSectionController extends Controller implements In
     private Button btnTakePhoto;
 
     @FXML
-    private ImageView imvUserImage;
+    private MFXSpinner<Integer> spnAge;
 
     @FXML
-    private TextField txtUserAge;
+    private TextField txtFolio;
+
+    @FXML
+    private TextField txtSecondUserLastName;
 
     @FXML
     private TextField txtUserLastName;
@@ -79,7 +84,7 @@ public class registerAssociateSectionController extends Controller implements In
     void onActionBtnTakePhoto(ActionEvent event) {
         associated.setName(txtuserName.getText().trim());
         associated.setLastName(txtUserLastName.getText().trim());
-        associated.setAge(txtUserAge.getText().trim());
+        associated.setAge(Integer.toString(spnAge.getValue()));
         
         if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()) {
             createFolio();
@@ -109,7 +114,8 @@ public class registerAssociateSectionController extends Controller implements In
              message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Te has registrado existosamente");
              txtuserName.setText(null);
              txtUserLastName.setText(null);
-             txtUserAge.setText(null);
+             spnAge.setValue(0);
+            // txtUserAge.setText(null);
         }
         else{
             message.show(Alert.AlertType.WARNING, "Alerta", "Para guardar debes tomarte una foto.");
@@ -125,6 +131,7 @@ public class registerAssociateSectionController extends Controller implements In
            folio=Character.toUpperCase(letter)+String.valueOf(random.nextInt(401) + 99);
         } while (existsFolio(folio));
         associated.setFolio(folio);
+        txtFolio.setText(folio);
         }
     }
     
@@ -151,13 +158,13 @@ public class registerAssociateSectionController extends Controller implements In
       }
     }
     
-    public void showPhoto(){
-         if((BufferedImage)AppContext.getInstance().get("bufferedImageAssociated")!=null){
-            BufferedImage bufferedImage=(BufferedImage)AppContext.getInstance().get("bufferedImageAssociated");
-             Image userImage= SwingFXUtils.toFXImage(bufferedImage, null);
-             imvUserImage.setImage(userImage);
-            }
-    }
+//    public void showPhoto(){
+//         if((BufferedImage)AppContext.getInstance().get("bufferedImageAssociated")!=null){
+//            BufferedImage bufferedImage=(BufferedImage)AppContext.getInstance().get("bufferedImageAssociated");
+//             Image userImage= SwingFXUtils.toFXImage(bufferedImage, null);
+//             imvUserImage.setImage(userImage);
+//            }
+//    }
     
     public void userCard(){
         String address=System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf";
@@ -207,6 +214,10 @@ public class registerAssociateSectionController extends Controller implements In
         }
     }
     
+    public void initializeComponents(){
+        txtFolio.setDisable(true);
+        spnAge.setSpinnerModel (new IntegerSpinnerModel (0));
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //       associatedList=fileManager.deserialize("ListAssociated.txt");
@@ -220,6 +231,8 @@ public class registerAssociateSectionController extends Controller implements In
 
     @Override
     public void initialize() {
+         initializeComponents();
+         
     }
 
 }

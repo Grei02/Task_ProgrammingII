@@ -25,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 
 public class DepositAssociatedController extends Controller implements Initializable   {
@@ -79,6 +80,9 @@ public class DepositAssociatedController extends Controller implements Initializ
     private TextField txtFolioUser;
     
     @FXML
+    private TextField txtTotalAmount;
+    
+    @FXML
     void onActionBtnCancel(ActionEvent event) {
         resetScreen();
     }
@@ -130,6 +134,83 @@ public class DepositAssociatedController extends Controller implements Initializ
         }
     }
     
+      @FXML
+    void onMouseClickedSpn10000Bills(MouseEvent event) {
+         setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn1000Bills(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn100Coins(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn10Coins(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn20000Bills(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn2000Bills(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn25Coins(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn5000Bills(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn500Coins(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn50Coins(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+
+    @FXML
+    void onMouseClickedSpn5Coins(MouseEvent event) {
+        setAmounts();
+         deposit.calculateTotal();
+         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+    
     public boolean checkDeposit(){
         if((spn5Coins.getValue()!=0)||(spn10Coins.getValue()!=0)||(spn25Coins.getValue()!=0)||(spn50Coins.getValue()!=0)||
                 (spn100Coins.getValue()!=0)||(spn500Coins.getValue()!=0)||(spn1000Bills.getValue()!=0)||(spn2000Bills.getValue()!=0)||
@@ -160,6 +241,7 @@ public class DepositAssociatedController extends Controller implements Initializ
         txtFolioUser.setDisable(false);
         disableSpinner(true);
         cmbAccountTypes.setDisable(true);
+        txtTotalAmount.setText("0");
     }
     
     public void disableSpinner(Boolean enable){
@@ -218,6 +300,8 @@ public class DepositAssociatedController extends Controller implements Initializ
         disableSpinner(true);
         cmbAccountTypes.setDisable(true);
         btnSave.setDisable(true);
+        txtTotalAmount.setDisable(true);
+        txtTotalAmount.setText("0");
     }
     
 }

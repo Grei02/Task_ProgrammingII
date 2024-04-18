@@ -58,6 +58,7 @@ public class registerAssociateSectionController extends Controller implements In
      private Mensaje message=new Mensaje();
      private List<Associated> associatedList=new ArrayList<>();
      private List<Associated> listDeserialization= new ArrayList<>();
+     IntegerSpinnerModel spinnerModel = new IntegerSpinnerModel(5);
      
     @FXML
     private Button btnCancel;
@@ -257,7 +258,8 @@ public class registerAssociateSectionController extends Controller implements In
     
     public void initializeComponents(){
         txtFolio.setDisable(true);
-        spnAge.setSpinnerModel (new IntegerSpinnerModel (5));
+        spinnerModel.setMin(5);
+        spnAge.setSpinnerModel (spinnerModel);
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -273,7 +275,7 @@ public class registerAssociateSectionController extends Controller implements In
 
     @Override
     public void initialize() {
-         
+         initializeComponents();
     }
 
 }

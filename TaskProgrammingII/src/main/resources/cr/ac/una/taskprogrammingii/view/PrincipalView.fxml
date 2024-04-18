@@ -21,6 +21,7 @@
                         <MFXButton fx:id="btnRegister" buttonType="RAISED" onAction="#onActionBtnRegister" prefHeight="25.0" prefWidth="103.0" styleClass="mfx-button" stylesheets="@Style.css" text="Registrar" />
                         <MFXButton fx:id="btnAccountStatement" buttonType="RAISED" onAction="#onActionBtnAccountStatement" prefHeight="25.0" prefWidth="147.0" styleClass="mfx-button" stylesheets="@Style.css" text="Estado Cuenta" />
                         <MFXButton fx:id="btnDeposit" buttonType="RAISED" onAction="#onActionBtnDeposit" styleClass="mfx-button" stylesheets="@Style.css" text="Depositar" />
+                        <MFXButton fx:id="btnMailboxStudent" buttonType="RAISED" layoutX="49.0" layoutY="219.0" onAction="#OnActionBtnMailboxStudent" styleClass="mfx-button" text="Buzon De Depositos" />
                      </children>
                   </VBox>
                   <Separator orientation="VERTICAL" prefHeight="507.0" prefWidth="12.0" styleClass="jfx-panelfondo" />

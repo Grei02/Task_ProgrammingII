@@ -113,7 +113,7 @@ public class DepositAssociatedController extends Controller implements Initializ
     
     @FXML
     void onActiontxtFolioUser(ActionEvent event) {
-        String folioAssociated=txtFolioUser.getText().trim();
+       String folioAssociated=txtFolioUser.getText().trim();
        folioAssociated = folioAssociated.toUpperCase();
         List <Associated> associatedList= fileManager.deserialize("ListAssociated.txt");
         for(Associated compareAssociated:associatedList){
@@ -291,17 +291,17 @@ public class DepositAssociatedController extends Controller implements Initializ
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
-    
-    @Override
-    public void initialize() {
         initializeSpinner();
         disableSpinner(true);
         cmbAccountTypes.setDisable(true);
         btnSave.setDisable(true);
         txtTotalAmount.setDisable(true);
         txtTotalAmount.setText("0");
+    }    
+    
+    @Override
+    public void initialize() {
+        resetScreen();
     }
     
 }

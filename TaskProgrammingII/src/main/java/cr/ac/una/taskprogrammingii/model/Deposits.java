@@ -23,6 +23,7 @@ public class Deposits implements Serializable{
     private Integer Bill10000;
     private Integer Bill20000;
     private Integer Total;
+    private String id;
     private static final Logger LOG = Logger.getLogger(Deposits.class.getName());
     
     public Deposits(){
@@ -39,9 +40,11 @@ public class Deposits implements Serializable{
         Bill10000 = null;
         Bill20000 = null;
         Total = null;
+        id=null;
     }
 
-    public Deposits(Associated associated, Integer coin5, Integer coin10, Integer coin25, Integer coin50, Integer coin100, Integer coin500, Integer Bill1000, Integer Bill2000, Integer Bill5000, Integer Bill10000, Integer Bill20000, Integer Total) {
+    public Deposits(Associated associated, Integer coin5, Integer coin10, Integer coin25, Integer coin50, Integer coin100, 
+            Integer coin500, Integer Bill1000, Integer Bill2000, Integer Bill5000, Integer Bill10000, Integer Bill20000, Integer Total,String id) {
         this.associated = associated;
         this.coin5 = coin5;
         this.coin10 = coin10;
@@ -55,6 +58,15 @@ public class Deposits implements Serializable{
         this.Bill10000 = Bill10000;
         this.Bill20000 = Bill20000;
         this.Total = Total;
+        this.id=id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Associated getAssociated() {

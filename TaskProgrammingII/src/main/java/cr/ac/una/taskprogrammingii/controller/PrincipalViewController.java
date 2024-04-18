@@ -14,16 +14,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+ 
 
-/**
- * FXML Controller class
- *
- * @author USUARIO PZ UNA
- */
 public class PrincipalViewController extends Controller implements Initializable {
     
       private boolean isProfessor=false;
       private boolean isAssociate=false;
+      private boolean isStudent=true;
 
     @FXML
     private MFXButton btnRegister;
@@ -39,6 +36,9 @@ public class PrincipalViewController extends Controller implements Initializable
    
     @FXML
     private MFXButton btnEdit;
+    
+    @FXML
+    private MFXButton btnMailboxStudent;
     
     @FXML
     private MFXButton btnAccountMant;
@@ -81,6 +81,11 @@ public class PrincipalViewController extends Controller implements Initializable
     private void onActionBtnEdit(ActionEvent event) {
          FlowController.getInstance().goView("editWindowView");
     }
+    
+    @FXML
+    void OnActionBtnMailboxStudent(ActionEvent event) {
+         FlowController.getInstance().goView("mailboxStudentView");
+    }
 
     private void setButtonVisibility() {
         if (isProfessor) {
@@ -90,12 +95,19 @@ public class PrincipalViewController extends Controller implements Initializable
             btnCreateAccount.setVisible(true);
            
         } else if ( isAssociate) {
-            
             btnRegister.setVisible(true);
             btnAccountStatement.setVisible(true);
             btnDeposit.setVisible(true);
             btnCreateAccount.setVisible(false);
             btnEdit.setVisible(false);
+        }
+        else if(isStudent){
+            btnRegister.setVisible(true);
+            btnAccountStatement.setVisible(false);
+            btnDeposit.setVisible(true);
+            btnCreateAccount.setVisible(false);
+            btnEdit.setVisible(false);
+            btnMailboxStudent.setVisible(true);
         }
     }    
 

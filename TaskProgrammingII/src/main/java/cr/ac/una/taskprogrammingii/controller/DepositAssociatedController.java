@@ -110,7 +110,6 @@ public class DepositAssociatedController extends Controller implements Initializ
     
      @FXML
     void onActionCmbAccountTypes(ActionEvent event) {
-        cmbAccountTypes.setDisable(true);
         disableSpinner(false);
         btnSave.setDisable(false);
     }
@@ -239,12 +238,17 @@ public class DepositAssociatedController extends Controller implements Initializ
    }
     
     public void resetScreen(){
+        
         initializeSpinner();
-        cmbAccountTypes.setValue(null);
-        txtFolioUser.setText(null);
-        txtFolioUser.setDisable(false);
         disableSpinner(true);
         cmbAccountTypes.setDisable(true);
+        cmbAccountTypes.setValue(null);
+        cmbAccountTypes.getSelectionModel().clearSelection();
+        btnSave.setDisable(true);
+        txtFolioUser.setText(null);
+        txtFolioUser.setDisable(false);
+        cmbAccountTypes.setDisable(true);
+        txtTotalAmount.setDisable(true);
         txtTotalAmount.setText("0");
     }
     
@@ -295,12 +299,7 @@ public class DepositAssociatedController extends Controller implements Initializ
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        initializeSpinner();
-        disableSpinner(true);
-        cmbAccountTypes.setDisable(true);
-        btnSave.setDisable(true);
-        txtTotalAmount.setDisable(true);
-        txtTotalAmount.setText("0");
+       resetScreen();
     }    
     
     @Override

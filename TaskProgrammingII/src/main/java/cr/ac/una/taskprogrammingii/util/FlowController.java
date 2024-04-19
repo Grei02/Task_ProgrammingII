@@ -25,6 +25,7 @@ import io.github.palexdev.materialfx.css.themes.MFXThemeManager;
 import io.github.palexdev.materialfx.css.themes.Themes;
 import java.awt.image.BufferedImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.StageStyle;
 
 public class FlowController {
 
@@ -165,6 +166,7 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image("cr/ac/una/TaskProgrammingII/resources/LogoUNArojo.png"));
         stage.setTitle(controller.getNombreVista());
         stage.setResizable(resizable);

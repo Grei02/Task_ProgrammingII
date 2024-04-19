@@ -214,15 +214,6 @@ public class DepositAssociatedController extends Controller implements Initializ
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
     
-    public boolean checkDeposit(){
-        if((spn5Coins.getValue()!=0)||(spn10Coins.getValue()!=0)||(spn25Coins.getValue()!=0)||(spn50Coins.getValue()!=0)||
-                (spn100Coins.getValue()!=0)||(spn500Coins.getValue()!=0)||(spn1000Bills.getValue()!=0)||(spn2000Bills.getValue()!=0)||
-                (spn5000Bills.getValue()!=0)||(spn10000Bills.getValue()!=0)||(spn20000Bills.getValue()!=0)){
-            return true;
-        }
-        return false;
-    } 
-    
    public void setAmounts(){
        deposit.setCoin5(spn5Coins.getValue());
        deposit.setCoin10(spn10Coins.getValue());

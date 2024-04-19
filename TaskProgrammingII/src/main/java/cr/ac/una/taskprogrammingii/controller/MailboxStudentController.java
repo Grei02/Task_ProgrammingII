@@ -4,9 +4,11 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.Deposits;
 import cr.ac.una.taskprogrammingii.model.FileManager;
+import cr.ac.una.taskprogrammingii.model.Transfer;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXSpinner;
@@ -29,12 +31,13 @@ import javafx.scene.layout.AnchorPane;
 
 public class MailboxStudentController extends Controller implements Initializable {
     
-    private Associated associated;
+    private Associated associated=new Associated();
     private Deposits deposit=new Deposits();
     private FileManager fileManager= new FileManager();
     private List<Deposits> listDeposit= new ArrayList<>();
     private List<Deposits> listDeserialization= new ArrayList<>();
     private Mensaje message=new Mensaje();
+    private List<Associated> associatedList=new ArrayList<>();
     
    @FXML
     private Button btnCancel;
@@ -178,11 +181,24 @@ public class MailboxStudentController extends Controller implements Initializabl
 
     @FXML
     void onActionbtnSave(ActionEvent event) {
-        if(checkDeposit()){
-            setAmounts();
-            deposit.calculateTotal();
+        setAmounts();
+        deposit.calculateTotal();
+        if(deposit.getTotal()!=0){
+            associatedList=fileManager.deserialize("ListAssociated.txt");
             listDeserialization=fileManager.deserialize("DepositList.txt");
-            
+            addTransfer();
+            fileManager.serialization(associatedList, "ListAssociated.txt");
+            associatedList=fileManager.deserialize("ListAssociated.txt");
+            listDeserialization.remove(Integer.parseInt(cmbDepositNumber.getValue())-1);
+            fileManager.serialization(listDeserialization, "DepositList.txt");
+            resetScreen();
+             
+        }
+        else if (deposit.getTotal()==0){
+            listDeserialization=fileManager.deserialize("DepositList.txt");
+            listDeserialization.remove(Integer.parseInt(cmbDepositNumber.getValue())-1);
+            fileManager.serialization(listDeserialization, "DepositList.txt");
+            resetScreen();
         }
     }
 
@@ -195,13 +211,19 @@ public class MailboxStudentController extends Controller implements Initializabl
             deposit.setFolio(txtFolioUser.getText().trim().toUpperCase());
             searchAssociated();
         }
+        else if(!searchDeposit()){
+            message.show(Alert.AlertType.WARNING, "Aviso", "Este folio no tiene ningun deposito.");
+            txtFolioUser.setText(null);
+        }
         else{
             message.show(Alert.AlertType.WARNING, "Aviso", "Este folio no coincide con ningun asociado.");
+            txtFolioUser.setText(null);
         }
     }
     
     @FXML
     void onActionCmbDepositNumber(ActionEvent event) {
+        if(cmbDepositNumber.getValue()!=null){
         int depositNumber=Integer.parseInt(cmbDepositNumber.getValue());
         deposit=listDeposit.get(depositNumber-1);
          txtUserName.setText(associated.getName()+associated.getLastName()+
@@ -210,6 +232,22 @@ public class MailboxStudentController extends Controller implements Initializabl
          loadDepositValues();
          disableSpinner(false);
          btnSave.setDisable(false);
+        }
+    }
+    
+    public void addTransfer(){
+        List<Account> accountList=associated.getAcountList();
+            for(Account compareAccountList:accountList){
+                if(compareAccountList.getType().equals(deposit.getTypeAccount())){
+                     List<Transfer> listTransfer=compareAccountList.getListTransfer();
+                     if(listTransfer==null){
+                         listTransfer=new ArrayList<>();
+                         compareAccountList.setListTransfer(listTransfer);
+                     }
+                    listTransfer.add(new Transfer("Deposito", Integer.toString(deposit.getTotal())));
+                    break;
+                }
+            }
     }
     
     public void searchAssociated(){
@@ -217,20 +255,10 @@ public class MailboxStudentController extends Controller implements Initializabl
         for(Associated compareAssociated:associatedList){
             if(compareAssociated.getFolio().equals(deposit.getFolio())){
                 associated=compareAssociated;
-              //  deposit.setAssociated(compareAssociated);
                 break;
             }
         }
     }
-    
-    public boolean checkDeposit(){
-        if((spn5Coins.getValue()!=0)||(spn10Coins.getValue()!=0)||(spn25Coins.getValue()!=0)||(spn50Coins.getValue()!=0)||
-                (spn100Coins.getValue()!=0)||(spn500Coins.getValue()!=0)||(spn1000Bills.getValue()!=0)||(spn2000Bills.getValue()!=0)||
-                (spn5000Bills.getValue()!=0)||(spn10000Bills.getValue()!=0)||(spn20000Bills.getValue()!=0)){
-            return true;
-        }
-        return false;
-    } 
     
     public void setAmounts(){
        deposit.setCoin5(spn5Coins.getValue());

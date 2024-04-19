@@ -106,10 +106,12 @@ public class registerAssociateSectionController extends Controller implements In
              savePhoto();
              userCard();
              Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
+             
              List <Account> cuentalista=new ArrayList<>();
-             cuentalista.add(new Account("Ahorro navideño",0));
-             cuentalista.add(new Account("Ahorro a la vista",0));
+             cuentalista.add(new Account("Ahorro navideño",0,null));
+             cuentalista.add(new Account("Ahorro a la vista",0,null));
              associated.setAcountList(cuentalista);
+             
              listDeserialization= fileManager.deserialize("ListAssociated.txt");
              listDeserialization.add(associated);
              fileManager.serialization(listDeserialization,"ListAssociated.txt");
@@ -196,15 +198,7 @@ public class registerAssociateSectionController extends Controller implements In
           System.out.println("Error:"+e);
       }
     }
-    
-//    public void showPhoto(){
-//         if((BufferedImage)AppContext.getInstance().get("bufferedImageAssociated")!=null){
-//            BufferedImage bufferedImage=(BufferedImage)AppContext.getInstance().get("bufferedImageAssociated");
-//             Image userImage= SwingFXUtils.toFXImage(bufferedImage, null);
-//             imvUserImage.setImage(userImage);
-//            }
-//    }
-    
+
     public void userCard(){
         String address=System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf";
         String backgroundImagePath="src/main/resources/cr/ac/una/taskprogrammingii/resources/UserCard.png";
@@ -258,6 +252,7 @@ public class registerAssociateSectionController extends Controller implements In
         spinnerModel.setMin(5);
         spnAge.setSpinnerModel (spinnerModel);
     }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initializeComponents();

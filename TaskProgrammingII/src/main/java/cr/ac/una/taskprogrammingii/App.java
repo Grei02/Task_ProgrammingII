@@ -19,8 +19,13 @@ public class App extends Application {
        //AddDavilitarAccountsView
      // FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
     //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
+<<<<<<< Updated upstream
      //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
      FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
+=======
+     FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+    //  FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
+>>>>>>> Stashed changes
     }
 
     public static void main(String[] args) {

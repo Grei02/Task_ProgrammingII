@@ -5,20 +5,25 @@
 package cr.ac.una.taskprogrammingii.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Account implements Serializable {
    
     private String type;
     private Integer amount;
+    private List<Transfer> listTransfer; 
     
     public Account() {
         type = null;
         amount = null;
+        listTransfer=new ArrayList<>();
     }
     
-    public Account(String type, Integer amount) {
+    public Account(String type, Integer amount,List<Transfer> listTransfer) {
         this.type = type;
         this.amount = amount;
+        this.listTransfer=listTransfer;
     }
     
     public void setType(String type) {
@@ -27,6 +32,14 @@ public class Account implements Serializable {
     
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public List<Transfer> getListTransfer() {
+        return listTransfer;
+    }
+
+    public void setListTransfer(List<Transfer> listTransfer) {
+        this.listTransfer = listTransfer;
     }
     
     public String getType() {

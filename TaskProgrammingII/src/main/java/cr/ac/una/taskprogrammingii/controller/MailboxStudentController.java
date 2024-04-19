@@ -4,24 +4,22 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
-import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.Deposits;
 import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
 import io.github.palexdev.materialfx.controls.MFXSpinner;
 import io.github.palexdev.materialfx.controls.models.spinner.IntegerSpinnerModel;
-import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -29,25 +27,27 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 
-public class DepositAssociatedController extends Controller implements Initializable   {
+public class MailboxStudentController extends Controller implements Initializable {
+    
+    private Associated associated;
     private Deposits deposit=new Deposits();
     private FileManager fileManager= new FileManager();
-    private Mensaje message=new Mensaje();
+    private List<Deposits> listDeposit= new ArrayList<>();
     private List<Deposits> listDeserialization= new ArrayList<>();
-    private Associated associated;
+    private Mensaje message=new Mensaje();
     
-        @FXML
+   @FXML
     private Button btnCancel;
 
     @FXML
     private Button btnSave;
     
     @FXML
-    private AnchorPane root;
-    
+    private MFXComboBox<String> cmbDepositNumber;
+
     @FXML
-    private MFXComboBox<String> cmbAccountTypes;
-    
+    private AnchorPane root;
+
     @FXML
     private MFXSpinner<Integer> spn10000Bills;
 
@@ -80,64 +80,20 @@ public class DepositAssociatedController extends Controller implements Initializ
 
     @FXML
     private MFXSpinner<Integer> spn5Coins;
-    
+
     @FXML
     private TextField txtFolioUser;
-    
+
     @FXML
     private TextField txtTotalAmount;
+
+    @FXML
+    private TextField txtTypeAccount;
     
     @FXML
-    void onActionBtnCancel(ActionEvent event) {
-        resetScreen();
-    }
-    
+    private TextField txtUserName;
+
     @FXML
-    void onActionbtnSave(ActionEvent event) {
-        String typeAccouny = cmbAccountTypes.getValue();
-        setAmounts();
-        deposit.calculateTotal();
-        if(deposit.getTotal()!=0){
-            deposit.setTypeAccount(typeAccouny);
-            listDeserialization=fileManager.deserialize("DepositList.txt");
-            listDeserialization.add(deposit);
-            fileManager.serialization(listDeserialization,"DepositList.txt");
-            resetScreen();
-        }
-        else{
-            message.show(Alert.AlertType.WARNING, "Aviso", "No estas depositando ningun monto.");
-        }
-    }
-    
-     @FXML
-    void onActionCmbAccountTypes(ActionEvent event) {
-        disableSpinner(false);
-        btnSave.setDisable(false);
-    }
-    
-    @FXML
-    void onActiontxtFolioUser(ActionEvent event) {
-        deposit.setFolio(txtFolioUser.getText().trim().toUpperCase());
-        List <Associated> associatedList= fileManager.deserialize("ListAssociated.txt");
-        for(Associated compareAssociated:associatedList){
-            if(compareAssociated.getFolio().equals(deposit.getFolio())){
-                associated=compareAssociated;
-                break;
-            }
-        }
-        if(associated!=null){
-            cmbAccountTypes.setDisable(false);
-            txtFolioUser.setDisable(true);
-            StartCmbAccountTypes();
-            message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Se ha encontrado el asociado, ahora por favor escoger la cuenta a la que desea hacer el deposito");
-        }
-        else{
-            message.show(Alert.AlertType.WARNING, "Aviso", "No se ha encontrado ningun asociado, intente de nuevo.");
-            txtFolioUser.setText(null);
-        }
-    }
-    
-      @FXML
     void onMouseClickedSpn10000Bills(MouseEvent event) {
          setAmounts();
          deposit.calculateTotal();
@@ -146,56 +102,56 @@ public class DepositAssociatedController extends Controller implements Initializ
 
     @FXML
     void onMouseClickedSpn1000Bills(MouseEvent event) {
-        setAmounts();
+         setAmounts();
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
 
     @FXML
     void onMouseClickedSpn100Coins(MouseEvent event) {
-        setAmounts();
+         setAmounts();
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
 
     @FXML
     void onMouseClickedSpn10Coins(MouseEvent event) {
-        setAmounts();
+         setAmounts();
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
 
     @FXML
     void onMouseClickedSpn20000Bills(MouseEvent event) {
-        setAmounts();
+         setAmounts();
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
 
     @FXML
     void onMouseClickedSpn2000Bills(MouseEvent event) {
-        setAmounts();
+         setAmounts();
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
 
     @FXML
     void onMouseClickedSpn25Coins(MouseEvent event) {
-        setAmounts();
+         setAmounts();
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
 
     @FXML
     void onMouseClickedSpn5000Bills(MouseEvent event) {
-        setAmounts();
+         setAmounts();
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
 
     @FXML
     void onMouseClickedSpn500Coins(MouseEvent event) {
-        setAmounts();
+         setAmounts();
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
@@ -209,9 +165,62 @@ public class DepositAssociatedController extends Controller implements Initializ
 
     @FXML
     void onMouseClickedSpn5Coins(MouseEvent event) {
-        setAmounts();
+         setAmounts();
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+    
+    
+    @FXML
+    void onActionBtnCancel(ActionEvent event) {
+        resetScreen();
+    }
+
+    @FXML
+    void onActionbtnSave(ActionEvent event) {
+        if(checkDeposit()){
+            setAmounts();
+            deposit.calculateTotal();
+            listDeserialization=fileManager.deserialize("DepositList.txt");
+            
+        }
+    }
+
+    @FXML
+    void onActiontxtFolioUser(ActionEvent event) {
+        if(searchDeposit()){
+            txtFolioUser.setDisable(true);
+            cmbDepositNumber.setDisable(false);
+            StartCmbAccountTypes();
+            deposit.setFolio(txtFolioUser.getText().trim().toUpperCase());
+            searchAssociated();
+        }
+        else{
+            message.show(Alert.AlertType.WARNING, "Aviso", "Este folio no coincide con ningun asociado.");
+        }
+    }
+    
+    @FXML
+    void onActionCmbDepositNumber(ActionEvent event) {
+        int depositNumber=Integer.parseInt(cmbDepositNumber.getValue());
+        deposit=listDeposit.get(depositNumber-1);
+         txtUserName.setText(associated.getName()+associated.getLastName()+
+         associated.getSecondLastName());
+         txtTypeAccount.setText(deposit.getTypeAccount());
+         loadDepositValues();
+         disableSpinner(false);
+         btnSave.setDisable(false);
+    }
+    
+    public void searchAssociated(){
+         List <Associated> associatedList= fileManager.deserialize("ListAssociated.txt");
+        for(Associated compareAssociated:associatedList){
+            if(compareAssociated.getFolio().equals(deposit.getFolio())){
+                associated=compareAssociated;
+              //  deposit.setAssociated(compareAssociated);
+                break;
+            }
+        }
     }
     
     public boolean checkDeposit(){
@@ -223,7 +232,7 @@ public class DepositAssociatedController extends Controller implements Initializ
         return false;
     } 
     
-   public void setAmounts(){
+    public void setAmounts(){
        deposit.setCoin5(spn5Coins.getValue());
        deposit.setCoin10(spn10Coins.getValue());
        deposit.setCoin25(spn25Coins.getValue());
@@ -237,33 +246,66 @@ public class DepositAssociatedController extends Controller implements Initializ
        deposit.setBill20000(spn20000Bills.getValue());
    }
     
+    public void loadDepositValues(){
+        spn10000Bills.setValue(deposit.getBill10000());
+        spn1000Bills.setValue(deposit.getBill1000());
+        spn100Coins.setValue(deposit.getCoin100());
+        spn10Coins.setValue(deposit.getCoin10());
+        spn20000Bills.setValue(deposit.getBill20000());
+        spn2000Bills.setValue(deposit.getBill2000());
+        spn25Coins.setValue(deposit.getCoin25());
+        spn5000Bills.setValue(deposit.getBill5000());
+        spn500Coins.setValue(deposit.getCoin500());
+        spn50Coins.setValue(deposit.getCoin50());
+        spn5Coins.setValue(deposit.getCoin5());
+        txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
+    }
+    
+    public Boolean searchDeposit(){
+        listDeposit.clear();
+        Boolean isDeposit= false;
+        listDeserialization=fileManager.deserialize("DepositList.txt");
+        String folio=txtFolioUser.getText().trim();
+        folio=folio.toUpperCase();
+        for(Deposits comparisonDeposit:listDeserialization){
+            if(comparisonDeposit.getFolio().equals(folio)){
+                listDeposit.add(comparisonDeposit);
+                isDeposit= true;
+            }
+        }
+        return isDeposit;
+    }
+    
     public void resetScreen(){
-        initializeSpinner();
-        cmbAccountTypes.setDisable(true);
-        cmbAccountTypes.setValue(null);
-        cmbAccountTypes.getSelectionModel().clearSelection();
-        btnSave.setDisable(true);
-        txtFolioUser.setText(null);
-        txtFolioUser.setDisable(false);
-        cmbAccountTypes.setDisable(true);
+       initializeSpinner();
+       txtFolioUser.setDisable(false);
+       txtFolioUser.setText(null);
+       txtTotalAmount.setText("0");
+       txtUserName.setText(null);
+       txtTypeAccount.setText(null);
         txtTotalAmount.setDisable(true);
-        txtTotalAmount.setText("0");
-        disableSpinner(true);
+        txtTypeAccount.setDisable(true);
+        btnSave.setDisable(true);
+        txtUserName.setDisable(true);
+        cmbDepositNumber.setDisable(true);
+        cmbDepositNumber.setValue(null);
+        cmbDepositNumber.getSelectionModel().clearSelection();
+         disableSpinner(true);
     }
     
     public void disableSpinner(Boolean enable){
-        spn10000Bills.setDisable(enable);
-        spn1000Bills.setDisable(enable);
-        spn100Coins.setDisable(enable);
-        spn10Coins.setDisable(enable);
-        spn20000Bills.setDisable(enable);
-        spn2000Bills.setDisable(enable);
-        spn25Coins.setDisable(enable);
-        spn5000Bills.setDisable(enable);
-        spn500Coins.setDisable(enable);
-        spn50Coins.setDisable(enable);
-        spn5Coins.setDisable(enable);
-    }
+    spn10000Bills.setDisable(enable);
+    spn1000Bills.setDisable(enable);
+    spn100Coins.setDisable(enable);
+    spn10Coins.setDisable(enable);
+    spn20000Bills.setDisable(enable);
+    spn2000Bills.setDisable(enable);
+    spn25Coins.setDisable(enable);
+    spn5000Bills.setDisable(enable);
+    spn500Coins.setDisable(enable);
+    spn50Coins.setDisable(enable);
+    spn5Coins.setDisable(enable);
+}
     
     public void initializeSpinner(){
         spn10000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
@@ -280,30 +322,24 @@ public class DepositAssociatedController extends Controller implements Initializ
     }
     
     public void StartCmbAccountTypes(){
-        List<Account> accountAssciatedList=associated.getAcountList();
-        List <String> typeAccountList=new ArrayList<>();
-        ObservableList<String>items=null;
-        if(accountAssciatedList!=null){
-            for(Account currentAccount:accountAssciatedList){
-            typeAccountList.add(currentAccount.getType());
-            }
-            items=FXCollections.observableArrayList(typeAccountList);
-            cmbAccountTypes.setItems(items);
+        List <String> numberDepositList=new ArrayList<>();
+        ObservableList<String>items;
+        for(int i=1;i<=listDeposit.size();i++){
+            numberDepositList.add(String.valueOf(i));
         }
-        else{
-            message.show(Alert.AlertType.WARNING, "Aviso", "Este asociado no tiene cuentas, crea una cuenta para asi poder depositar en ella.");
-        }
-        
+        items=FXCollections.observableArrayList(numberDepositList);
+        cmbDepositNumber.setItems(items);
+        numberDepositList.clear();
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       resetScreen();
+        resetScreen();
     }    
-    
+
     @Override
     public void initialize() {
-        resetScreen();
+         resetScreen();
     }
     
 }

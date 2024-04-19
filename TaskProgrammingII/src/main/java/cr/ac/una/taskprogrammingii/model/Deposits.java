@@ -10,7 +10,8 @@ import java.util.logging.Logger;
 
 public class Deposits implements Serializable{
     
-    private Associated associated;
+    private String folio;
+    private String typeAccount;
     private Integer coin5;
     private Integer coin10;
     private Integer coin25;
@@ -23,11 +24,11 @@ public class Deposits implements Serializable{
     private Integer Bill10000;
     private Integer Bill20000;
     private Integer Total;
-    private String id;
     private static final Logger LOG = Logger.getLogger(Deposits.class.getName());
     
     public Deposits(){
-        associated=null;
+        folio=null;
+        typeAccount=null;
         coin5 = null;
         coin10 = null;
         coin25 = null;
@@ -42,9 +43,10 @@ public class Deposits implements Serializable{
         Total = null;
     }
 
-    public Deposits(Associated associated, Integer coin5, Integer coin10, Integer coin25, Integer coin50, Integer coin100, 
-            Integer coin500, Integer Bill1000, Integer Bill2000, Integer Bill5000, Integer Bill10000, Integer Bill20000, Integer Total) {
-        this.associated = associated;
+    public Deposits(String folio, Integer coin5, Integer coin10, Integer coin25, Integer coin50, Integer coin100, 
+            Integer coin500, Integer Bill1000, Integer Bill2000, Integer Bill5000, Integer Bill10000, Integer Bill20000, Integer Total,String typeAccount) {
+        this.folio = folio;
+        this.typeAccount=typeAccount;
         this.coin5 = coin5;
         this.coin10 = coin10;
         this.coin25 = coin25;
@@ -59,12 +61,20 @@ public class Deposits implements Serializable{
         this.Total = Total;
     }
 
-    public Associated getAssociated() {
-        return associated;
+    public String getTypeAccount() {
+        return typeAccount;
     }
 
-    public void setAssociated(Associated associated) {
-        this.associated = associated;
+    public void setTypeAccount(String typeAccount) {
+        this.typeAccount = typeAccount;
+    }
+
+    public String getFolio() {
+        return folio;
+    }
+
+    public void setFolio(String folio) {
+        this.folio = folio;
     }
 
     public Integer getCoin5() {

@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.taskprogrammingii.controller.MailboxStudentViewController">
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="450.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.MailboxStudentController">
    <children>
       <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -21,22 +20,21 @@
             <HBox alignment="CENTER" prefHeight="53.0" prefWidth="570.0" spacing="8.0">
                <children>
                   <Label text="Folio: " />
-                  <TextField fx:id="txtFolioUser" onAction="#onActiontxtFolioUser" />
-                  <Label text="Nombre:" />
-                  <TextField fx:id="txtUsername" />
+                  <TextField fx:id="txtFolioUser" onAction="#onActiontxtFolioUser" prefHeight="17.0" prefWidth="132.0" />
+                  <Label prefHeight="17.0" prefWidth="94.0" text="Num.Depositos:" />
+                  <MFXComboBox fx:id="cmbDepositNumber" onAction="#onActionCmbDepositNumber" prefHeight="40.0" prefWidth="118.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" text="Cancelar" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
                <children>
+                  <Label text="Nombre:" />
+                  <TextField fx:id="txtUserName" />
                   <Label text="Tipo de cuenta:" />
                   <TextField fx:id="txtTypeAccount" />
-                  <Label text="Depositos:" />
-                  <MFXComboBox prefHeight="26.0" prefWidth="118.0" />
-                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" text="Cancelar" />
-                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionbtnSave" text="Guardar" />
                </children>
             </HBox>
-            <Label text="Despues de escribir el folio de le a la techa enter y escoja la cuenta en la que desea hacer el deposito." />
+            <Label text="Despues de escribir el folio de le a la techa enter y escoja el numero de deposito deseado." />
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
@@ -139,6 +137,7 @@
                                  </font>
                               </Label>
                               <TextField fx:id="txtTotalAmount" />
+                              <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionbtnSave" text="Guardar" />
                            </children>
                         </HBox>
                      </children>

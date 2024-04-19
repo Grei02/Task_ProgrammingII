@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 import java.util.List;
 import java.util.ArrayList;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -37,10 +38,7 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     
    Mensaje message = new Mensaje();
    FileManager fileManager= new FileManager();
-    @FXML
-    private MFXButton btnSearch;
-    @FXML
-    private MFXButton btnSearchFoil;
+   
     @FXML
     private MFXLegacyTableView<String> tbvAccountTypesTable;
  @FXML
@@ -49,29 +47,32 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     private MFXLegacyTableView<String> tbvUserAccountsTable;
 @FXML
      private TableColumn<String, String>  tbcUserAccountsTable;
-//      
-//   
+    @FXML
+    private MFXButton btnSearchWithFoil;
+    @FXML
+    private MFXButton btnSearchWithName;
     /**
      * Initializes the controller class.
      */
     @Override
 public void initialize(URL url, ResourceBundle rb) {
-    // Configuración de la tabla de tipos de cuenta
+    
     tbcAccountTypesTable.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
     
-    // Obtener los tipos de cuenta y agregarlos a la tabla de tipos de cuenta
     List<String> accountTypes = fileManager.deserialize("accounts.txt");
     ObservableList<String> accountTypesObservableList = FXCollections.observableArrayList(accountTypes);
     tbvAccountTypesTable.setItems(accountTypesObservableList);
-    
-    // Configuración de la tabla de cuentas de usuario
+  
     tbcUserAccountsTable.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
-    
-    // Agregar un elemento de prueba a la tabla de cuentas de usuario
+   
     ObservableList<String> userAccountsObservableList = FXCollections.observableArrayList();
-   // userAccountsObservableList.add("Cuenta de usuario 1");
+    
     tbvUserAccountsTable.setItems(userAccountsObservableList);
 }
+
+ @Override
+    public void initialize() {
+    }
 
     @FXML
     private void onDragDetectedFromAccountTypesTable(MouseEvent event) {
@@ -123,19 +124,54 @@ public void initialize(URL url, ResourceBundle rb) {
     }
 
 @FXML
-    private void onDragDetectedFromUserAccountsTable(MouseEvent event) {
+private void onDragDetectedFromUserAccountsTable(MouseEvent event) {
+
+    String studentAccount = tbvUserAccountsTable.getSelectionModel().getSelectedItem();
+    
+    if (studentAccount != null) {
+ 
+        Dragboard dragboard = tbvUserAccountsTable.startDragAndDrop(TransferMode.MOVE);
+        ClipboardContent content = new ClipboardContent();
+        content.putString(studentAccount);
+        dragboard.setContent(content);
     }
+    
+    event.consume();
+}
 
+@FXML
+private void onDragOverFromAccountTypesTable(DragEvent event) {
+    
+    if (event.getGestureSource() != tbvAccountTypesTable && event.getDragboard().hasString()) {
+        event.acceptTransferModes(TransferMode.MOVE);
+    }
+    event.consume();
+}
 
-    @Override
-    public void initialize() {
+@FXML
+private void onDragDroppedFromAccountTypesTable(DragEvent event) {
+
+    Dragboard dragboard = event.getDragboard();
+    boolean success = false;
+   
+    if (dragboard.hasString()) {
+
+        String accountType = dragboard.getString();
+       
+        tbvAccountTypesTable.getItems().add(accountType);
+        
+        success = true;
+    }
+   
+    event.setDropCompleted(success);
+    event.consume();
+}
+
+    @FXML
+    private void onActionBtnSearchWithFoil(ActionEvent event) {
     }
 
     @FXML
-    private void onDragOverFromAccountTypesTable(DragEvent event) {
-    }
-
-    @FXML
-    private void onDragDroppedFromAccountTypesTable(DragEvent event) {
+    private void onActionBtnSearhWithName(ActionEvent event) {
     }
 }

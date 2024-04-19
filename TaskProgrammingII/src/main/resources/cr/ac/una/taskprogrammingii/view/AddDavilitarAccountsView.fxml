@@ -24,14 +24,14 @@
                      </VBox.margin>
                      <children>
                         <MFXTextField floatingText="Buscar con el folio " />
-                        <MFXButton fx:id="btnSearch" prefHeight="29.0" prefWidth="89.0" text="Buscar ">
+                        <MFXButton fx:id="btnSearchWithFoil" onAction="#onActionBtnSearchWithFoil" prefHeight="29.0" prefWidth="89.0" text="Buscar ">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                         </MFXButton>
                      </children>
                   </HBox>
-                  <MFXButton fx:id="btnSearchFoil" text="¿Has olvidado el folio?" />
+                  <MFXButton fx:id="btnSearchWithName" onAction="#onActionBtnSearhWithName" text="¿Has olvidado el folio?" />
                </children>
             </VBox>
             <HBox alignment="CENTER" prefHeight="320.0" prefWidth="600.0" spacing="5.0" VBox.vgrow="ALWAYS">

@@ -1,39 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.taskprogrammingii.controller.AddDavilitarAccountsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.AddDavilitarAccountsController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="168.0" layoutY="109.0" prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Crear cuentas  a asociados " VBox.vgrow="ALWAYS" />
-            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+            <VBox alignment="CENTER" prefHeight="102.0" prefWidth="596.0">
                <children>
-                  <Label text="Buscar asociado " />
-                  <MFXComboBox />
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <MFXTextField floatingText="Buscar con el folio " />
+                        <MFXButton fx:id="btnSearch" prefHeight="29.0" prefWidth="89.0" text="Buscar ">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </MFXButton>
+                     </children>
+                  </HBox>
+                  <MFXButton fx:id="btnSearchFoil" text="¿Has olvidado el folio?" />
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </HBox>
+            </VBox>
             <HBox alignment="CENTER" prefHeight="320.0" prefWidth="600.0" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
-                  <MFXLegacyTableView onDragDetected="#onDragDetectedFromPrimaryTable" onDragDropped="#onDragDroppedFromPrimaryTable" onDragOver="#onDragOverFromPrimaryTable" prefHeight="259.0" prefWidth="248.0">
+                  <MFXLegacyTableView fx:id="tbvAccountTypesTable" onDragDetected="#onDragDetectedFromAccountTypesTable" onDragDropped="#onDragDroppedToUserAccountsTable" onDragOver="#onDragOverToUserAccountsTable" prefHeight="259.0" prefWidth="248.0">
                      <columns>
-                        <TableColumn prefWidth="247.0" text="Cuentas disponibles" />
+                        <TableColumn fx:id="tbcAccountTypesTable" prefWidth="247.0" text="Cuentas disponibles" />
                      </columns>
                   </MFXLegacyTableView>
-                  <MFXLegacyTableView onDragDetected="#onDragDetectedFromSecondaryTable" onDragDropped="#onDragDroppedFromSecondaryTable" onDragOver="#onDragOverFromSecondaryTable" prefHeight="316.0" prefWidth="249.0">
+                  <MFXLegacyTableView fx:id="tbvUserAccountsTable" onDragDetected="#onDragDetectedFromUserAccountsTable" onDragDropped="#onDragDroppedToAccountTypesTable" onDragOver="#onDragOverUserAccountsTable" prefHeight="316.0" prefWidth="249.0">
                      <columns>
-                        <TableColumn prefWidth="247.0" text="Cuentas del asociado" />
+                        <TableColumn fx:id="tbcUserAccountsTable" prefWidth="247.0" text="Cuentas del asociado" />
                      </columns>
                   </MFXLegacyTableView>
                </children>

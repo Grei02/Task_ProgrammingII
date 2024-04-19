@@ -16,10 +16,11 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FlowController.getInstance().InitializeFlow(stage, null);
+       //AddDavilitarAccountsView
      // FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
-    // FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
-     FlowController.getInstance().goViewInWindow("startAssociateSectionView");
-        
+    //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
+     //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+      FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
     }
 
     public static void main(String[] args) {

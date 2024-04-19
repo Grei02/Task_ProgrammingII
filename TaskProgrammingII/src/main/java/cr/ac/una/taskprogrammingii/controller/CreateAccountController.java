@@ -17,9 +17,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import cr.ac.una.taskprogrammingii.util.Mensaje;
+
 
 public class CreateAccountController extends Controller   implements Initializable {
-
+    Mensaje message= new Mensaje();
     private FileManager fileManager = new FileManager<>();
     List<String> listDeserialization= new ArrayList<>();
    
@@ -38,22 +40,14 @@ public class CreateAccountController extends Controller   implements Initializab
             listDeserialization=fileManager.deserialize("accounts.txt");
             listDeserialization.add(newAccount);
             fileManager.serialization(listDeserialization, "accounts.txt");
-           Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-            successAlert.setContentText("Cuenta guardada con éxito.");
-            successAlert.setHeaderText(null);
-            successAlert.showAndWait();
-            txtNameAccount.setText("");
+           message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Cuenta guardada con éxito.");
+          
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("La cuenta ya está registrada.");
-            alert.setHeaderText(null);
-            alert.showAndWait();
+             message.show(Alert.AlertType.ERROR, "Error", "La cuenta ya está registrada..");
+            
         }
     } else {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("El nombre de la cuenta no puede estar vacío.");
-        alert.setHeaderText(null);
-        alert.showAndWait();
+         message.show(Alert.AlertType.ERROR, "Error", "El nombre de la cuenta no puede estar vacío.");
     }
 }
 

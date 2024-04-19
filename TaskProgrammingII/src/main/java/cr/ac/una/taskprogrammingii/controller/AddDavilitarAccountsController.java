@@ -5,6 +5,7 @@
 package cr.ac.una.taskprogrammingii.controller;
 
 import cr.ac.una.taskprogrammingii.model.Account;
+import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -22,9 +23,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Optional;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -167,11 +170,69 @@ private void onDragDroppedFromAccountTypesTable(DragEvent event) {
     event.consume();
 }
 
-    @FXML
-    private void onActionBtnSearchWithFoil(ActionEvent event) {
-    }
+//    @FXML
+//    private void onActionBtnSearchWithFoil(ActionEvent event) {
+//    }
+//
+//    @FXML
+//    private void onActionBtnSearhWithName(ActionEvent event) {
+//    
+@FXML
+private void onActionBtnSearchWithFoil(ActionEvent event) {
+    TextInputDialog dialog = new TextInputDialog();
+    dialog.setTitle("Buscar por número de folio");
+    dialog.setHeaderText("Introduce el número de folio:");
+    Optional<String> result = dialog.showAndWait();
+    result.ifPresent(folio -> {
+        Associated associated = findAssociateByFolio(folio);
+        if (associated != null) {
+            // Asociado encontrado, realizar acciones necesarias
+            System.out.println("Asociado encontrado por folio: " + associated.getName() + " " + associated.getLastName());
+        } else {
+            // Asociado no encontrado
+            System.out.println("No se encontró ningún asociado con el número de folio proporcionado.");
+        }
+    });
+}
 
-    @FXML
-    private void onActionBtnSearhWithName(ActionEvent event) {
+@FXML
+private void onActionBtnSearhWithName(ActionEvent event) {
+    TextInputDialog dialog = new TextInputDialog();
+    dialog.setTitle("Buscar por nombre");
+    dialog.setHeaderText("Introduce el nombre del asociado:");
+    Optional<String> result = dialog.showAndWait();
+    result.ifPresent(name -> {
+        Associated associated = findAssociateByName(name);
+        if (associated != null) {
+            // Asociado encontrado, realizar acciones necesarias
+            System.out.println("Asociado encontrado por nombre: " + associated.getName() + " " + associated.getLastName());
+        } else {
+            // Asociado no encontrado
+            System.out.println("No se encontró ningún asociado con el nombre proporcionado.");
+        }
+    });
+}
+
+// Método para buscar un asociado por número de folio
+private Associated findAssociateByFolio(String folio) {
+    List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
+    for (Associated associated : associatedList) {
+        if (folio.equals(associated.getFolio())) {
+            return associated;
+        }
     }
+    return null;
+}
+
+// Método para buscar un asociado por nombre
+private Associated findAssociateByName(String name) {
+    List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
+    for (Associated associated : associatedList) {
+        if (name.equalsIgnoreCase(associated.getName()) || name.equalsIgnoreCase(associated.getLastName())) {
+            return associated;
+        }
+    }
+    return null;
+}
+
 }

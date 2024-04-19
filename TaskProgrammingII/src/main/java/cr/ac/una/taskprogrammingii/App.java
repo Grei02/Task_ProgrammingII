@@ -20,7 +20,7 @@ public class App extends Application {
      // FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
     //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
      //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
-      FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
+     FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
     }
 
     public static void main(String[] args) {

@@ -18,9 +18,9 @@ import javafx.scene.layout.VBox;
 
 public class PrincipalViewController extends Controller implements Initializable {
     
-      private boolean isProfessor=true;
+      private boolean isProfessor=false;
       private boolean isAssociate=false;
-      private boolean isStudent=false;
+      private boolean isStudent=true;
 
     @FXML
     private MFXButton btnRegister;

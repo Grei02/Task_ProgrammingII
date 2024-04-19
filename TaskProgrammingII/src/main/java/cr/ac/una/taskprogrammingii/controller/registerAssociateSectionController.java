@@ -194,7 +194,7 @@ public class registerAssociateSectionController extends Controller implements In
       try {
           ImageIO.write((BufferedImage)AppContext.getInstance().get("bufferedImageAssociated"), "png", savePhoto);
       }
-      catch (Exception e){
+      catch (IOException e){
           System.out.println("Error:"+e);
       }
     }
@@ -243,7 +243,7 @@ public class registerAssociateSectionController extends Controller implements In
             document.close();
         }
         catch(IOException e){
-            e.printStackTrace();
+          System.out.println("Error:"+e);
         }
     }
     

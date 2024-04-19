@@ -32,7 +32,7 @@ public class FileManager<T> {
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             List<T> deserializedList = (List<T>) ois.readObject();
-            list.addAll(deserializedList); 
+            list=deserializedList; 
         } catch (FileNotFoundException e) {
             
         } catch (Exception e) {

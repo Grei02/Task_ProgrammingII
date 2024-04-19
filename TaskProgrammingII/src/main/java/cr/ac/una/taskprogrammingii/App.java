@@ -18,8 +18,13 @@ public class App extends Application {
         FlowController.getInstance().InitializeFlow(stage, null);
        //AddDavilitarAccountsView
      // FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
-    FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
-
+    //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
+    //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
+     //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+     FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
+     //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+    //  FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
+ //Stashed changes
     }
 
     public static void main(String[] args) {

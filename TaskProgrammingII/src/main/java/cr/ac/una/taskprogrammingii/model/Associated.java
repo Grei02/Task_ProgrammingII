@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cr.ac.una.taskprogrammingii.model;
-
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,5 +87,16 @@ public class Associated implements Serializable {
     public void setAcountList(List<Account> acountList) {
         this.acountList = acountList;
     }
+    
+    public void addAccount(Account account) {
+    if (account != null) {
+        acountList.add(account);
+    }
+}
+    public void removeAccount(Account account) {
+    if (account != null) {
+        acountList.remove(account);
+    }
+}
 
 }

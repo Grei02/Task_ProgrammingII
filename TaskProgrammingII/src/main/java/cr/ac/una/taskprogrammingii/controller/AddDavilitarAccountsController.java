@@ -9,6 +9,7 @@ import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.input.DragEvent;
@@ -27,6 +28,8 @@ import java.util.Optional;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -54,6 +57,8 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     private MFXButton btnSearchWithFoil;
     @FXML
     private MFXButton btnSearchWithName;
+    @FXML
+    private MFXTextField txtFoil;
     /**
      * Initializes the controller class.
      */
@@ -61,15 +66,12 @@ public class AddDavilitarAccountsController extends Controller implements Initia
 public void initialize(URL url, ResourceBundle rb) {
     
     tbcAccountTypesTable.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
-    
     List<String> accountTypes = fileManager.deserialize("accounts.txt");
     ObservableList<String> accountTypesObservableList = FXCollections.observableArrayList(accountTypes);
     tbvAccountTypesTable.setItems(accountTypesObservableList);
   
     tbcUserAccountsTable.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
-   
     ObservableList<String> userAccountsObservableList = FXCollections.observableArrayList();
-    
     tbvUserAccountsTable.setItems(userAccountsObservableList);
 }
 
@@ -169,32 +171,42 @@ private void onDragDroppedFromAccountTypesTable(DragEvent event) {
     event.setDropCompleted(success);
     event.consume();
 }
-
-//    @FXML
-//    private void onActionBtnSearchWithFoil(ActionEvent event) {
-//    }
-//
-//    @FXML
-//    private void onActionBtnSearhWithName(ActionEvent event) {
-//    
 @FXML
 private void onActionBtnSearchWithFoil(ActionEvent event) {
-    TextInputDialog dialog = new TextInputDialog();
-    dialog.setTitle("Buscar por número de folio");
-    dialog.setHeaderText("Introduce el número de folio:");
-    Optional<String> result = dialog.showAndWait();
-    result.ifPresent(folio -> {
-        Associated associated = findAssociateByFolio(folio);
+      String folio = txtFoil.getText(); // Obtener el valor del folio del campo de texto
+    
+    if (!folio.isEmpty()) { 
+        Associated associated = findAssociateByFolio(folio); 
         if (associated != null) {
-            // Asociado encontrado, realizar acciones necesarias
-            System.out.println("Asociado encontrado por folio: " + associated.getName() + " " + associated.getLastName());
+      
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmación");
+            alert.setHeaderText("Asociado encontrado por folio:");
+            alert.setContentText("Nombre: " + associated.getName() + " " + associated.getLastName()+ " " + associated.getSecondLastName() + "\n¿Deseas desplegar las cuentas de este asociado?");
+            
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                displayAssociatedAccounts(associated);
+            }
         } else {
-            // Asociado no encontrado
-            System.out.println("No se encontró ningún asociado con el número de folio proporcionado.");
+            message.show(Alert.AlertType.ERROR, "Error", "No se encontró ningún asociado con el número de folio proporcionado.");
         }
-    });
+    } else {
+        message.show(Alert.AlertType.ERROR, "Error", "Por favor, introduce un número de folio.");
+    }
 }
 
+private void displayAssociatedAccounts(Associated associated) {
+    List<Account> accountList = associated.getAcountList();
+   
+    ObservableList<String> accountData = FXCollections.observableArrayList();
+
+    for (Account account : accountList) {
+        String accountInfo = "Tipo de cuenta: " + account.getType();
+        accountData.add(accountInfo);
+    }
+    tbvUserAccountsTable.setItems(accountData);
+}
 @FXML
 private void onActionBtnSearhWithName(ActionEvent event) {
     TextInputDialog dialog = new TextInputDialog();
@@ -213,7 +225,6 @@ private void onActionBtnSearhWithName(ActionEvent event) {
     });
 }
 
-// Método para buscar un asociado por número de folio
 private Associated findAssociateByFolio(String folio) {
     List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
     for (Associated associated : associatedList) {

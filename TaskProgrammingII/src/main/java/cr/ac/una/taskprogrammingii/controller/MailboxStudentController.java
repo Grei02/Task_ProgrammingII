@@ -31,7 +31,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class MailboxStudentController extends Controller implements Initializable {
     
-    private Associated associated=new Associated();
+    private Associated generalAssociate=new Associated();
     private Deposits deposit=new Deposits();
     private FileManager fileManager= new FileManager();
     private List<Deposits> listDeposit= new ArrayList<>();
@@ -186,15 +186,14 @@ public class MailboxStudentController extends Controller implements Initializabl
           deposit.calculateTotal();
             if(deposit.getTotal()!=0){
              associatedList=fileManager.deserialize("ListAssociated.txt");
-             searchChosenAccount();
+             searchChosenAccount(associatedList);
              addTransfer();
-             
-             
+             fileManager.serialization(associatedList,"ListAssociated.txt");
              listDeserialization=fileManager.deserialize("DepositList.txt");
              listDeserialization.remove(Integer.parseInt(cmbDepositNumber.getValue())-1);
              fileManager.serialization(listDeserialization, "DepositList.txt");
              resetScreen();
-             fileManager.serialization(associatedList,"ListAssociated.txt");
+
         }
         else if (deposit.getTotal()==0){
             listDeserialization=fileManager.deserialize("DepositList.txt");
@@ -211,7 +210,8 @@ public class MailboxStudentController extends Controller implements Initializabl
             cmbDepositNumber.setDisable(false);
             StartCmbAccountTypes();
             deposit.setFolio(txtFolioUser.getText().trim().toUpperCase());
-            searchAssociated();
+            List<Associated> associatedList=fileManager.deserialize("ListAssociated.txt");
+            generalAssociate = searchAssociated(associatedList);
         }
         else if(!searchDeposit()){
             message.show(Alert.AlertType.WARNING, "Aviso", "Este folio no tiene ningun deposito.");
@@ -226,10 +226,10 @@ public class MailboxStudentController extends Controller implements Initializabl
     @FXML
     void onActionCmbDepositNumber(ActionEvent event) {
         if(cmbDepositNumber.getValue()!=null){
-        int depositNumber=Integer.parseInt(cmbDepositNumber.getValue());
-        deposit=listDeposit.get(depositNumber-1);
-         txtUserName.setText(associated.getName()+associated.getLastName()+
-         associated.getSecondLastName());
+         int depositNumber=Integer.parseInt(cmbDepositNumber.getValue());
+         deposit=listDeposit.get(depositNumber-1);
+         txtUserName.setText(generalAssociate.getName()+generalAssociate.getLastName()+
+         generalAssociate.getSecondLastName());
          txtTypeAccount.setText(deposit.getTypeAccount());
          loadDepositValues();
          disableSpinner(false);
@@ -237,8 +237,8 @@ public class MailboxStudentController extends Controller implements Initializabl
         }
     }
     
-    public void searchChosenAccount(){
-       List<Account> listAccount= associated.getAcountList();
+    public void searchChosenAccount(List<Associated> associatedList){
+       List<Account> listAccount= searchAssociated(associatedList).getAcountList();
         if(listAccount!=null){
             for(int i=0;i<listAccount.size();i++){
                 if(listAccount.get(i).getType().equals(deposit.getTypeAccount())){
@@ -260,15 +260,15 @@ public class MailboxStudentController extends Controller implements Initializabl
          
     }
     
-    public void searchAssociated(){
-        List<Associated> associatedList=new ArrayList<>();
-        associatedList= fileManager.deserialize("ListAssociated.txt");
+    public Associated searchAssociated(List <Associated> associatedList){
+        Associated associated =new Associated();
         for(Associated compareAssociated:associatedList){
             if(compareAssociated.getFolio().equals(deposit.getFolio())){
                 associated=compareAssociated;
                 break;
             }
         }
+        return associated;
     }
     
     public void setAmounts(){

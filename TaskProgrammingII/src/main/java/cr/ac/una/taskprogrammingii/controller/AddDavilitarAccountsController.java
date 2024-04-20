@@ -181,7 +181,7 @@ private void displayAssociatedAccounts(Associated associated) {
     ObservableList<String> accountData = FXCollections.observableArrayList();
 
     for (Account account : accountList) {
-        String accountInfo = "Tipo de cuenta: " + account.getType();
+        String accountInfo = account.getType();
         accountData.add(accountInfo);
     }
     tbvUserAccountsTable.setItems(accountData);

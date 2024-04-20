@@ -7,6 +7,9 @@ package cr.ac.una.taskprogrammingii.model;
 import java.io.Serializable;
 
 public class Transfer implements Serializable{
+    
+    private static final long serialVersionUID = 3L;
+    
     private String Type;
     private String amount;
 

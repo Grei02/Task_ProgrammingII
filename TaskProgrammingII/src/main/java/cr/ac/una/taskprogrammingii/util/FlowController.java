@@ -115,31 +115,30 @@ public class FlowController {
             controller.setStage(stage);
         }
         switch (location) {
-            case "Center":
+            case "Center" -> {
                 Node loadedContent = loader.getRoot();
                 
-               if (loadedContent instanceof AnchorPane) {
-                        AnchorPane anchorPane = (AnchorPane) loadedContent;
-                        VBox vBox = (VBox) ((BorderPane) stage.getScene().getRoot()).getCenter();
-                        vBox.getChildren().clear();
-                        vBox.getChildren().add(anchorPane);
-                        VBox.setVgrow(anchorPane, Priority.ALWAYS);
-                    } else {
-                        VBox vBox = (VBox) ((BorderPane) stage.getScene().getRoot()).getCenter();
-                        vBox.getChildren().clear();
-                        vBox.getChildren().add(loadedContent);
-                    }     
-                break;
-            case "Top":
-                break;
-            case "Bottom":
-                break;
-            case "Right":
-                break;
-            case "Left":
-                break;
-            default:
-                break;
+                if (loadedContent instanceof AnchorPane anchorPane) {
+                    VBox vBox = (VBox) ((BorderPane) stage.getScene().getRoot()).getCenter();
+                    vBox.getChildren().clear();
+                    vBox.getChildren().add(anchorPane);
+                    VBox.setVgrow(anchorPane, Priority.ALWAYS);
+                } else {
+                    VBox vBox = (VBox) ((BorderPane) stage.getScene().getRoot()).getCenter();
+                    vBox.getChildren().clear();
+                    vBox.getChildren().add(loadedContent);
+                }
+            }
+            case "Top" -> {
+            }
+            case "Bottom" -> {
+            }
+            case "Right" -> {
+            }
+            case "Left" -> {
+            }
+            default -> {
+            }
         }
     }
 

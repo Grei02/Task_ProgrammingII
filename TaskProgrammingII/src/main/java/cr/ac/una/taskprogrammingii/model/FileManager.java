@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import static java.util.Collections.addAll;
 import java.util.List;
 
 
@@ -30,7 +31,7 @@ public class FileManager<T> {
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             List<T> deserializedList = (List<T>) ois.readObject();
-            list=deserializedList; 
+            list.addAll(deserializedList); 
         } catch (FileNotFoundException e) {
             
         } catch (Exception e) {

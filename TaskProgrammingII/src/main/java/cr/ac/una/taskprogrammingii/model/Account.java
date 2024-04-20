@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Account implements Serializable {
-   
+    
+    private static final long serialVersionUID = 2L;
+    
     private String type;
     private Integer amount;
     private List<Transfer> listTransfer; 
@@ -18,6 +20,10 @@ public class Account implements Serializable {
         type = null;
         amount = null;
         listTransfer=new ArrayList<>();
+    }
+    
+    public void depositAmount(Integer amount){
+        this.amount+=amount;
     }
     
     public Account(String type, Integer amount,List<Transfer> listTransfer) {

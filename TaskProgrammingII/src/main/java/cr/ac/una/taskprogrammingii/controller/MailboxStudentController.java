@@ -37,7 +37,7 @@ public class MailboxStudentController extends Controller implements Initializabl
     private List<Deposits> listDeposit= new ArrayList<>();
     private List<Deposits> listDeserialization= new ArrayList<>();
     private Mensaje message=new Mensaje();
-    private List<Associated> associatedList=new ArrayList<>();
+    private Account accountChose=new Account();
     
    @FXML
     private Button btnCancel;
@@ -181,18 +181,20 @@ public class MailboxStudentController extends Controller implements Initializabl
 
     @FXML
     void onActionbtnSave(ActionEvent event) {
-        setAmounts();
-        deposit.calculateTotal();
-        if(deposit.getTotal()!=0){
-            associatedList=fileManager.deserialize("ListAssociated.txt");
-            listDeserialization=fileManager.deserialize("DepositList.txt");
-            addTransfer();
-            fileManager.serialization(associatedList, "ListAssociated.txt");
-            associatedList=fileManager.deserialize("ListAssociated.txt");
-            listDeserialization.remove(Integer.parseInt(cmbDepositNumber.getValue())-1);
-            fileManager.serialization(listDeserialization, "DepositList.txt");
-            resetScreen();
+          List<Associated> associatedList=new ArrayList<>();
+          setAmounts();
+          deposit.calculateTotal();
+            if(deposit.getTotal()!=0){
+             associatedList=fileManager.deserialize("ListAssociated.txt");
+             searchChosenAccount();
+             addTransfer();
              
+             
+             listDeserialization=fileManager.deserialize("DepositList.txt");
+             listDeserialization.remove(Integer.parseInt(cmbDepositNumber.getValue())-1);
+             fileManager.serialization(listDeserialization, "DepositList.txt");
+             resetScreen();
+             fileManager.serialization(associatedList,"ListAssociated.txt");
         }
         else if (deposit.getTotal()==0){
             listDeserialization=fileManager.deserialize("DepositList.txt");
@@ -235,23 +237,32 @@ public class MailboxStudentController extends Controller implements Initializabl
         }
     }
     
-    public void addTransfer(){
-        List<Account> accountList=associated.getAcountList();
-            for(Account compareAccountList:accountList){
-                if(compareAccountList.getType().equals(deposit.getTypeAccount())){
-                     List<Transfer> listTransfer=compareAccountList.getListTransfer();
-                     if(listTransfer==null){
-                         listTransfer=new ArrayList<>();
-                         compareAccountList.setListTransfer(listTransfer);
-                     }
-                    listTransfer.add(new Transfer("Deposito", Integer.toString(deposit.getTotal())));
-                    break;
-                }
+    public void searchChosenAccount(){
+       List<Account> listAccount= associated.getAcountList();
+        if(listAccount!=null){
+            for(int i=0;i<listAccount.size();i++){
+                if(listAccount.get(i).getType().equals(deposit.getTypeAccount())){
+                      accountChose=listAccount.get(i);
+                      break;
+                  }
             }
+        }
+   }
+    
+    public void addTransfer(){
+         List<Transfer> listTransfer=accountChose.getListTransfer();
+         if(listTransfer==null){
+             listTransfer=new ArrayList<>();
+         }
+         listTransfer.add(new Transfer("Deposito", String.valueOf(deposit.getTotal())));
+         accountChose.setListTransfer(listTransfer);
+         accountChose.depositAmount(deposit.getTotal());
+         
     }
     
     public void searchAssociated(){
-         List <Associated> associatedList= fileManager.deserialize("ListAssociated.txt");
+        List<Associated> associatedList=new ArrayList<>();
+        associatedList= fileManager.deserialize("ListAssociated.txt");
         for(Associated compareAssociated:associatedList){
             if(compareAssociated.getFolio().equals(deposit.getFolio())){
                 associated=compareAssociated;

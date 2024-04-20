@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.AccountInquiryController">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.AccountInquiryController">
    <children>
-      <VBox alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: black;" />
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="193.0" spacing="6.0">
+                     <children>
+                        <Label text="Folio:" />
+                        <TextField fx:id="txtFolio" onAction="#onActionTxtFolio" />
+                     </children>
+                  </HBox>
+                  <Label text="Despues de ingresar folio de le control." />
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="211.0" prefHeight="43.0" prefWidth="300.0" spacing="6.0">
+                     <children>
+                        <Label text="Cuenta:" />
+                        <MFXComboBox fx:id="cmbAccounts" onAction="#onActionCmbAccounts" prefHeight="40.0" prefWidth="196.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="43.0" prefWidth="300.0" spacing="6.0">
+                     <children>
+                        <Label text="Nonbre:" />
+                        <TextField fx:id="txtName" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="300.0" spacing="6.0">
+                     <children>
+                        <Label text="Apellidos:" />
+                        <TextField fx:id="txtLastName" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="43.0" prefWidth="300.0" spacing="6.0">
+                     <children>
+                        <Label text="Edad:" />
+                        <TextField fx:id="txtAge" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="300.0" spacing="6.0">
+                     <children>
+                        <Label text="Saldo:" />
+                        <TextField fx:id="txtTotalAmount" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
          </children>
-      </VBox>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
    </children>
 </AnchorPane>

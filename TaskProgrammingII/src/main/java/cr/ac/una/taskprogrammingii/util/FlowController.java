@@ -24,7 +24,9 @@ import cr.ac.una.taskprogrammingii.controller.Controller;
 import io.github.palexdev.materialfx.css.themes.MFXThemeManager;
 import io.github.palexdev.materialfx.css.themes.Themes;
 import java.awt.image.BufferedImage;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Priority;
 import javafx.stage.StageStyle;
 
 public class FlowController {
@@ -114,10 +116,19 @@ public class FlowController {
         }
         switch (location) {
             case "Center":
-                VBox vBox = ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter());
-                vBox.getChildren().clear();
-                vBox.getChildren().add(loader.getRoot());
+                Node loadedContent = loader.getRoot();
                 
+               if (loadedContent instanceof AnchorPane) {
+                        AnchorPane anchorPane = (AnchorPane) loadedContent;
+                        VBox vBox = (VBox) ((BorderPane) stage.getScene().getRoot()).getCenter();
+                        vBox.getChildren().clear();
+                        vBox.getChildren().add(anchorPane);
+                        VBox.setVgrow(anchorPane, Priority.ALWAYS);
+                    } else {
+                        VBox vBox = (VBox) ((BorderPane) stage.getScene().getRoot()).getCenter();
+                        vBox.getChildren().clear();
+                        vBox.getChildren().add(loadedContent);
+                    }     
                 break;
             case "Top":
                 break;

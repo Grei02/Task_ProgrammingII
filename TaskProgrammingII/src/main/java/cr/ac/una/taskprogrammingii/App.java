@@ -21,8 +21,8 @@ public class App extends Application {
     //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
     //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
      //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
-     FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
-     //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+     //FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
+     FlowController.getInstance().goViewInWindow("startAssociateSectionView");
     //  FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
  //Stashed changes
     }

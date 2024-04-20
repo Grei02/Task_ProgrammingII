@@ -19,8 +19,8 @@ import javafx.scene.layout.VBox;
 public class PrincipalViewController extends Controller implements Initializable {
     
       private boolean isProfessor=false;
-      private boolean isAssociate=false;
-      private boolean isStudent=true;
+      private boolean isAssociate=true;
+      private boolean isStudent=false;
 
     @FXML
     private MFXButton btnRegister;
@@ -45,6 +45,10 @@ public class PrincipalViewController extends Controller implements Initializable
     
     @FXML
     private BorderPane root;
+    
+    @FXML
+    private MFXButton btnAccountInquiry;
+    
     /**
      * Initializes the controller class.
      */
@@ -57,6 +61,11 @@ public class PrincipalViewController extends Controller implements Initializable
     public void initialize() {
     }
 
+    @FXML
+    void OnActionBtnAccountInquiry(ActionEvent event) {
+        FlowController.getInstance().goView("accountInquiryView");
+    }
+    
     @FXML
     private void onActionBtnRegister(ActionEvent event) {
          FlowController.getInstance().goView("registerAssociateSectionView");
@@ -93,6 +102,7 @@ public class PrincipalViewController extends Controller implements Initializable
             btnAccountStatement.setVisible(false);
             btnDeposit.setVisible(false);
             btnCreateAccount.setVisible(true);
+            btnAccountInquiry.setVisible(false);
            
         } else if ( isAssociate) {
             btnRegister.setVisible(true);
@@ -100,6 +110,7 @@ public class PrincipalViewController extends Controller implements Initializable
             btnDeposit.setVisible(true);
             btnCreateAccount.setVisible(false);
             btnEdit.setVisible(false);
+              btnAccountInquiry.setVisible(true);
         }
         else if(isStudent){
             btnRegister.setVisible(true);
@@ -108,6 +119,7 @@ public class PrincipalViewController extends Controller implements Initializable
             btnCreateAccount.setVisible(false);
             btnEdit.setVisible(false);
             btnMailboxStudent.setVisible(true);
+              btnAccountInquiry.setVisible(false);
         }
     }    
 

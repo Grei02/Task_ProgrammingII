@@ -16,11 +16,11 @@
    <children>
       <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="jfx-titulo-label" stylesheets="@Style.css" text="Buson De Deposito." />
+            <Label styleClass="jfx-titulo-label" stylesheets="@Style.css" text="Buzon De Deposito." />
             <HBox alignment="CENTER" prefHeight="53.0" prefWidth="570.0" spacing="8.0">
                <children>
-                  <Label text="Folio: " />
-                  <TextField fx:id="txtFolioUser" onAction="#onActiontxtFolioUser" prefHeight="17.0" prefWidth="132.0" />
+                  <Label text="Folios: " />
+                  <MFXComboBox fx:id="cmbFolios" onAction="#onActionCmbFolios" />
                   <Label prefHeight="17.0" prefWidth="94.0" text="Num.Depositos:" />
                   <MFXComboBox fx:id="cmbDepositNumber" onAction="#onActionCmbDepositNumber" prefHeight="40.0" prefWidth="118.0" HBox.hgrow="ALWAYS" />
                   <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" text="Cancelar" />
@@ -34,7 +34,7 @@
                   <TextField fx:id="txtTypeAccount" />
                </children>
             </HBox>
-            <Label text="Despues de escribir el folio de le a la techa enter y escoja el numero de deposito deseado." />
+            <Label text="Si no parecen folios es que no hay depositos pendientes." />
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">

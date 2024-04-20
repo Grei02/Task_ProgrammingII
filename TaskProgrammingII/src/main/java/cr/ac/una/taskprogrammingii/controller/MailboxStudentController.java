@@ -47,6 +47,9 @@ public class MailboxStudentController extends Controller implements Initializabl
     
     @FXML
     private MFXComboBox<String> cmbDepositNumber;
+    
+    @FXML
+    private MFXComboBox<String> cmbFolios;
 
     @FXML
     private AnchorPane root;
@@ -84,8 +87,6 @@ public class MailboxStudentController extends Controller implements Initializabl
     @FXML
     private MFXSpinner<Integer> spn5Coins;
 
-    @FXML
-    private TextField txtFolioUser;
 
     @FXML
     private TextField txtTotalAmount;
@@ -202,26 +203,6 @@ public class MailboxStudentController extends Controller implements Initializabl
             resetScreen();
         }
     }
-
-    @FXML
-    void onActiontxtFolioUser(ActionEvent event) {
-        if(searchDeposit()){
-            txtFolioUser.setDisable(true);
-            cmbDepositNumber.setDisable(false);
-            StartCmbAccountTypes();
-            deposit.setFolio(txtFolioUser.getText().trim().toUpperCase());
-            List<Associated> associatedList=fileManager.deserialize("ListAssociated.txt");
-            generalAssociate = searchAssociated(associatedList);
-        }
-        else if(!searchDeposit()){
-            message.show(Alert.AlertType.WARNING, "Aviso", "Este folio no tiene ningun deposito.");
-            txtFolioUser.setText(null);
-        }
-        else{
-            message.show(Alert.AlertType.WARNING, "Aviso", "Este folio no coincide con ningun asociado.");
-            txtFolioUser.setText(null);
-        }
-    }
     
     @FXML
     void onActionCmbDepositNumber(ActionEvent event) {
@@ -235,6 +216,17 @@ public class MailboxStudentController extends Controller implements Initializabl
          disableSpinner(false);
          btnSave.setDisable(false);
         }
+    }
+    
+    @FXML
+    void onActionCmbFolios(ActionEvent event) {
+            cmbFolios.setDisable(true);
+            cmbDepositNumber.setDisable(false);
+            searchDeposit();
+            StartCmbAccountTypes();
+            deposit.setFolio(cmbFolios.getValue());
+            List<Associated> associatedList=fileManager.deserialize("ListAssociated.txt");
+            generalAssociate = searchAssociated(associatedList);
     }
     
     public void searchChosenAccount(List<Associated> associatedList){
@@ -300,28 +292,28 @@ public class MailboxStudentController extends Controller implements Initializabl
         txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
     
-    public Boolean searchDeposit(){
+    public void searchDeposit(){
         listDeposit.clear();
-        Boolean isDeposit= false;
         listDeserialization=fileManager.deserialize("DepositList.txt");
-        String folio=txtFolioUser.getText().trim();
-        folio=folio.toUpperCase();
-        for(Deposits comparisonDeposit:listDeserialization){
-            if(comparisonDeposit.getFolio().equals(folio)){
-                listDeposit.add(comparisonDeposit);
-                isDeposit= true;
+        if(listDeserialization!=null){
+            String folio=cmbFolios.getValue();
+            for(Deposits comparisonDeposit:listDeserialization){
+                if(comparisonDeposit.getFolio().equals(folio)){
+                    listDeposit.add(comparisonDeposit);
+                }
             }
         }
-        return isDeposit;
     }
     
     public void resetScreen(){
-       initializeSpinner();
-       txtFolioUser.setDisable(false);
-       txtFolioUser.setText(null);
-       txtTotalAmount.setText("0");
-       txtUserName.setText(null);
-       txtTypeAccount.setText(null);
+        initializeSpinner();
+        cmbFolios.setDisable(true);
+        cmbFolios.setValue(null);
+        cmbFolios.getSelectionModel().clearSelection();
+        StartCmbFolios();
+        txtTotalAmount.setText("0");
+        txtUserName.setText(null);
+        txtTypeAccount.setText(null);
         txtTotalAmount.setDisable(true);
         txtTypeAccount.setDisable(true);
         btnSave.setDisable(true);
@@ -371,6 +363,31 @@ public class MailboxStudentController extends Controller implements Initializabl
         numberDepositList.clear();
     }
     
+    public void StartCmbFolios(){
+           listDeserialization=fileManager.deserialize("DepositList.txt");
+           if(listDeserialization!=null){
+            List <String> listFolio=new ArrayList<>();
+            ObservableList<String>items;
+            for(Deposits deposit:listDeserialization){
+                if (checkEnteredFolio(listFolio,deposit.getFolio())){
+                    listFolio.add(deposit.getFolio());
+                    }
+                }
+                items=FXCollections.observableArrayList(listFolio);
+                cmbFolios.setItems(items);
+        }
+    }
+    
+    public Boolean checkEnteredFolio (List <String> listFolio,String folio){
+        if(listFolio!=null){
+            for(String compareFolio:listFolio){
+            if(compareFolio.equals(folio)){
+                return false;
+             }
+          }
+        }
+        return true;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         resetScreen();

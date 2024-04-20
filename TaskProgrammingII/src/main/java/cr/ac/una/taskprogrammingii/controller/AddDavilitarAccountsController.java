@@ -83,58 +83,43 @@ public void initialize(URL url, ResourceBundle rb) {
     private void onDragDetectedFromAccountTypesTable(MouseEvent event) {
         String accountType = tbvAccountTypesTable.getSelectionModel().getSelectedItem();
         
-        System.out.println("Arrastre detectado desde la tabla de tipos de cuenta");
-        
         if (accountType != null) {
-            System.out.println("Tipo de cuenta seleccionado: " + accountType);
             Dragboard dragboard = tbvAccountTypesTable.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent content = new ClipboardContent();
             content.putString(accountType);
             dragboard.setContent(content);
-        } else {
-            System.out.println("No se ha seleccionado ningún tipo de cuenta");
         }
-        
+   
         event.consume();
     }
 
     @FXML
     private void onDragOverToUserAccountsTable(DragEvent event) {
-        System.out.println("Arrastre sobre la tabla de cuentas de usuario");
-        
         if (event.getGestureSource() != tbvUserAccountsTable && event.getDragboard().hasString()) {
             System.out.println("Modo de transferencia aceptado");
             event.acceptTransferModes(TransferMode.MOVE);
         }
-        
         event.consume();
     }
 
     @FXML
     private void onDragDroppedToUserAccountsTable(DragEvent event) {
-        System.out.println("Soltado en la tabla de cuentas de usuario");
-        
         Dragboard dragboard = event.getDragboard();
         boolean success = false;
         
         if (dragboard.hasString()) {
-           
             System.out.println("Tipo de cuenta soltado: " + dragboard.getString());
             tbvUserAccountsTable.getItems().add(dragboard.getString());
             success = true;
         }
-        
         event.setDropCompleted(success);
         event.consume();
     }
 
 @FXML
 private void onDragDetectedFromUserAccountsTable(MouseEvent event) {
-
     String studentAccount = tbvUserAccountsTable.getSelectionModel().getSelectedItem();
-    
     if (studentAccount != null) {
- 
         Dragboard dragboard = tbvUserAccountsTable.startDragAndDrop(TransferMode.MOVE);
         ClipboardContent content = new ClipboardContent();
         content.putString(studentAccount);
@@ -146,7 +131,6 @@ private void onDragDetectedFromUserAccountsTable(MouseEvent event) {
 
 @FXML
 private void onDragOverFromAccountTypesTable(DragEvent event) {
-    
     if (event.getGestureSource() != tbvAccountTypesTable && event.getDragboard().hasString()) {
         event.acceptTransferModes(TransferMode.MOVE);
     }
@@ -155,30 +139,25 @@ private void onDragOverFromAccountTypesTable(DragEvent event) {
 
 @FXML
 private void onDragDroppedFromAccountTypesTable(DragEvent event) {
-
     Dragboard dragboard = event.getDragboard();
     boolean success = false;
-   
     if (dragboard.hasString()) {
-
         String accountType = dragboard.getString();
-       
         tbvAccountTypesTable.getItems().add(accountType);
-        
         success = true;
     }
-   
     event.setDropCompleted(success);
     event.consume();
 }
+
 @FXML
 private void onActionBtnSearchWithFoil(ActionEvent event) {
-      String folio = txtFoil.getText(); // Obtener el valor del folio del campo de texto
-    
+      String folio = txtFoil.getText(); 
+      
     if (!folio.isEmpty()) { 
         Associated associated = findAssociateByFolio(folio); 
         if (associated != null) {
-      
+  
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmación");
             alert.setHeaderText("Asociado encontrado por folio:");
@@ -207,23 +186,7 @@ private void displayAssociatedAccounts(Associated associated) {
     }
     tbvUserAccountsTable.setItems(accountData);
 }
-@FXML
-private void onActionBtnSearhWithName(ActionEvent event) {
-    TextInputDialog dialog = new TextInputDialog();
-    dialog.setTitle("Buscar por nombre");
-    dialog.setHeaderText("Introduce el nombre del asociado:");
-    Optional<String> result = dialog.showAndWait();
-    result.ifPresent(name -> {
-        Associated associated = findAssociateByName(name);
-        if (associated != null) {
-            // Asociado encontrado, realizar acciones necesarias
-            System.out.println("Asociado encontrado por nombre: " + associated.getName() + " " + associated.getLastName());
-        } else {
-            // Asociado no encontrado
-            System.out.println("No se encontró ningún asociado con el nombre proporcionado.");
-        }
-    });
-}
+
 
 private Associated findAssociateByFolio(String folio) {
     List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
@@ -234,16 +197,30 @@ private Associated findAssociateByFolio(String folio) {
     }
     return null;
 }
-
-// Método para buscar un asociado por nombre
-private Associated findAssociateByName(String name) {
-    List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
-    for (Associated associated : associatedList) {
-        if (name.equalsIgnoreCase(associated.getName()) || name.equalsIgnoreCase(associated.getLastName())) {
-            return associated;
-        }
-    }
-    return null;
+@FXML
+private void onActionBtnSearhWithName(ActionEvent event) {
+//    TextInputDialog dialog = new TextInputDialog();
+//    dialog.setTitle("Buscar por nombre");
+//    dialog.setHeaderText("Introduce el nombre del asociado:");
+//    Optional<String> result = dialog.showAndWait();
+//    result.ifPresent(name -> {
+//        Associated associated = findAssociateByName(name);
+//        if (associated != null) {
+//            System.out.println("Asociado encontrado por nombre: " + associated.getName() + " " + associated.getLastName());
+//        } else {
+//            System.out.println("No se encontró ningún asociado con el nombre proporcionado.");
+//        }
+//    });
 }
+
+//private Associated findAssociateByName(String name) {
+//    List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
+//    for (Associated associated : associatedList) {
+//        if (name.equalsIgnoreCase(associated.getName()) || name.equalsIgnoreCase(associated.getLastName())) {
+//            return associated;
+//        }
+//    }
+//    return null;
+//}
 
 }

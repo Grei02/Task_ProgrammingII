@@ -132,7 +132,7 @@ public class AccountInquiryController extends Controller implements Initializabl
 
     @Override
     public void initialize() {
-       
+       disableComponent();
     }
     
 }

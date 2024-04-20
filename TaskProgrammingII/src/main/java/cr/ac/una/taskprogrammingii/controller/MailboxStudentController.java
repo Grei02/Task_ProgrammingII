@@ -173,8 +173,7 @@ public class MailboxStudentController extends Controller implements Initializabl
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
-    
-    
+   
     @FXML
     void onActionBtnCancel(ActionEvent event) {
         resetScreen();

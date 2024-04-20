@@ -18,8 +18,6 @@ import java.util.List;
 public class FileManager<T> {
 
     public void serialization(List<T> list, String filename) {
-//        List<T> list = deserialize(filename); 
-//        list.add(object); 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
             oos.writeObject(list); 
             System.out.println("Objeto serializado con éxito.");

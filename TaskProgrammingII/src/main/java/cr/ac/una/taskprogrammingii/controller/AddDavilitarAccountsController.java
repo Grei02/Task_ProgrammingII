@@ -50,6 +50,7 @@ public class AddDavilitarAccountsController extends Controller implements Initia
    Mensaje message = new Mensaje();
    FileManager fileManager= new FileManager();
    Associated associated = new Associated();
+   Boolean hasAmount=false;
    
     @FXML
     private MFXLegacyTableView<String> tbvAccountTypesTable;
@@ -123,7 +124,6 @@ private void onDragDroppedToUserAccountsTable(DragEvent event) {
     event.setDropCompleted(success);
     event.consume();
 }
-
 
 @FXML
 private void onDragDetectedFromUserAccountsTable(MouseEvent event) {
@@ -210,29 +210,84 @@ private void onActionBtnSearhWithName(ActionEvent event) {
      FlowController.getInstance().goViewInWindowModal("searchByNameView", stage, Boolean.FALSE);
 }
 
-
   @FXML
 private void onActionBtnSave(ActionEvent event) {
-    String folio = txtFoil.getText();
-    Associated associated = findAssociateByFolio(folio); 
-
-    if (associated != null) {
-        ObservableList<String> selectedAccounts = tbvUserAccountsTable.getSelectionModel().getSelectedItems();
-        List<Account> associatedAccounts = new ArrayList<>();
-
-        TableColumn<String, String> accountColumn = tbcAccountTypesTable; 
-        for (String account : selectedAccounts) {
-            associatedAccounts.add(new Account(account, null, null));         
+    
+    List<Associated> associatedList=new ArrayList<>();
+    associatedList=fileManager.deserialize("ListAssociated.txt");
+     searchAssociated(associatedList);
+    
+    if(associated!=null){
+        List<String> userAccountsList = new ArrayList<>();
+        List<String> availableAccountsList = new ArrayList<>();
+        loadTableValues(userAccountsList,availableAccountsList);
+        addAccount(userAccountsList);
+        deleteAccount(availableAccountsList);
+        fileManager.serialization(associatedList, "ListAssociated.txt");
+        if(hasAmount){
+            message.show(Alert.AlertType.WARNING, "Aviso", "No puedes deshabilitar una cuenta con monto.");
+            hasAmount=false;
         }
-        // Asignar las cuentas asociadas al asociado
-        associated.setAcountList(associatedAccounts);
-        // Guardar los datos actualizados del asociado en el archivo
-        updateAssociatedDataInFile(associated);
-
-        message.show(Alert.AlertType.INFORMATION, "Éxito", "Las cuentas asignadas se han guardado correctamente.");
-    } else {
-        message.show(Alert.AlertType.ERROR, "Error", "No se encontró el asociado con el folio proporcionado.");
     }
+}
+
+public void loadTableValues(List<String> userAccountsList,List<String> availableAccountsList){
+    for (Object item : tbvUserAccountsTable.getItems()) {
+        userAccountsList.add(tbcUserAccountsTable.getCellData(item.toString()));
+    }
+    for (Object item : tbvAccountTypesTable.getItems()) {
+        availableAccountsList.add(tbcAccountTypesTable.getCellData(item.toString()));
+    }
+}
+
+public void  searchAssociated(List <Associated> associatedList){
+        associated =new Associated();
+        for(Associated compareAssociated:associatedList){
+            if(compareAssociated.getFolio().equals(txtFoil.getText().trim().toUpperCase())){
+                associated=compareAssociated;
+                break;
+            }
+        }
+    }
+
+public void addAccount(List <String> listTypeAccount){
+    
+    if(((associated.getAcountList()!=null) || (listTypeAccount!=null) ||(!associated.getAcountList().isEmpty()) || (!listTypeAccount.isEmpty()))){
+        List <Account> listOriginalUserAccount=associated.getAcountList();
+        Boolean accountExists= false;
+        for(String typeAccountCompare: listTypeAccount){
+            for(Account accountCompare:listOriginalUserAccount){
+                if(typeAccountCompare.equals(accountCompare.getType())){
+                    accountExists=true;
+                    break;
+                }
+            }
+            if(!accountExists){
+                associated.addAccount(new Account(typeAccountCompare, 0, null));
+            }
+            accountExists=false;
+        }
+    }
+}
+
+public void deleteAccount(List<String> availableAccountsList){
+    if(((associated.getAcountList()!=null) || (!availableAccountsList.isEmpty()) || (!associated.getAcountList().isEmpty())||(!availableAccountsList.isEmpty()))){
+        List <Account> listOriginalUserAccount=associated.getAcountList();
+        for(String typeAccountCompare: availableAccountsList){
+            for(Account accountCompare:listOriginalUserAccount){ 
+                if(typeAccountCompare.equals(accountCompare.getType())){
+                    if(accountCompare.getAmount()==0){
+                        listOriginalUserAccount.remove(accountCompare);
+                    }
+                    else{
+                        hasAmount=true;
+                    }
+                    break;
+                }
+            }
+        }
+    }
+    
 }
 
 // Método para actualizar los datos del asociado en el archivo

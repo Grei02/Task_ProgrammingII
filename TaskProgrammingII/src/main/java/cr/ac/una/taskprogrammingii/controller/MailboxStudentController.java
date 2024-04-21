@@ -36,7 +36,6 @@ public class MailboxStudentController extends Controller implements Initializabl
     private FileManager fileManager= new FileManager();
     private List<Deposits> listDeposit= new ArrayList<>();
     private List<Deposits> listDeserialization= new ArrayList<>();
-    private Mensaje message=new Mensaje();
     private Account accountChose=new Account();
     
    @FXML
@@ -388,6 +387,7 @@ public class MailboxStudentController extends Controller implements Initializabl
         return true;
     }
     @Override
+    
     public void initialize(URL url, ResourceBundle rb) {
         resetScreen();
     }    

@@ -44,6 +44,9 @@ public class AccountInquiryController extends Controller implements Initializabl
     private Button btnSummarized;
     
     @FXML
+    private Button btnReady;
+    
+    @FXML
     private MFXComboBox<String> cmbAccounts;
     
     @FXML
@@ -73,13 +76,17 @@ public class AccountInquiryController extends Controller implements Initializabl
     @FXML
     private VBox vbxTable;
 
+    @FXML
+    void onActionBtnReady(ActionEvent event) {
+        resetScreen();
+    }
     
     @FXML
     void onActionCmbAccounts(ActionEvent event) {
         searchChosenAccount();
         txtTotalAmount.setText(accountChose.getAmount().toString());
         initializeTable();
-        btnSummarized.setDisable(false);
+        btnDetailed.setDisable(false);
     }
     
     @FXML
@@ -110,8 +117,8 @@ public class AccountInquiryController extends Controller implements Initializabl
         btnSummarized.setManaged(enableSummary);
         btnDetailed.setVisible(!enableSummary);
         btnDetailed.setManaged(!enableSummary);
-        vbxTable.setVisible(!enableSummary);
-        vbxTable.setManaged(!enableSummary);
+        vbxTable.setVisible(enableSummary);
+        vbxTable.setManaged(enableSummary);
    }
     
    public void searchChosenAccount(){
@@ -173,13 +180,13 @@ public class AccountInquiryController extends Controller implements Initializabl
     }
     
     public void resetScreen(){
-        btnSummarized.setDisable(true);
+        btnSummarized.setDisable(false);
         cmbAccounts.setDisable(true);
         txtAge.setDisable(true);
         txtName.setDisable(true);
         txtLastName.setDisable(true);
         txtTotalAmount.setDisable(true);
-        enableSummaryButton(true);
+        enableSummaryButton(false);
         cleanComponents();
     }
     

@@ -22,6 +22,10 @@ public class Account implements Serializable {
         listTransfer=new ArrayList<>();
     }
     
+    public void withdrawaAmountl(Integer amount){
+        this.amount-=amount;
+    }
+    
     public void depositAmount(Integer amount){
         this.amount+=amount;
     }

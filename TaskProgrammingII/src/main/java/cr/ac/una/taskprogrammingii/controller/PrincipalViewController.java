@@ -49,6 +49,9 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private MFXButton btnAccountInquiry;
     
+    @FXML
+    private MFXButton btnTransfers;
+    
     /**
      * Initializes the controller class.
      */
@@ -95,6 +98,11 @@ public class PrincipalViewController extends Controller implements Initializable
     void OnActionBtnMailboxStudent(ActionEvent event) {
          FlowController.getInstance().goView("mailboxStudentView");
     }
+    
+    @FXML
+    void onActionBtnTransfers(ActionEvent event) {
+        FlowController.getInstance().goView("transferStudentView");
+    }
 
     private void setButtonVisibility() {
         if (isProfessor) {
@@ -119,7 +127,8 @@ public class PrincipalViewController extends Controller implements Initializable
             btnCreateAccount.setVisible(false);
             btnEdit.setVisible(false);
             btnMailboxStudent.setVisible(true);
-              btnAccountInquiry.setVisible(false);
+            btnTransfers.setVisible(true);
+            btnAccountInquiry.setVisible(false);
         }
     }    
 

@@ -113,12 +113,10 @@ public class PrincipalViewController extends Controller implements Initializable
         if (isProfessor) {
             buttonEnabledTeacher();
             buttonDisabledTeacher();
-            
         } 
         else if ( isAssociate) {
             buttonEnabledAssociate();
             buttonEnabledAssociate();
-
         }
         else if(isStudent){
             buttonEnabledStudent();

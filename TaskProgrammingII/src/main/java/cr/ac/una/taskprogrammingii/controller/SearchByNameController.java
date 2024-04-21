@@ -14,9 +14,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -44,16 +41,15 @@ public class SearchByNameController extends Controller implements Initializable 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }   
+    @Override
+    public void initialize() {
+       resetScreen();
+    }
     
     public void resetScreen(){
         txtFoil.setDisable(true);
         txtFoil.setEditable(false);
-    }
- 
-    @Override
-    public void initialize() {
-       resetScreen();
     }
 
     @FXML
@@ -77,16 +73,11 @@ public class SearchByNameController extends Controller implements Initializable 
             return associated.getFolio();
         }
     }
-    return "Folio not found"; 
+    return "No se encontro el folio"; 
     }
 
     @FXML
     private void onActionBtnAcept(ActionEvent event) {
-    // Obtén la escena asociada al evento
-   // Scene scene = ((Node) event.getSource()).getScene();
-    // Obten el Stage (ventana) asociado a la escena
-   // Stage stage = (Stage) scene.getWindow();
-    // Cierra la ventana
     stage.close();
     }
     }

@@ -23,7 +23,7 @@ public class App extends Application {
     //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
     FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
     // FlowController.getInstance().goViewInWindow("startAssociateSectionView");
-    //  FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
+   //FlowController.getInstance().goViewInWindow("searchByNameView");
  //Stashed changes
     }
 

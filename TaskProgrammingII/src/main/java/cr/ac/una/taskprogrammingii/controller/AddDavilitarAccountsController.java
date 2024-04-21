@@ -8,6 +8,7 @@ package cr.ac.una.taskprogrammingii.controller;
 import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
+import cr.ac.una.taskprogrammingii.util.FlowController;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -117,7 +118,6 @@ private void onDragDroppedToUserAccountsTable(DragEvent event) {
     if (dragboard.hasString()) {
         String accountType = dragboard.getString();
          tbvUserAccountsTable.getItems().add(accountType);
-        verifyUserAccounts();
           success = true;
     }
     event.setDropCompleted(success);
@@ -204,31 +204,12 @@ private Associated findAssociateByFolio(String folio) {
     }
     return null;
 }
+
 @FXML
 private void onActionBtnSearhWithName(ActionEvent event) {
-//    TextInputDialog dialog = new TextInputDialog();
-//    dialog.setTitle("Buscar por nombre");
-//    dialog.setHeaderText("Introduce el nombre del asociado:");
-//    Optional<String> result = dialog.showAndWait();
-//    result.ifPresent(name -> {
-//        Associated associated = findAssociateByName(name);
-//        if (associated != null) {
-//            System.out.println("Asociado encontrado por nombre: " + associated.getName() + " " + associated.getLastName());
-//        } else {
-//            System.out.println("No se encontró ningún asociado con el nombre proporcionado.");
-//        }
-//    });
+     FlowController.getInstance().goViewInWindowModal("searchByNameView", stage, Boolean.FALSE);
 }
 
-//private Associated findAssociateByName(String name) {
-//    List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
-//    for (Associated associated : associatedList) {
-//        if (name.equalsIgnoreCase(associated.getName()) || name.equalsIgnoreCase(associated.getLastName())) {
-//            return associated;
-//        }
-//    }
-//    return null;
-//}
 
   @FXML
 private void onActionBtnSave(ActionEvent event) {
@@ -243,7 +224,6 @@ private void onActionBtnSave(ActionEvent event) {
         for (String account : selectedAccounts) {
             associatedAccounts.add(new Account(account, null, null));         
         }
-
         // Asignar las cuentas asociadas al asociado
         associated.setAcountList(associatedAccounts);
         // Guardar los datos actualizados del asociado en el archivo
@@ -270,20 +250,5 @@ private void updateAssociatedDataInFile(Associated associated) {
     // Guardamos la lista actualizada de asociados en el archivo
     fileManager.serialization(associatedList, "ListAssociated.txt");
 }
-private void verifyUserAccounts() {
-    
-    List<Account> userAccounts = associated.getAcountList();
 
-    if (userAccounts.isEmpty()) {
-        System.out.println("El usuario no tiene ninguna cuenta asignada.");
-    } else {
-        System.out.println("Cuentas asignadas al usuario:");
-        for (Account account : userAccounts) {
-            System.out.println("Tipo de cuenta: " + account.getType());
-            System.out.println("Saldo: " + account.getAmount());
-            // Puedes agregar más detalles de la cuenta según sea necesario
-            System.out.println("--------------------------------");
-        }
-    }
-}
 }

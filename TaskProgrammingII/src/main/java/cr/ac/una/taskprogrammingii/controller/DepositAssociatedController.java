@@ -87,56 +87,6 @@ public class DepositAssociatedController extends Controller implements Initializ
     @FXML
     private TextField txtTotalAmount;
     
-    @FXML
-    void onActionBtnCancel(ActionEvent event) {
-        resetScreen();
-    }
-    
-    @FXML
-    void onActionbtnSave(ActionEvent event) {
-        String typeAccouny = cmbAccountTypes.getValue();
-        setAmounts();
-        deposit.calculateTotal();
-        if(deposit.getTotal()!=0){
-            deposit.setTypeAccount(typeAccouny);
-            listDeserialization=fileManager.deserialize("DepositList.txt");
-            listDeserialization.add(deposit);
-            fileManager.serialization(listDeserialization,"DepositList.txt");
-            resetScreen();
-        }
-        else{
-            message.show(Alert.AlertType.WARNING, "Aviso", "No estas depositando ningun monto.");
-        }
-    }
-    
-     @FXML
-    void onActionCmbAccountTypes(ActionEvent event) {
-        disableSpinner(false);
-        btnSave.setDisable(false);
-    }
-    
-    @FXML
-    void onActiontxtFolioUser(ActionEvent event) {
-        deposit.setFolio(txtFolioUser.getText().trim().toUpperCase());
-        List <Associated> associatedList= fileManager.deserialize("ListAssociated.txt");
-        for(Associated compareAssociated:associatedList){
-            if(compareAssociated.getFolio().equals(deposit.getFolio())){
-                associated=compareAssociated;
-                break;
-            }
-        }
-        if(associated!=null){
-            cmbAccountTypes.setDisable(false);
-            txtFolioUser.setDisable(true);
-            StartCmbAccountTypes();
-            message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Se ha encontrado el asociado, ahora por favor escoger la cuenta a la que desea hacer el deposito");
-        }
-        else{
-            message.show(Alert.AlertType.WARNING, "Aviso", "No se ha encontrado ningun asociado, intente de nuevo.");
-            txtFolioUser.setText(null);
-        }
-    }
-    
       @FXML
     void onMouseClickedSpn10000Bills(MouseEvent event) {
          setAmounts();
@@ -213,6 +163,61 @@ public class DepositAssociatedController extends Controller implements Initializ
          deposit.calculateTotal();
          txtTotalAmount.setText(Integer.toString(deposit.getTotal()));
     }
+    
+        @FXML
+    void onActionBtnCancel(ActionEvent event) {
+        resetScreen();
+    }
+    
+    @FXML
+    void onActionbtnSave(ActionEvent event) {
+        String typeAccouny = cmbAccountTypes.getValue();
+        setAmounts();
+        deposit.calculateTotal();
+        if(deposit.getTotal()!=0){
+            deposit.setTypeAccount(typeAccouny);
+            listDeserialization=fileManager.deserialize("DepositList.txt");
+            listDeserialization.add(deposit);
+            fileManager.serialization(listDeserialization,"DepositList.txt");
+            resetScreen();
+        }
+        else{
+            message.show(Alert.AlertType.WARNING, "Aviso", "No estas depositando ningun monto.");
+        }
+    }
+    
+     @FXML
+    void onActionCmbAccountTypes(ActionEvent event) {
+        disableSpinner(false);
+        btnSave.setDisable(false);
+    }
+    
+    @FXML
+    void onActiontxtFolioUser(ActionEvent event) {
+        
+        if(searchAssociated ()){
+            cmbAccountTypes.setDisable(false);
+            txtFolioUser.setDisable(true);
+            StartCmbAccountTypes();
+            message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Se ha encontrado el asociado, ahora por favor escoger la cuenta a la que desea hacer el deposito");
+        }
+        else{
+            message.show(Alert.AlertType.WARNING, "Aviso", "No se ha encontrado ningun asociado, intente de nuevo.");
+            txtFolioUser.setText(null);
+        }
+    }
+    
+      public Boolean searchAssociated (){
+          deposit.setFolio(txtFolioUser.getText().trim().toUpperCase());
+           List <Associated> associatedList= fileManager.deserialize("ListAssociated.txt");
+            for(Associated compareAssociated:associatedList){
+                if(compareAssociated.getFolio().equals(deposit.getFolio())){
+                    associated=compareAssociated;
+                    return true;
+                }
+            }
+            return false;
+      }
     
    public void setAmounts(){
        deposit.setCoin5(spn5Coins.getValue());

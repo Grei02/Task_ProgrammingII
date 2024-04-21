@@ -10,16 +10,16 @@ public class Transfer implements Serializable{
     
     private static final long serialVersionUID = 3L;
     
-    private String Type;
+    private String type;
     private String amount;
 
-    public Transfer(String Type, String amount) {
-        this.Type = Type;
+    public Transfer(String type, String amount) {
+        this.type = type;
         this.amount = amount;
     }
 
-    public void setType(String Type) {
-        this.Type = Type;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setAmount(String amount) {
@@ -27,7 +27,7 @@ public class Transfer implements Serializable{
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public String getAmount() {

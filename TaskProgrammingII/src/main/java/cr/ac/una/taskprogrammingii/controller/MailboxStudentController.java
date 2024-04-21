@@ -306,10 +306,8 @@ public class MailboxStudentController extends Controller implements Initializabl
     
     public void resetScreen(){
         initializeSpinner();
-        cmbFolios.setDisable(true);
         cmbFolios.setValue(null);
         cmbFolios.getSelectionModel().clearSelection();
-        StartCmbFolios();
         txtTotalAmount.setText("0");
         txtUserName.setText(null);
         txtTypeAccount.setText(null);
@@ -321,6 +319,8 @@ public class MailboxStudentController extends Controller implements Initializabl
         cmbDepositNumber.setValue(null);
         cmbDepositNumber.getSelectionModel().clearSelection();
          disableSpinner(true);
+         StartCmbFolios();
+         cmbFolios.setDisable(false);
     }
     
     public void disableSpinner(Boolean enable){

@@ -180,6 +180,19 @@ public class AccountInquiryController extends Controller implements Initializabl
         txtLastName.setDisable(true);
         txtTotalAmount.setDisable(true);
         enableSummaryButton(true);
+        cleanComponents();
+    }
+    
+    public void cleanComponents(){
+        txtFolio.setText(null);
+        txtAge.setText(null);
+        txtLastName.setText(null);
+        txtName.setText(null);
+        txtTotalAmount.setText(null);
+        ltvTransferTable.getItems().clear();
+        cmbAccounts.getItems().clear();
+        cmbAccounts.setValue(null);
+        cmbAccounts.getSelectionModel().clearSelection();
     }
 
     @Override

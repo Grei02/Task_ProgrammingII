@@ -4,6 +4,7 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+
 import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.FileManager;
@@ -34,6 +35,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import cr.ac.una.taskprogrammingii.util.Mensaje;
 
 /**
  * FXML Controller class
@@ -59,6 +61,8 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     private MFXButton btnSearchWithName;
     @FXML
     private MFXTextField txtFoil;
+    @FXML
+    private MFXButton btnSave;
     /**
      * Initializes the controller class.
      */
@@ -96,7 +100,6 @@ public void initialize(URL url, ResourceBundle rb) {
     @FXML
     private void onDragOverToUserAccountsTable(DragEvent event) {
         if (event.getGestureSource() != tbvUserAccountsTable && event.getDragboard().hasString()) {
-            System.out.println("Modo de transferencia aceptado");
             event.acceptTransferModes(TransferMode.MOVE);
         }
         event.consume();
@@ -104,16 +107,24 @@ public void initialize(URL url, ResourceBundle rb) {
 
     @FXML
     private void onDragDroppedToUserAccountsTable(DragEvent event) {
-        Dragboard dragboard = event.getDragboard();
-        boolean success = false;
-        
-        if (dragboard.hasString()) {
-            System.out.println("Tipo de cuenta soltado: " + dragboard.getString());
-            tbvUserAccountsTable.getItems().add(dragboard.getString());
-            success = true;
-        }
-        event.setDropCompleted(success);
-        event.consume();
+    Dragboard dragboard = event.getDragboard();
+    boolean success = false;
+    
+    if (dragboard.hasString()) {
+    String accountType = dragboard.getString();
+    String folio = txtFoil.getText();
+    Associated associated = findAssociateByFolio(folio); 
+    if (associated != null) {
+      Account account = new Account(accountType, null, null);
+        associated.addAccount(account); 
+        displayAssociatedAccounts(associated); 
+        success = true;
+    }
+} else {
+    message.show(Alert.AlertType.ERROR, "Error", "Ingrese el folio.");
+    }
+    event.setDropCompleted(success);
+    event.consume();
     }
 
 @FXML
@@ -176,17 +187,14 @@ private void onActionBtnSearchWithFoil(ActionEvent event) {
 }
 
 private void displayAssociatedAccounts(Associated associated) {
-    List<Account> accountList = associated.getAcountList();
-   
+   List<Account> accountList = associated.getAcountList();
     ObservableList<String> accountData = FXCollections.observableArrayList();
-
     for (Account account : accountList) {
         String accountInfo = account.getType();
         accountData.add(accountInfo);
     }
     tbvUserAccountsTable.setItems(accountData);
 }
-
 
 private Associated findAssociateByFolio(String folio) {
     List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
@@ -223,4 +231,17 @@ private void onActionBtnSearhWithName(ActionEvent event) {
 //    return null;
 //}
 
+  @FXML
+private void onActionBtnSave(ActionEvent event) {
+    String folio = txtFoil.getText();
+    Associated associated = findAssociateByFolio(folio); 
+    if (associated != null) {
+        TableColumn<String, String> accountColumn = tbcAccountTypesTable; 
+        for (String account : tbvAccountTypesTable.getItems()) {
+            associated.addAccount(new Account(account, null, null));         }
+        message.show(Alert.AlertType.INFORMATION, "Éxito", "Las cuentas asignadas se han guardado correctamente.");
+    } else {
+        message.show(Alert.AlertType.ERROR, "Error", "No se encontró el asociado con el folio proporcionado.");
+    }
+}
 }

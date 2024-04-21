@@ -91,6 +91,8 @@ public class Associated implements Serializable {
     public void addAccount(Account account) {
     if (account != null) {
         acountList.add(account);
+        System.out.println("Cuenta agregada correctamente: " + account.getType());
+        System.out.println("Lista de cuentas asociadas actualizada: " + acountList);
     }
 }
     public void removeAccount(Account account) {

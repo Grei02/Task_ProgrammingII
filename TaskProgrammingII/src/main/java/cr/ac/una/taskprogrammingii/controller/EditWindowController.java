@@ -7,7 +7,7 @@ package cr.ac.una.taskprogrammingii.controller;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
-import java.awt.image.BufferedImage;
+//import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +20,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import javafx.scene.image.ImageView;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.IOException;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 
 /**
@@ -46,7 +49,20 @@ public class EditWindowController extends Controller implements Initializable {
     String newName = txtNameCoop.getText();
    
     if (!newName.isEmpty() && imgLogoCoop.getImage() != null) {
-        guardarCambios(newName, imgLogoCoop.getImage());
+   
+        try {
+            Image image = imgLogoCoop.getImage();
+            String fileName = "logo_" + newName + ".png";
+            Path destination = Paths.get("src/main/resources/cr/ac/una/taskprogrammingii/resources/" + fileName);
+
+            File outputFile = destination.toFile();
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", outputFile);
+            
+            message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Los cambios se han guardado exitosamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            message.show(Alert.AlertType.ERROR, "Error:", "Error al guardar la imagen.");
+        }
          message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Los cambios se han guardado exitosamente.");
       
     } else {
@@ -59,16 +75,9 @@ public class EditWindowController extends Controller implements Initializable {
         }
     }
 }
-    
-private void guardarCambios(String nombre, Image logo) {
-    System.out.println("Nombre de la cooperativa guardado: " + nombre);
-    System.out.println("Logo de la cooperativa guardado.");
-}
-
     @FXML
     private void onImageClicked(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
-       // fileChooser.setTitle("Seleccione una imagen");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif");
         fileChooser.getExtensionFilters().add(extFilter);
         File selectedFile = fileChooser.showOpenDialog(null);

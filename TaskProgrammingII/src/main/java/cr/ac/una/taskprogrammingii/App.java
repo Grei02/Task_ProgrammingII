@@ -16,12 +16,14 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FlowController.getInstance().InitializeFlow(stage, null);
-       //AddDavilitarAccountsView
+     //AddDavilitarAccountsView
      // FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
-    //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
+    FlowController.getInstance().goViewInWindow("editWindowView");
      //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
-    FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+    //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
    //FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
+    //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+  // FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
     // FlowController.getInstance().goViewInWindow("startAssociateSectionView");
    //FlowController.getInstance().goViewInWindow("searchByNameView");
  //Stashed changes

@@ -20,8 +20,8 @@ public class App extends Application {
      // FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
     //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
      //FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
-    //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
-   FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
+    FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+   //FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
     // FlowController.getInstance().goViewInWindow("startAssociateSectionView");
    //FlowController.getInstance().goViewInWindow("searchByNameView");
  //Stashed changes

@@ -36,6 +36,8 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * FXML Controller class
@@ -46,6 +48,7 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     
    Mensaje message = new Mensaje();
    FileManager fileManager= new FileManager();
+   Associated associated = new Associated();
    
     @FXML
     private MFXLegacyTableView<String> tbvAccountTypesTable;
@@ -92,8 +95,9 @@ public void initialize(URL url, ResourceBundle rb) {
             ClipboardContent content = new ClipboardContent();
             content.putString(accountType);
             dragboard.setContent(content);
+            
+             tbvAccountTypesTable.getItems().remove(accountType);
         }
-   
         event.consume();
     }
 
@@ -106,26 +110,20 @@ public void initialize(URL url, ResourceBundle rb) {
     }
 
     @FXML
-    private void onDragDroppedToUserAccountsTable(DragEvent event) {
+private void onDragDroppedToUserAccountsTable(DragEvent event) {
     Dragboard dragboard = event.getDragboard();
     boolean success = false;
     
     if (dragboard.hasString()) {
-    String accountType = dragboard.getString();
-    String folio = txtFoil.getText();
-    Associated associated = findAssociateByFolio(folio); 
-    if (associated != null) {
-      Account account = new Account(accountType, null, null);
-        associated.addAccount(account); 
-        displayAssociatedAccounts(associated); 
-        success = true;
-    }
-} else {
-    message.show(Alert.AlertType.ERROR, "Error", "Ingrese el folio.");
+        String accountType = dragboard.getString();
+         tbvUserAccountsTable.getItems().add(accountType);
+        verifyUserAccounts();
+          success = true;
     }
     event.setDropCompleted(success);
     event.consume();
-    }
+}
+
 
 @FXML
 private void onDragDetectedFromUserAccountsTable(MouseEvent event) {
@@ -135,8 +133,8 @@ private void onDragDetectedFromUserAccountsTable(MouseEvent event) {
         ClipboardContent content = new ClipboardContent();
         content.putString(studentAccount);
         dragboard.setContent(content);
+         tbvUserAccountsTable.getItems().remove(studentAccount);
     }
-    
     event.consume();
 }
 
@@ -154,6 +152,7 @@ private void onDragDroppedFromAccountTypesTable(DragEvent event) {
     boolean success = false;
     if (dragboard.hasString()) {
         String accountType = dragboard.getString();
+    Account account = new Account(accountType,0, new ArrayList<>());
         tbvAccountTypesTable.getItems().add(accountType);
         success = true;
     }
@@ -235,13 +234,56 @@ private void onActionBtnSearhWithName(ActionEvent event) {
 private void onActionBtnSave(ActionEvent event) {
     String folio = txtFoil.getText();
     Associated associated = findAssociateByFolio(folio); 
+
     if (associated != null) {
+        ObservableList<String> selectedAccounts = tbvUserAccountsTable.getSelectionModel().getSelectedItems();
+        List<Account> associatedAccounts = new ArrayList<>();
+
         TableColumn<String, String> accountColumn = tbcAccountTypesTable; 
-        for (String account : tbvAccountTypesTable.getItems()) {
-            associated.addAccount(new Account(account, null, null));         }
+        for (String account : selectedAccounts) {
+            associatedAccounts.add(new Account(account, null, null));         
+        }
+
+        // Asignar las cuentas asociadas al asociado
+        associated.setAcountList(associatedAccounts);
+        // Guardar los datos actualizados del asociado en el archivo
+        updateAssociatedDataInFile(associated);
+
         message.show(Alert.AlertType.INFORMATION, "Éxito", "Las cuentas asignadas se han guardado correctamente.");
     } else {
         message.show(Alert.AlertType.ERROR, "Error", "No se encontró el asociado con el folio proporcionado.");
+    }
+}
+
+// Método para actualizar los datos del asociado en el archivo
+private void updateAssociatedDataInFile(Associated associated) {
+    List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
+    
+    // Buscamos al asociado por su número de folio y lo reemplazamos con el asociado actualizado
+    for (int i = 0; i < associatedList.size(); i++) {
+        if (associated.getFolio().equals(associatedList.get(i).getFolio())) {
+            associatedList.set(i, associated);
+            break;
+        }
+    }
+    
+    // Guardamos la lista actualizada de asociados en el archivo
+    fileManager.serialization(associatedList, "ListAssociated.txt");
+}
+private void verifyUserAccounts() {
+    
+    List<Account> userAccounts = associated.getAcountList();
+
+    if (userAccounts.isEmpty()) {
+        System.out.println("El usuario no tiene ninguna cuenta asignada.");
+    } else {
+        System.out.println("Cuentas asignadas al usuario:");
+        for (Account account : userAccounts) {
+            System.out.println("Tipo de cuenta: " + account.getType());
+            System.out.println("Saldo: " + account.getAmount());
+            // Puedes agregar más detalles de la cuenta según sea necesario
+            System.out.println("--------------------------------");
+        }
     }
 }
 }

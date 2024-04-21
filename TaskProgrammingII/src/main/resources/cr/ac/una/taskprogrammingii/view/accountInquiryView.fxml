@@ -66,7 +66,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="31.0" prefWidth="301.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Terminar" />
+                              <Button fx:id="btnReady" mnemonicParsing="false" onAction="#onActionBtnReady" text="Listo" />
                            </children>
                         </HBox>
                      </children>

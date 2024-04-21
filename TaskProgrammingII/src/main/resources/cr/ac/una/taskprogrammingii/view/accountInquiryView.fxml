@@ -60,8 +60,8 @@
                         <HBox alignment="CENTER" prefHeight="39.0" prefWidth="301.0" spacing="15.0">
                            <children>
                               <Label text="Ver el estado de cuentas de manera:" />
-                              <Button mnemonicParsing="false" text="Resumido" />
-                              <Button mnemonicParsing="false" text="Detallado" />
+                              <Button fx:id="btnSummarized" mnemonicParsing="false" onAction="#onActionBtnSummarized" text="Resumido" />
+                              <Button fx:id="btnDetailed" mnemonicParsing="false" onAction="#onActionBtnDetailed" text="Detallado" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="31.0" prefWidth="301.0">
@@ -71,12 +71,12 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="vbxTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <MFXLegacyTableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <MFXLegacyTableView fx:id="ltvTransferTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Transferencia" />
-                              <TableColumn minWidth="-1.0" prefWidth="75.0" text="Monto" />
+                              <TableColumn fx:id="tbcTransferType" prefWidth="121.0" text="Transferencia" />
+                              <TableColumn fx:id="tbcAmount" minWidth="-1.0" prefWidth="139.0" text="Monto" />
                            </columns>
                         </MFXLegacyTableView>
                      </children></VBox>

@@ -11,17 +11,23 @@ import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.model.Transfer;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
+import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.Priority;
 
 
 public class AccountInquiryController extends Controller implements Initializable {
@@ -29,9 +35,13 @@ public class AccountInquiryController extends Controller implements Initializabl
     private Mensaje message=new Mensaje();
     private FileManager fileManager= new FileManager();
     private Account accountChose=new Account();
-    private List<Associated> listAssociated= new ArrayList<>();
-    private List<Transfer> listTransfer= new ArrayList<>();
     private Associated associated;
+    
+    @FXML
+    private Button btnDetailed;
+
+    @FXML
+    private Button btnSummarized;
     
     @FXML
     private MFXComboBox<String> cmbAccounts;
@@ -51,13 +61,27 @@ public class AccountInquiryController extends Controller implements Initializabl
     @FXML
     private TextField txtTotalAmount;
     
+     @FXML
+    private MFXLegacyTableView<Transfer> ltvTransferTable;
+    
+    @FXML
+    private TableColumn<Transfer, String> tbcAmount;
+
+    @FXML
+    private TableColumn<Transfer, String> tbcTransferType;
+    
+    @FXML
+    private VBox vbxTable;
+
+    
     @FXML
     void onActionCmbAccounts(ActionEvent event) {
         searchChosenAccount();
         txtTotalAmount.setText(accountChose.getAmount().toString());
+        initializeTable();
+        btnSummarized.setDisable(false);
     }
-
-
+    
     @FXML
     void onActionTxtFolio(ActionEvent event) {
         if(searchAssociated()){
@@ -70,6 +94,25 @@ public class AccountInquiryController extends Controller implements Initializabl
             txtFolio.setText(null);
         }
     }
+    
+    @FXML
+    void onActionBtnDetailed(ActionEvent event) {
+        enableSummaryButton(true);
+    }
+
+    @FXML
+    void onActionBtnSummarized(ActionEvent event) {
+       enableSummaryButton(false); 
+    }
+    
+   public void enableSummaryButton(Boolean enableSummary) {
+        btnSummarized.setVisible(enableSummary);
+        btnSummarized.setManaged(enableSummary);
+        btnDetailed.setVisible(!enableSummary);
+        btnDetailed.setManaged(!enableSummary);
+        vbxTable.setVisible(!enableSummary);
+        vbxTable.setManaged(!enableSummary);
+   }
     
    public void searchChosenAccount(){
        List<Account> listAccount= associated.getAcountList();
@@ -117,22 +160,36 @@ public class AccountInquiryController extends Controller implements Initializabl
         return false;
     }
     
-    public void disableComponent(){
+    public void initializeTable(){
+        if(accountChose.getListTransfer()!=null){
+            List<String> listTypeTransfer=new ArrayList<>();
+            ObservableList<Transfer> itemsTransfer=null;
+            itemsTransfer=FXCollections.observableArrayList(accountChose.getListTransfer());
+            
+            tbcTransferType.setCellValueFactory(cellData->new SimpleStringProperty(cellData.getValue().getType()));
+            tbcAmount.setCellValueFactory(cellData->new SimpleStringProperty(cellData.getValue().getAmount()));
+            ltvTransferTable.setItems(itemsTransfer);
+        }
+    }
+    
+    public void resetScreen(){
+        btnSummarized.setDisable(true);
         cmbAccounts.setDisable(true);
         txtAge.setDisable(true);
         txtName.setDisable(true);
         txtLastName.setDisable(true);
         txtTotalAmount.setDisable(true);
-    } 
+        enableSummaryButton(true);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        disableComponent();
+        resetScreen();
     }    
 
     @Override
     public void initialize() {
-       disableComponent();
+       resetScreen();
     }
     
 }

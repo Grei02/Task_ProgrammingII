@@ -1,5 +1,6 @@
 package cr.ac.una.taskprogrammingii;
 
+import cr.ac.una.taskprogrammingii.util.AppContext;
 import cr.ac.una.taskprogrammingii.util.FlowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        
         FlowController.getInstance().InitializeFlow(stage, null);
      //AddDavilitarAccountsView
      // FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
@@ -26,10 +28,23 @@ public class App extends Application {
   // FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
     // FlowController.getInstance().goViewInWindow("startAssociateSectionView");
    //FlowController.getInstance().goViewInWindow("searchByNameView");
- //Stashed changes
+     //Stashed changes
     }
 
     public static void main(String[] args) {
+        if(args.length==1){
+            AppContext.getInstance().set("typeIncome", args[0]);
+            if (args[0].equals("P")){
+                FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
+            }
+            else if(args[0].equals("A")){
+                FlowController.getInstance().goViewInWindow("startAssociateSectionView");
+            }
+            else if(args[0].equals("S")){
+                FlowController.getInstance().goViewInWindow("startStudentfView");
+            }
+        }
+        
         launch();
     }
 

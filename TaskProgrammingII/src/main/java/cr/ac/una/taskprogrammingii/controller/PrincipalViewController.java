@@ -4,6 +4,7 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import cr.ac.una.taskprogrammingii.util.AppContext;
 import cr.ac.una.taskprogrammingii.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
@@ -17,10 +18,6 @@ import javafx.scene.layout.VBox;
  
 
 public class PrincipalViewController extends Controller implements Initializable {
-    
-      private boolean isProfessor=false;
-      private boolean isAssociate=true;
-      private boolean isStudent=false;
 
     @FXML
     private MFXButton btnRegister;
@@ -110,17 +107,22 @@ public class PrincipalViewController extends Controller implements Initializable
     }
 
     private void setButtonVisibility() {
-        if (isProfessor) {
-            buttonEnabledTeacher();
-            buttonDisabledTeacher();
-        } 
-        else if ( isAssociate) {
-            buttonEnabledAssociate();
-            buttonDisabledAssociate();
-        }
-        else if(isStudent){
-            buttonEnabledStudent();
-            buttonDisabledStudent();
+        String args=(String) AppContext.getInstance().get("typeIncome");
+        switch (args) {
+            case "P" -> {
+                buttonEnabledTeacher();
+                buttonDisabledTeacher();
+            }
+            case "A" -> {
+                buttonEnabledAssociate();
+                buttonDisabledAssociate();
+            }
+            case "S" -> {
+                buttonEnabledStudent();
+                buttonDisabledStudent();
+            }
+            default -> {
+            }
         }
     }    
     

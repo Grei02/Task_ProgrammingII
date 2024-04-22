@@ -107,11 +107,6 @@ public class registerAssociateSectionController extends Controller implements In
              userCard();
              Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
              
-             List <Account> cuentalista=new ArrayList<>();
-             //cuentalista.add(new Account("Ahorro navideño",0,null));
-             //cuentalista.add(new Account("Ahorro a la vista",0,null));
-             associated.setAcountList(cuentalista);
-             
              listDeserialization= fileManager.deserialize("ListAssociated.txt");
              listDeserialization.add(associated);
              fileManager.serialization(listDeserialization,"ListAssociated.txt");

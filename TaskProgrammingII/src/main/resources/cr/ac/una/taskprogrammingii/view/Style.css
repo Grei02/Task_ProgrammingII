@@ -33,7 +33,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .mfx-button,
 .mfx-button:armed,
 .mfx-button:focused {
-    -fx-background-color: #f38ed2;
+    -fx-background-color: #befdf1;
 }
 
 .btnSave{
@@ -41,6 +41,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   -fx-background-radius: 10px;
   -fx-background-insets: 0px;
 }
+
 .btnExit{
   -fx-background-color: #ff0000;
   -fx-background-radius: 10px;
@@ -49,8 +50,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 .jfx-panelfondo{
     -fx-effect:dropshadow(gaussian,rgba(0.0,0.0,0.0,0.15),10.0,0.7,0.0,1.5);
-    -fx-background-color: #befdf1;
+    -fx-background-color: #a4dcfc;
 }
+
 .jdx-bagroundITeacher{
      -fx-image:url("../resources/startTeacher.png");
 }

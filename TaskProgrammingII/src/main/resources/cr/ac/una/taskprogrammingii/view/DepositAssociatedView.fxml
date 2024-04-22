@@ -23,8 +23,8 @@
                   <TextField fx:id="txtFolioUser" onAction="#onActiontxtFolioUser" />
                   <Label text="Tipo de cuenta:" />
                   <MFXComboBox fx:id="cmbAccountTypes" onAction="#onActionCmbAccountTypes" />
-                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" text="Cancelar" />
-                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionbtnSave" text="Guardar" />
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" styleClass="btnExit" text="Cancelar" />
+                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionbtnSave" styleClass="btnSave" text="Guardar" />
                </children>
             </HBox>
             <Label text="Despues de escribir el folio de le a la techa enter y escoja la cuenta en la que desea hacer el deposito." />

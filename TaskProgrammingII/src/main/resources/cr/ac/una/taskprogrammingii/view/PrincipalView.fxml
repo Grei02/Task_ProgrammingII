@@ -2,21 +2,29 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="966.0" styleClass="jfx-panelfondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.PrincipalViewController">
    <left>
-      <VBox alignment="CENTER" prefHeight="550.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="TOP_CENTER">
+      <VBox alignment="CENTER" prefHeight="646.0" prefWidth="224.0" spacing="10.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <HBox prefHeight="643.0" prefWidth="190.0" spacing="5.0">
+            <HBox prefHeight="643.0" prefWidth="201.0" spacing="5.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="504.0" prefWidth="172.0" spacing="15.0">
+                  <VBox alignment="CENTER" prefHeight="643.0" prefWidth="188.0" spacing="15.0" HBox.hgrow="ALWAYS">
                      <children>
+                        <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="213.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="imgImageCoop" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" smooth="false" />
+                              <Label fx:id="lblNameCoop" prefHeight="64.0" prefWidth="204.0" />
+                           </children>
+                        </VBox>
                         <MFXButton fx:id="btnCreateAccount" buttonType="RAISED" onAction="#OnActionBtnCreateAccount" styleClass="mfx-button" text="Crear cuenta " />
-                        <MFXButton fx:id="btnEdit" buttonType="RAISED" onAction="#onActionBtnEdit" text="Mantenimiento Cooperativa " />
+                        <MFXButton fx:id="btnEdit" buttonType="RAISED" onAction="#onActionBtnEdit" prefHeight="25.0" prefWidth="183.0" text="Mantenimiento Cooperativa " />
                         <MFXButton fx:id="btnAccountMant" buttonType="RAISED" onAction="#OnActionBtnAccountMant" text="Mantenimiento Cuentas " />
                         <MFXButton fx:id="btnRegister" buttonType="RAISED" onAction="#onActionBtnRegister" prefHeight="25.0" prefWidth="103.0" styleClass="mfx-button" stylesheets="@Style.css" text="Registrar" />
                         <MFXButton fx:id="btnDeposit" buttonType="RAISED" onAction="#onActionBtnDeposit" styleClass="mfx-button" stylesheets="@Style.css" text="Depositar" />
@@ -26,7 +34,7 @@
                         <MFXButton fx:id="btnAccountsOpening" buttonType="RAISED" layoutX="22.0" layoutY="319.0" onAction="#onActionBtnAccountsOpening" prefHeight="25.0" prefWidth="147.0" styleClass="mfx-button" stylesheets="@Style.css" text="Apertura de cuentas" />
                      </children>
                   </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="507.0" prefWidth="12.0" styleClass="jfx-panelfondo" />
+                  <Separator orientation="VERTICAL" prefHeight="643.0" prefWidth="10.0" styleClass="jfx-panelfondo" />
                </children>
                <padding>
                   <Insets left="5.0" />

@@ -63,6 +63,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .jfx-btn-refreshWindown>ImageView{
     -fx-image:url("../resources/ButtonRefresh.png");
 }
+.jfx-btn-Search>ImageView{
+    -fx-image:url("../resources/imgSearch.png");
+}
 
 .jfx-imv-5colones{
     -fx-image:url("../resources/5colones.png");

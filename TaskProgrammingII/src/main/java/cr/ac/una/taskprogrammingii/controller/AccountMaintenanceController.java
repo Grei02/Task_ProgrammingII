@@ -35,6 +35,8 @@ public class AccountMaintenanceController extends Controller implements Initiali
     private TableColumn<String, String> tbcAccountsColumn;
     @FXML
     private MFXButton btnrefreshWindown;
+    @FXML
+    private MFXButton btnExit;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,7 +64,6 @@ private void OnActionBtnDelete(ActionEvent event) {
         }
     }
 }
-
     @FXML
     private void OnActionBtnRefreshWindown(ActionEvent event) {
         List<Account> updatedAccounts = fileManager.deserialize("accounts.txt");
@@ -75,6 +76,10 @@ private void OnActionBtnDelete(ActionEvent event) {
     } else {
         message.show(Alert.AlertType.INFORMATION, "Confirmacion", "No hay actualizaciones registradas.");
     }
+    }
+
+    @FXML
+    private void onActionBtnExit(ActionEvent event) {
     }
    
 }

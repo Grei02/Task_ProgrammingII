@@ -4,6 +4,7 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import cr.ac.una.taskprogrammingii.util.AppContext;
 import cr.ac.una.taskprogrammingii.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
@@ -11,6 +12,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -18,8 +22,8 @@ import javafx.scene.layout.VBox;
 
 public class PrincipalViewController extends Controller implements Initializable {
     
-      private boolean isProfessor=false;
-      private boolean isAssociate=true;
+      private boolean isProfessor=true;
+      private boolean isAssociate=false;
       private boolean isStudent=false;
 
     @FXML
@@ -52,16 +56,35 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private MFXButton btnAccountsOpening;
     
+    @FXML
+    private ImageView imgImageCoop;
+    
+    @FXML
+    private Label lblNameCoop;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        String coopName = (String) AppContext.getInstance().get("coopName");
+        Image coopLogo = (Image) AppContext.getInstance().get("coopLogo");
+        updateCoopName(coopName);
+        updateCoopLogo(coopLogo);
         setButtonVisibility();
     }    
 
     @Override
     public void initialize() {
+    }
+
+    public void updateCoopName(String newName) {
+        lblNameCoop.setText(newName);
+    }
+
+    public void updateCoopLogo(Image newLogo) {
+        imgImageCoop.setImage(newLogo);
     }
 
     @FXML

@@ -121,6 +121,38 @@ public class PrincipalViewController extends Controller implements Initializable
                 buttonEnabledStudent();
                 buttonDisabledStudent();
             }
+            case "L"->{
+                btnEdit.setVisible(true);
+                btnCreateAccount.setVisible(true);
+                btnAccountInquiry.setVisible(true);
+                btnAccountMant.setVisible(true);
+                btnRegister.setVisible(true);
+                btnDeposit.setVisible(true);
+                btnAccountsOpening.setVisible(true);
+                btnMailboxStudent.setVisible(true);
+                btnTransfers.setVisible(true);
+                
+                btnEdit.setManaged(true);
+                btnCreateAccount.setManaged(true);
+                btnAccountInquiry.setManaged(true);
+                btnAccountMant.setManaged(true);
+                btnRegister.setManaged(true);
+                btnDeposit.setManaged(true);
+                btnAccountsOpening.setManaged(true);
+                btnMailboxStudent.setManaged(true);
+                btnTransfers.setManaged(true);
+
+            
+                btnEdit.setDisable(false);
+                btnCreateAccount.setDisable(false);
+                btnAccountInquiry.setDisable(false);
+                btnAccountMant.setDisable(false);
+                btnRegister.setDisable(false);
+                btnDeposit.setDisable(false);
+                btnAccountsOpening.setDisable(false);
+                btnMailboxStudent.setDisable(false);
+                btnTransfers.setDisable(false);
+            }
             default -> {
             }
         }

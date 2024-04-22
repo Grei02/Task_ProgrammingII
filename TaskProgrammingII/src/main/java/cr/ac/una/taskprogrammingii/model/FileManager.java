@@ -26,6 +26,7 @@ public class FileManager<T> {
             e.printStackTrace();
         }
     }
+    
     public List<T> deserialize(String filename) {
         List<T> list = new ArrayList<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {

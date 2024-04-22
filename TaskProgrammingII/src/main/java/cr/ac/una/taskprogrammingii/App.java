@@ -18,17 +18,6 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         
         FlowController.getInstance().InitializeFlow(stage, null);
-     //AddDavilitarAccountsView
-     // FlowController.getInstance().goViewInWindow("AccountMaintenanceView");
-    //FlowController.getInstance().goViewInWindow("editWindowView");
-     FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
-    //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
-   //FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
-    //FlowController.getInstance().goViewInWindow("startAssociateSectionView");
-  // FlowController.getInstance().goViewInWindow("AddDavilitarAccountsView");
-    // FlowController.getInstance().goViewInWindow("startAssociateSectionView");
-   //FlowController.getInstance().goViewInWindow("searchByNameView");
-     //Stashed changes
     }
 
     public static void main(String[] args) {
@@ -43,6 +32,9 @@ public class App extends Application {
             else if(args[0].equals("S")){
                 FlowController.getInstance().goViewInWindow("startStudentfView");
             }
+        }
+        else{
+            AppContext.getInstance().set("typeIncome", "L");
         }
         
         launch();

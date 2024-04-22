@@ -207,7 +207,7 @@ public class DepositAssociatedController extends Controller implements Initializ
         }
     }
     
-      public Boolean searchAssociated (){
+    public Boolean searchAssociated (){
           deposit.setFolio(txtFolioUser.getText().trim().toUpperCase());
            List <Associated> associatedList= fileManager.deserialize("ListAssociated.txt");
             for(Associated compareAssociated:associatedList){
@@ -219,79 +219,79 @@ public class DepositAssociatedController extends Controller implements Initializ
             return false;
       }
     
-   public void setAmounts(){
-       deposit.setCoin5(spn5Coins.getValue());
-       deposit.setCoin10(spn10Coins.getValue());
-       deposit.setCoin25(spn25Coins.getValue());
-       deposit.setCoin50(spn50Coins.getValue());
-       deposit.setCoin100(spn100Coins.getValue());
-       deposit.setCoin500(spn500Coins.getValue());
-       deposit.setBill1000(spn1000Bills.getValue());
-       deposit.setBill2000(spn2000Bills.getValue());
-       deposit.setBill5000(spn5000Bills.getValue());
-       deposit.setBill10000(spn10000Bills.getValue());
-       deposit.setBill20000(spn20000Bills.getValue());
-   }
-    
+    public void setAmounts(){
+    deposit.setCoin5(spn5Coins.getValue());
+    deposit.setCoin10(spn10Coins.getValue());
+    deposit.setCoin25(spn25Coins.getValue());
+    deposit.setCoin50(spn50Coins.getValue());
+    deposit.setCoin100(spn100Coins.getValue());
+    deposit.setCoin500(spn500Coins.getValue());
+    deposit.setBill1000(spn1000Bills.getValue());
+    deposit.setBill2000(spn2000Bills.getValue());
+    deposit.setBill5000(spn5000Bills.getValue());
+    deposit.setBill10000(spn10000Bills.getValue());
+    deposit.setBill20000(spn20000Bills.getValue());
+    }
+
     public void resetScreen(){
-        initializeSpinner();
-        cmbAccountTypes.setDisable(true);
-        cmbAccountTypes.setValue(null);
-        cmbAccountTypes.getSelectionModel().clearSelection();
-        btnSave.setDisable(true);
-        txtFolioUser.setText(null);
-        txtFolioUser.setDisable(false);
-        cmbAccountTypes.setDisable(true);
-        txtTotalAmount.setDisable(true);
-        txtTotalAmount.setText("0");
-        disableSpinner(true);
+    initializeSpinner();
+    cmbAccountTypes.setDisable(true);
+    cmbAccountTypes.setValue(null);
+    cmbAccountTypes.getSelectionModel().clearSelection();
+    btnSave.setDisable(true);
+    txtFolioUser.setText(null);
+    txtFolioUser.setDisable(false);
+    cmbAccountTypes.setDisable(true);
+    txtTotalAmount.setDisable(true);
+    txtTotalAmount.setText("0");
+    disableSpinner(true);
     }
-    
+
     public void disableSpinner(Boolean enable){
-        spn10000Bills.setDisable(enable);
-        spn1000Bills.setDisable(enable);
-        spn100Coins.setDisable(enable);
-        spn10Coins.setDisable(enable);
-        spn20000Bills.setDisable(enable);
-        spn2000Bills.setDisable(enable);
-        spn25Coins.setDisable(enable);
-        spn5000Bills.setDisable(enable);
-        spn500Coins.setDisable(enable);
-        spn50Coins.setDisable(enable);
-        spn5Coins.setDisable(enable);
+    spn10000Bills.setDisable(enable);
+    spn1000Bills.setDisable(enable);
+    spn100Coins.setDisable(enable);
+    spn10Coins.setDisable(enable);
+    spn20000Bills.setDisable(enable);
+    spn2000Bills.setDisable(enable);
+    spn25Coins.setDisable(enable);
+    spn5000Bills.setDisable(enable);
+    spn500Coins.setDisable(enable);
+    spn50Coins.setDisable(enable);
+    spn5Coins.setDisable(enable);
     }
-    
+
     public void initializeSpinner(){
-        spn10000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn1000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn100Coins.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn10Coins.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn20000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn2000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn25Coins.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn5000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn500Coins.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn50Coins.setSpinnerModel (new IntegerSpinnerModel (0));
-        spn5Coins.setSpinnerModel (new IntegerSpinnerModel (0));  
+    spn10000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn1000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn100Coins.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn10Coins.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn20000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn2000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn25Coins.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn5000Bills.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn500Coins.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn50Coins.setSpinnerModel (new IntegerSpinnerModel (0));
+    spn5Coins.setSpinnerModel (new IntegerSpinnerModel (0));  
     }
-    
+
     public void StartCmbAccountTypes(){
-        List<Account> accountAssciatedList=associated.getAcountList();
-        List <String> typeAccountList=new ArrayList<>();
-        ObservableList<String>items=null;
-        if(accountAssciatedList!=null){
-            for(Account currentAccount:accountAssciatedList){
-            typeAccountList.add(currentAccount.getType());
-            }
-            items=FXCollections.observableArrayList(typeAccountList);
-            cmbAccountTypes.setItems(items);
+    List<Account> accountAssciatedList=associated.getAcountList();
+    List <String> typeAccountList=new ArrayList<>();
+    ObservableList<String>items=null;
+    if(accountAssciatedList!=null){
+        for(Account currentAccount:accountAssciatedList){
+        typeAccountList.add(currentAccount.getType());
         }
-        else{
-            message.show(Alert.AlertType.WARNING, "Aviso", "Este asociado no tiene cuentas, crea una cuenta para asi poder depositar en ella.");
-        }
-        
+        items=FXCollections.observableArrayList(typeAccountList);
+        cmbAccountTypes.setItems(items);
     }
-    
+    else{
+        message.show(Alert.AlertType.WARNING, "Aviso", "Este asociado no tiene cuentas, crea una cuenta para asi poder depositar en ella.");
+    }
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        resetScreen();

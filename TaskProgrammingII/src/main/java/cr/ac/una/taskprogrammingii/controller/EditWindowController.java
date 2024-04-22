@@ -4,6 +4,7 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import cr.ac.una.taskprogrammingii.util.AppContext;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
@@ -41,9 +42,12 @@ public class EditWindowController extends Controller implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-
+   
+    String coopName = (String) AppContext.getInstance().get("coopName");
+    Image coopLogo = (Image) AppContext.getInstance().get("coopLogo");
+   
+               }
+    
     @FXML
     private void onActionBtnSave(ActionEvent event) {
     String newName = txtNameCoop.getText();
@@ -54,11 +58,14 @@ public class EditWindowController extends Controller implements Initializable {
             Image image = imgLogoCoop.getImage();
             String fileName = "logo_" + newName + ".png";
             Path destination = Paths.get("src/main/resources/cr/ac/una/taskprogrammingii/resources/" + fileName);
-
+         
             File outputFile = destination.toFile();
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", outputFile);
             
             message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Los cambios se han guardado exitosamente.");
+ 
+            AppContext.getInstance().set("coopName", newName);
+            AppContext.getInstance().set("coopLogo", image);
         } catch (IOException e) {
             e.printStackTrace();
             message.show(Alert.AlertType.ERROR, "Error:", "Error al guardar la imagen.");

@@ -5,6 +5,7 @@
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,33 +16,34 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="168.0" layoutY="109.0" prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Crear cuentas  a asociados " VBox.vgrow="ALWAYS" />
-            <VBox alignment="CENTER" prefHeight="102.0" prefWidth="596.0" spacing="5.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="619.0" styleClass="jfx-titulo-label" text="Crear cuentas  a asociados " textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+            <VBox alignment="CENTER" prefHeight="102.0" prefWidth="596.0" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" spacing="5.0" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <children>
-                        <MFXTextField fx:id="txtFoil" floatingText="Buscar con el folio " />
-                        <MFXButton fx:id="btnSearchWithFoil" onAction="#onActionBtnSearchWithFoil" prefHeight="29.0" prefWidth="89.0" text="Buscar ">
+                        <MFXTextField fx:id="txtFoil" floatingText="Buscar con el folio " prefHeight="49.0" prefWidth="313.0" />
+                        <MFXButton fx:id="btnSearchWithFoil" buttonType="RAISED" onAction="#onActionBtnSearchWithFoil" prefHeight="29.0" prefWidth="92.0" styleClass="jfx-btn-Search" text="Buscar ">
                            <graphic>
-                              <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" smooth="false" />
                            </graphic>
                         </MFXButton>
                      </children>
                   </HBox>
-                  <MFXButton fx:id="btnSearchWithName" onAction="#onActionBtnSearhWithName" text="¿Has olvidado el folio?" />
+                  <MFXButton fx:id="btnSearchWithName" onAction="#onActionBtnSearhWithName" prefHeight="25.0" prefWidth="162.0" text="¿Has olvidado el folio?" />
                </children>
             </VBox>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="320.0" prefWidth="600.0" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
-                  <MFXLegacyTableView fx:id="tbvAccountTypesTable" onDragDetected="#onDragDetectedFromAccountTypesTable" onDragDropped="#onDragDroppedFromAccountTypesTable" onDragOver="#onDragOverFromAccountTypesTable" prefHeight="259.0" prefWidth="248.0">
+                  <MFXLegacyTableView fx:id="tbvAccountTypesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onDragDetected="#onDragDetectedFromAccountTypesTable" onDragDropped="#onDragDroppedFromAccountTypesTable" onDragOver="#onDragOverFromAccountTypesTable" prefHeight="259.0" prefWidth="248.0">
                      <columns>
                         <TableColumn fx:id="tbcAccountTypesTable" prefWidth="247.0" text="Cuentas disponibles" />
                      </columns>
                   </MFXLegacyTableView>
-                  <MFXLegacyTableView fx:id="tbvUserAccountsTable" onDragDetected="#onDragDetectedFromUserAccountsTable" onDragDropped="#onDragDroppedToUserAccountsTable" onDragOver="#onDragOverToUserAccountsTable" prefHeight="316.0" prefWidth="249.0">
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <MFXLegacyTableView fx:id="tbvUserAccountsTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onDragDetected="#onDragDetectedFromUserAccountsTable" onDragDropped="#onDragDroppedToUserAccountsTable" onDragOver="#onDragOverToUserAccountsTable" prefHeight="316.0" prefWidth="249.0">
                      <columns>
                         <TableColumn fx:id="tbcUserAccountsTable" prefWidth="247.0" text="Cuentas del asociado" />
                      </columns>
@@ -54,7 +56,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
                   <MFXButton fx:id="btnSave" onAction="#onActionBtnSave" text="Guardar" />
                </children>

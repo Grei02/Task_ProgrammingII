@@ -230,7 +230,7 @@ public class registerAssociateSectionController extends Controller implements In
                 .setMarginLeft(35);
             
             
-            
+        
             document.add(paragraphName);
             document.add(paragraphAge);
             document.add(paragraphFolio);

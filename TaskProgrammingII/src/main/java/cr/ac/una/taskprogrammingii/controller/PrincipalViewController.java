@@ -57,10 +57,8 @@ public class PrincipalViewController extends Controller implements Initializable
     private MFXButton btnAccountsOpening;
     
     @FXML
-    private ImageView imgImageCoop;
+    private MFXButton btnUserMaintenance;
     
-    @FXML
-    private Label lblNameCoop;
     
     /**
      * Initializes the controller class.
@@ -68,10 +66,10 @@ public class PrincipalViewController extends Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        String coopName = (String) AppContext.getInstance().get("coopName");
-        Image coopLogo = (Image) AppContext.getInstance().get("coopLogo");
-        updateCoopName(coopName);
-        updateCoopLogo(coopLogo);
+        //String coopName = (String) AppContext.getInstance().get("coopName");
+        //mage coopLogo = (Image) AppContext.getInstance().get("coopLogo");
+        //updateCoopName(coopName);
+       // updateCoopLogo(coopLogo);
         setButtonVisibility();
     }    
 
@@ -79,13 +77,13 @@ public class PrincipalViewController extends Controller implements Initializable
     public void initialize() {
     }
 
-    public void updateCoopName(String newName) {
-        lblNameCoop.setText(newName);
-    }
+//    public void updateCoopName(String newName) {
+//        lblNameCoop.setText(newName);
+//    }
 
-    public void updateCoopLogo(Image newLogo) {
-        imgImageCoop.setImage(newLogo);
-    }
+//    public void updateCoopLogo(Image newLogo) {
+//        imgImageCoop.setImage(newLogo);
+//    }
 
     @FXML
     void OnActionBtnAccountInquiry(ActionEvent event) {
@@ -130,6 +128,10 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private void OnActionBtnAccountMant(ActionEvent event) {
         FlowController.getInstance().goView("AccountMaintenanceView");
+    }
+     @FXML
+    private void onActionBtnUserMaintenance(ActionEvent event) {
+         FlowController.getInstance().goView("userMaintenanceView");
     }
 
     private void setButtonVisibility() {

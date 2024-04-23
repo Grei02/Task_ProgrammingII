@@ -18,18 +18,20 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         
         FlowController.getInstance().InitializeFlow(stage, null);
+        FlowController.getInstance().goMain();
     }
 
     public static void main(String[] args) {
+        
         if(args.length==1){
             AppContext.getInstance().set("typeIncome", args[0]);
-            if (args[0].equals("P")){
+            if (args[0].equals(" P")){
                 FlowController.getInstance().goViewInWindow("startTeacherSetctionView");
             }
-            else if(args[0].equals("A")){
+            else if(args[0].equals(" A")){
                 FlowController.getInstance().goViewInWindow("startAssociateSectionView");
             }
-            else if(args[0].equals("S")){
+            else if(args[0].equals(" S")){
                 FlowController.getInstance().goViewInWindow("startStudentfView");
             }
         }

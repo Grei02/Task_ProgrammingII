@@ -4,6 +4,7 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import cr.ac.una.taskprogrammingii.controller.Controller;
 import cr.ac.una.taskprogrammingii.util.AppContext;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -25,6 +26,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.IOException;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 /**
  * FXML Controller class
@@ -42,11 +51,9 @@ public class EditWindowController extends Controller implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   
-    String coopName = (String) AppContext.getInstance().get("coopName");
-    Image coopLogo = (Image) AppContext.getInstance().get("coopLogo");
-   
-               }
+    //String coopName = (String) AppContext.getInstance().get("coopName");
+    //Image coopLogo = (Image) AppContext.getInstance().get("coopLogo");
+    }
     
     @FXML
     private void onActionBtnSave(ActionEvent event) {
@@ -56,16 +63,16 @@ public class EditWindowController extends Controller implements Initializable {
    
         try {
             Image image = imgLogoCoop.getImage();
-            String fileName = "logo_" + newName + ".png";
-            Path destination = Paths.get("src/main/resources/cr/ac/una/taskprogrammingii/resources/" + fileName);
-         
+            String fileName = "logo.png";
+            String userDir=System.getProperty("user.dir");
+           // Path destination = Paths.get(userDir+"/src/main/resources/cr/ac/una/taskprogrammingii/resources/" + fileName);
+              Path destination = Paths.get(userDir+"\\target\\classes\\cr\\ac\\una\\taskprogrammingii\\resources\\" + fileName);
+
             File outputFile = destination.toFile();
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", outputFile);
             
-            message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Los cambios se han guardado exitosamente.");
- 
-            AppContext.getInstance().set("coopName", newName);
-            AppContext.getInstance().set("coopLogo", image);
+            //AppContext.getInstance().set("coopName", newName);
+            //AppContext.getInstance().set("coopLogo", image);
         } catch (IOException e) {
             e.printStackTrace();
             message.show(Alert.AlertType.ERROR, "Error:", "Error al guardar la imagen.");
@@ -75,13 +82,11 @@ public class EditWindowController extends Controller implements Initializable {
     } else {
         if (newName.isEmpty() && imgLogoCoop.getImage() == null) {
              message.show(Alert.AlertType.ERROR, "Error:", "Falta ingresar el nombre de la cooperativa y seleccionar un logo.");
-        } else if (newName.isEmpty()) {
-             message.show(Alert.AlertType.ERROR, "Error:", "Falta ingresar el nombre de la cooperativa.");
-        } else {
+        } else{
              message.show(Alert.AlertType.ERROR, "Error:", "Falta seleccionar un logo.");
         }
     }
-}
+}   
     @FXML
     private void onImageClicked(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -93,7 +98,7 @@ public class EditWindowController extends Controller implements Initializable {
             Image newImage = new Image(selectedFile.toURI().toString());
             imgLogoCoop.setImage(newImage);
         }
-    }
+    }   
     @Override
     public void initialize() {
     }

@@ -177,7 +177,7 @@ public class FlowController {
         controller.initialize();
         Stage stage = new Stage();
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.getIcons().add(new Image("cr/ac/una/TaskProgrammingII/resources/LogoUNArojo.png"));
+      //  stage.getIcons().add(new Image("cr/ac/una/TaskProgrammingII/resources/LogoUNArojo.png"));
         stage.setTitle(controller.getNombreVista());
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {

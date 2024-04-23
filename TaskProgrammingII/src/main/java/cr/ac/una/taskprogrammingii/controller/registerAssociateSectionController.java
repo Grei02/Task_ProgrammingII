@@ -157,7 +157,7 @@ public class registerAssociateSectionController extends Controller implements In
         if (!associated.getName().isBlank() && !associated.getLastName().isBlank() && !associated.getAge().isBlank()&&
                 !associated.getSecondLastName().isBlank()) {
             createFolio();
-            FlowController.getInstance().goViewInWindowModal("PhotographyView", stage, Boolean.FALSE);
+            FlowController.getInstance().goViewInWindowModal("PhotographyView", getStage(), Boolean.FALSE);
         }
         else{
             message.show(Alert.AlertType.WARNING, "Alerta", "Has dejado un espacio en blanco, por favor llenalo o no podras registarte.");

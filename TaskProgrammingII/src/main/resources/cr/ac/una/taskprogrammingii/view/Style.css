@@ -116,4 +116,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-effect:dropshadow(gaussian,rgba(0.0,0.0,0.0,0.15),10.0,0.7,0.0,1.5);
     -fx-background-color: #ecc663
 }*/
-
+///configuacion para las matas 
+.mfx-table-view {
+    -fx-background-color:#4886d3;
+  -fx-background-radius: 5;
+  -fx-border-color: lightgray;
+  -fx-border-radius: 5;
+  -fx-padding: 0 0 2 0;
+}
+//para cuando se muve
+fx-table-view .virtual-flow {
+  -fx-background-color: transparent;
+  -track-color: rgb(230, 230, 230);
+  -thumb-color: rgb(137, 137, 137);
+  -thumb-hover-color: rgb(89, 88, 91);
+}

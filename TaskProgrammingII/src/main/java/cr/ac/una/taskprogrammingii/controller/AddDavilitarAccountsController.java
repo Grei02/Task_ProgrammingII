@@ -71,242 +71,293 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     private MFXTextField txtFoil;
     @FXML
     private MFXButton btnSave;
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-public void initialize(URL url, ResourceBundle rb) {
-    
-    tbcAccountTypesTable.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
-    List<String> accountTypes = fileManager.deserialize("accounts.txt");
-    ObservableList<String> accountTypesObservableList = FXCollections.observableArrayList(accountTypes);
-    tbvAccountTypesTable.setItems(accountTypesObservableList);
-  
-    tbcUserAccountsTable.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
-    ObservableList<String> userAccountsObservableList = FXCollections.observableArrayList();
-    tbvUserAccountsTable.setItems(userAccountsObservableList);
-}
-
- @Override
-    public void initialize() {
-    }
 
     @FXML
     private void onDragDetectedFromAccountTypesTable(MouseEvent event) {
-        String accountType = tbvAccountTypesTable.getSelectionModel().getSelectedItem();
-        
-        if (accountType != null) {
-            Dragboard dragboard = tbvAccountTypesTable.startDragAndDrop(TransferMode.MOVE);
-            ClipboardContent content = new ClipboardContent();
-            content.putString(accountType);
-            dragboard.setContent(content);
-            
-             tbvAccountTypesTable.getItems().remove(accountType);
-        }
-        event.consume();
+    String accountType = tbvAccountTypesTable.getSelectionModel().getSelectedItem();
+
+    if (accountType != null) {
+    Dragboard dragboard = tbvAccountTypesTable.startDragAndDrop(TransferMode.MOVE);
+    ClipboardContent content = new ClipboardContent();
+    content.putString(accountType);
+    dragboard.setContent(content);
+
+    tbvAccountTypesTable.getItems().remove(accountType);
+    }
+    event.consume();
     }
 
     @FXML
     private void onDragOverToUserAccountsTable(DragEvent event) {
-        if (event.getGestureSource() != tbvUserAccountsTable && event.getDragboard().hasString()) {
-            event.acceptTransferModes(TransferMode.MOVE);
-        }
-        event.consume();
+    if (event.getGestureSource() != tbvUserAccountsTable && event.getDragboard().hasString()) {
+    event.acceptTransferModes(TransferMode.MOVE);
+    }
+    event.consume();
     }
 
     @FXML
-private void onDragDroppedToUserAccountsTable(DragEvent event) {
+    private void onDragDroppedToUserAccountsTable(DragEvent event) {
     Dragboard dragboard = event.getDragboard();
     boolean success = false;
-    
+
     if (dragboard.hasString()) {
-        String accountType = dragboard.getString();
-         tbvUserAccountsTable.getItems().add(accountType);
-          success = true;
+    String accountType = dragboard.getString();
+    tbvUserAccountsTable.getItems().add(accountType);
+    success = true;
     }
     event.setDropCompleted(success);
     event.consume();
-}
+    }
 
-@FXML
-private void onDragDetectedFromUserAccountsTable(MouseEvent event) {
+    @FXML
+    private void onDragDetectedFromUserAccountsTable(MouseEvent event) {
     String studentAccount = tbvUserAccountsTable.getSelectionModel().getSelectedItem();
     if (studentAccount != null) {
-        Dragboard dragboard = tbvUserAccountsTable.startDragAndDrop(TransferMode.MOVE);
-        ClipboardContent content = new ClipboardContent();
-        content.putString(studentAccount);
-        dragboard.setContent(content);
-         tbvUserAccountsTable.getItems().remove(studentAccount);
+    Dragboard dragboard = tbvUserAccountsTable.startDragAndDrop(TransferMode.MOVE);
+    ClipboardContent content = new ClipboardContent();
+    content.putString(studentAccount);
+    dragboard.setContent(content);
+    tbvUserAccountsTable.getItems().remove(studentAccount);
     }
     event.consume();
-}
+    }
 
-@FXML
-private void onDragOverFromAccountTypesTable(DragEvent event) {
+    @FXML
+    private void onDragOverFromAccountTypesTable(DragEvent event) {
     if (event.getGestureSource() != tbvAccountTypesTable && event.getDragboard().hasString()) {
-        event.acceptTransferModes(TransferMode.MOVE);
+    event.acceptTransferModes(TransferMode.MOVE);
     }
     event.consume();
-}
+    }
 
-@FXML
-private void onDragDroppedFromAccountTypesTable(DragEvent event) {
+    @FXML
+    private void onDragDroppedFromAccountTypesTable(DragEvent event) {
     Dragboard dragboard = event.getDragboard();
     boolean success = false;
     if (dragboard.hasString()) {
-        String accountType = dragboard.getString();
+    String accountType = dragboard.getString();
     Account account = new Account(accountType,0, new ArrayList<>());
-        tbvAccountTypesTable.getItems().add(accountType);
-        success = true;
+    tbvAccountTypesTable.getItems().add(accountType);
+    success = true;
     }
     event.setDropCompleted(success);
     event.consume();
-}
+    }
 
-@FXML
-private void onActionBtnSearchWithFoil(ActionEvent event) {
-      String folio = txtFoil.getText(); 
-      
+    @FXML
+    private void onActionBtnSearchWithFoil(ActionEvent event) {
+    String folio = txtFoil.getText().trim().toUpperCase(); 
+
     if (!folio.isEmpty()) { 
-        Associated associated = findAssociateByFolio(folio); 
-        if (associated != null) {
-  
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmación");
-            alert.setHeaderText("Asociado encontrado por folio:");
-            alert.setContentText("Nombre: " + associated.getName() + " " + associated.getLastName()+ " " + associated.getSecondLastName() + "\n¿Deseas desplegar las cuentas de este asociado?");
-            
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                displayAssociatedAccounts(associated);
-            }
-        } else {
-            message.show(Alert.AlertType.ERROR, "Error", "No se encontró ningún asociado con el número de folio proporcionado.");
-        }
+    Associated associated = findAssociateByFolio(folio); 
+    if (associated != null) {
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Confirmación");
+    alert.setHeaderText("Asociado encontrado por folio:");
+    alert.setContentText("Nombre: " + associated.getName() + " " + associated.getLastName()+ " " + associated.getSecondLastName() + "\n¿Deseas desplegar las cuentas de este asociado?");
+    initializeTable(associated);
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.isPresent() && result.get() == ButtonType.OK) {
+    displayAssociatedAccounts(associated);
+    }
     } else {
-        message.show(Alert.AlertType.ERROR, "Error", "Por favor, introduce un número de folio.");
+    message.show(Alert.AlertType.ERROR, "Error", "No se encontró ningún asociado con el número de folio proporcionado.");
     }
-}
-
-private void displayAssociatedAccounts(Associated associated) {
-   List<Account> accountList = associated.getAcountList();
-    ObservableList<String> accountData = FXCollections.observableArrayList();
-    for (Account account : accountList) {
-        String accountInfo = account.getType();
-        accountData.add(accountInfo);
+    } else {
+    message.show(Alert.AlertType.ERROR, "Error", "Por favor, introduce un número de folio.");
     }
-    tbvUserAccountsTable.setItems(accountData);
-}
-
-private Associated findAssociateByFolio(String folio) {
-    List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
-    for (Associated associated : associatedList) {
-        if (folio.equals(associated.getFolio())) {
-            return associated;
-        }
     }
-    return null;
-}
 
-@FXML
-private void onActionBtnSearhWithName(ActionEvent event) {
-     FlowController.getInstance().goViewInWindowModal("searchByNameView", stage, Boolean.FALSE);
-}
+    @FXML
+    private void onActionBtnSearhWithName(ActionEvent event) {
+    FlowController.getInstance().goViewInWindowModal("searchByNameView", stage, Boolean.FALSE);
+    }
 
-  @FXML
-private void onActionBtnSave(ActionEvent event) {
+    @FXML
+    private void onActionBtnSave(ActionEvent event) {
+        createDeleteAccounts();
+        resetScreen(); 
+    }
     
-    List<Associated> associatedList=new ArrayList<>();
-    associatedList=fileManager.deserialize("ListAssociated.txt");
-     searchAssociated(associatedList);
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        resetScreen();
+    }
+
+    @Override
+    public void initialize() {
+        resetScreen();
+    }
     
-    if(associated!=null){
-        List<String> userAccountsList = new ArrayList<>();
-        List<String> availableAccountsList = new ArrayList<>();
-        loadTableValues(userAccountsList,availableAccountsList);
-        addAccount(userAccountsList);
-        deleteAccount(availableAccountsList);
-        fileManager.serialization(associatedList, "ListAssociated.txt");
-        if(hasAmount){
+    public void createDeleteAccounts(){
+        List<Associated> associatedList=new ArrayList<>();
+        associatedList=fileManager.deserialize("ListAssociated.txt");
+        searchAssociated(associatedList);
+        if(associated!=null){
+            List<String> userAccountsList = new ArrayList<>();
+            List<String> availableAccountsList = new ArrayList<>();
+            loadTableValues(userAccountsList,availableAccountsList);
+            addAccount(userAccountsList);
+            deleteAccount(availableAccountsList);
+            fileManager.serialization(associatedList, "ListAssociated.txt");
+            if(hasAmount){
             message.show(Alert.AlertType.WARNING, "Aviso", "No puedes deshabilitar una cuenta con monto.");
             hasAmount=false;
+            }
         }
     }
-}
+    
+    public void initializeTable(Associated associated){
+        tbcAccountTypesTable.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
+        typesAccountsAvailable(associated);
+        
+        tbcUserAccountsTable.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
+        displayAssociatedAccounts( findAssociateByFolio(txtFoil.getText().trim().toUpperCase()));
+    }
+    
+    public void typesAccountsAvailable(Associated associated){
+        List<Account> accountList = associated.getAcountList();
+        ObservableList<String> accountTypesObservableList = FXCollections.observableArrayList();
+        List<String> accountTypes = fileManager.deserialize("accounts.txt");
+        Boolean typeAvailable=false;
+        
+        if(accountList!=null){
+            for(String type:accountTypes){
+                for(Account account:accountList){
+                    if(type.equals(account.getType())){
+                        typeAvailable=true;
+                        break;
+                    }
+                }
+                if(!typeAvailable){
+                    accountTypesObservableList.add(type);
+                }
+                typeAvailable=false;
+            }
+            tbvAccountTypesTable.setItems(accountTypesObservableList);
+        }
+        
+    }
+    
+    public void displayAssociatedAccounts(Associated associated) {
+        List<Account> accountList = associated.getAcountList();
+        ObservableList<String> accountData = FXCollections.observableArrayList();
+        if(accountList!=null){
+            for (Account account : accountList) {
+            String accountInfo = account.getType();
+            accountData.add(accountInfo);
+            }
+            tbvUserAccountsTable.setItems(accountData);
+        }
+        
+    }
 
-public void loadTableValues(List<String> userAccountsList,List<String> availableAccountsList){
+    private Associated findAssociateByFolio(String folio) {
+        List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
+        for (Associated associated : associatedList) {
+            if (folio.equals(associated.getFolio().trim().toUpperCase())) {
+                enableButtons();
+                return associated;
+            }
+        } 
+        return null;
+    }
+    
+    public void enableButtons(){
+        tbvUserAccountsTable.setDisable(false);
+        tbvAccountTypesTable.setDisable(false);
+        btnSave.setDisable(false);
+        btnSearchWithFoil.setDisable(true);
+        btnSearchWithName.setDisable(true);
+        txtFoil.setDisable(true);
+    }
+
+    public void loadTableValues(List<String> userAccountsList,List<String> availableAccountsList){
     for (Object item : tbvUserAccountsTable.getItems()) {
-        userAccountsList.add(tbcUserAccountsTable.getCellData(item.toString()));
+    userAccountsList.add(tbcUserAccountsTable.getCellData(item.toString()));
     }
     for (Object item : tbvAccountTypesTable.getItems()) {
-        availableAccountsList.add(tbcAccountTypesTable.getCellData(item.toString()));
+    availableAccountsList.add(tbcAccountTypesTable.getCellData(item.toString()));
     }
-}
+    }
 
-public void  searchAssociated(List <Associated> associatedList){
+    public void  searchAssociated(List <Associated> associatedList){
         associated =new Associated();
         for(Associated compareAssociated:associatedList){
             if(compareAssociated.getFolio().equals(txtFoil.getText().trim().toUpperCase())){
-                associated=compareAssociated;
-                break;
+            associated=compareAssociated;
+            break;
             }
         }
     }
 
-public void addAccount(List <String> listTypeAccount){
-    
+    public void addAccount(List <String> listTypeAccount){
+
     if(((associated.getAcountList()!=null) || (listTypeAccount!=null) ||(!associated.getAcountList().isEmpty()) || (!listTypeAccount.isEmpty()))){
-        List <Account> listOriginalUserAccount=associated.getAcountList();
-        Boolean accountExists= false;
-        for(String typeAccountCompare: listTypeAccount){
-            for(Account accountCompare:listOriginalUserAccount){
-                if(typeAccountCompare.equals(accountCompare.getType())){
-                    accountExists=true;
-                    break;
-                }
-            }
-            if(!accountExists){
-                associated.addAccount(new Account(typeAccountCompare, 0, null));
-            }
-            accountExists=false;
-        }
+    List <Account> listOriginalUserAccount=associated.getAcountList();
+    Boolean accountExists= false;
+    for(String typeAccountCompare: listTypeAccount){
+    for(Account accountCompare:listOriginalUserAccount){
+    if(typeAccountCompare.equals(accountCompare.getType())){
+        accountExists=true;
+        break;
     }
-}
+    }
+    if(!accountExists){
+    associated.addAccount(new Account(typeAccountCompare, 0, null));
+    }
+    accountExists=false;
+    }
+    }
+    }
 
-public void deleteAccount(List<String> availableAccountsList){
+    public void deleteAccount(List<String> availableAccountsList){
     if(((associated.getAcountList()!=null) || (!availableAccountsList.isEmpty()) || (!associated.getAcountList().isEmpty())||(!availableAccountsList.isEmpty()))){
-        List <Account> listOriginalUserAccount=associated.getAcountList();
-        for(String typeAccountCompare: availableAccountsList){
-            for(Account accountCompare:listOriginalUserAccount){ 
-                if(typeAccountCompare.equals(accountCompare.getType())){
-                    if(accountCompare.getAmount()==0){
-                        listOriginalUserAccount.remove(accountCompare);
-                    }
-                    else{
-                        hasAmount=true;
-                    }
-                    break;
-                }
-            }
+    List <Account> listOriginalUserAccount=associated.getAcountList();
+    for(String typeAccountCompare: availableAccountsList){
+    for(Account accountCompare:listOriginalUserAccount){ 
+    if(typeAccountCompare.equals(accountCompare.getType())){
+        if(accountCompare.getAmount()==0){
+            listOriginalUserAccount.remove(accountCompare);
         }
+        else{
+            hasAmount=true;
+        }
+        break;
+    }
+    }
+    }
+    }
+
     }
     
-}
+    public void resetScreen(){
+        txtFoil.setDisable(false);
+        tbvUserAccountsTable.setDisable(true);
+        tbvAccountTypesTable.setDisable(true);
+        tbvAccountTypesTable.getItems().clear();
+        tbvUserAccountsTable.getItems().clear();
+        btnSave.setDisable(true);
+        txtFoil.setText(null);
 
-// Método para actualizar los datos del asociado en el archivo
-private void updateAssociatedDataInFile(Associated associated) {
+        btnSearchWithFoil.setDisable(false);
+        btnSearchWithName.setDisable(false);
+    }
+
+    // Método para actualizar los datos del asociado en el archivo
+    private void updateAssociatedDataInFile(Associated associated) {
     List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
-    
+
     // Buscamos al asociado por su número de folio y lo reemplazamos con el asociado actualizado
     for (int i = 0; i < associatedList.size(); i++) {
-        if (associated.getFolio().equals(associatedList.get(i).getFolio())) {
-            associatedList.set(i, associated);
-            break;
-        }
+    if (associated.getFolio().equals(associatedList.get(i).getFolio())) {
+    associatedList.set(i, associated);
+    break;
     }
-    
+    }
+
     // Guardamos la lista actualizada de asociados en el archivo
     fileManager.serialization(associatedList, "ListAssociated.txt");
-}
+    }
 
 }

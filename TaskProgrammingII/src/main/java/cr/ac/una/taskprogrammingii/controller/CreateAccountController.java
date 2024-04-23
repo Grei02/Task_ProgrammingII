@@ -36,15 +36,19 @@ public class CreateAccountController extends Controller   implements Initializab
     String newAccount = txtNameAccount.getText();
     if (!newAccount.isEmpty()) {
         List<String> existingAccounts = fileManager.deserialize("accounts.txt");
-        if (!existingAccounts.contains(newAccount)) {
-            listDeserialization=fileManager.deserialize("accounts.txt");
-            listDeserialization.add(newAccount);
-            fileManager.serialization(listDeserialization, "accounts.txt");
-           message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Cuenta guardada con éxito.");
-          
-        } else {
+        for(String accountTypeCompare:existingAccounts) {
+            if(!(accountTypeCompare.trim().toUpperCase().equals(accountTypeCompare.trim().toUpperCase()))){
+                listDeserialization=fileManager.deserialize("accounts.txt");
+                listDeserialization.add(newAccount);
+                fileManager.serialization(listDeserialization, "accounts.txt");
+                message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Cuenta guardada con éxito.");
+                break;
+            }
+            else {
              message.show(Alert.AlertType.ERROR, "Error", "La cuenta ya está registrada..");
-            
+             break;
+        } 
+
         }
     } else {
          message.show(Alert.AlertType.ERROR, "Error", "El nombre de la cuenta no puede estar vacío.");

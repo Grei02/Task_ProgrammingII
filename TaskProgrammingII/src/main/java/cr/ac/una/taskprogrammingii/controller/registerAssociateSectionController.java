@@ -86,18 +86,24 @@ public class registerAssociateSectionController extends Controller implements In
 
     @FXML
     void onActionBtnTakePhoto(ActionEvent event) {
-        associated.setName(txtuserName.getText().trim());
-        associated.setLastName(txtUserLastName.getText().trim());
-        associated.setAge(Integer.toString(spnAge.getValue()));
-        associated.setSecondLastName(txtSecondUserLastName.getText().trim());
-        if(!existsAssociate()){
-            permissionsTakePhotos();
+        String expresionRegular = "^[a-zA-Z]+$";
+        if((txtuserName.getText().matches(expresionRegular))&&(txtUserLastName.getText().matches(expresionRegular))&&
+                (txtSecondUserLastName.getText().matches(expresionRegular))){
+            associated.setName(txtuserName.getText().trim());
+            associated.setLastName(txtUserLastName.getText().trim());
+            associated.setAge(Integer.toString(spnAge.getValue()));
+            associated.setSecondLastName(txtSecondUserLastName.getText().trim());
+            if(!existsAssociate()){
+                permissionsTakePhotos();
+            }
+            else{
+                message.show(Alert.AlertType.WARNING, "Alerta", "Ya hay una persona registrada con el mismo nombre");
+                cleanComponents();
+            }
         }
         else{
-            message.show(Alert.AlertType.WARNING, "Alerta", "Ya hay una persona registrada con el mismo nombre");
-            cleanComponents();
+                message.show(Alert.AlertType.WARNING, "Alerta", "Estas ingresando numeros en un espacio de texto.");
         }
-       
     }
     
     @FXML

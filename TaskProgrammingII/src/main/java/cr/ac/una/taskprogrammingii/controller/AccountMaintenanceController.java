@@ -22,11 +22,14 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
+import javafx.scene.layout.AnchorPane;
 
 public class AccountMaintenanceController extends Controller implements Initializable {
     
     Mensaje message = new Mensaje();
     private FileManager<Account> fileManager = new FileManager<>();
+    @FXML
+    private AnchorPane root;
     @FXML
     private TableView<Account> tbvAccountsList;
     @FXML
@@ -45,6 +48,7 @@ public class AccountMaintenanceController extends Controller implements Initiali
         ObservableList<Account> accountsObservableList = FXCollections.observableArrayList(accounts);
         tbvAccountsList.setItems(accountsObservableList);
     }
+    
      @Override
     public void initialize() {
     }

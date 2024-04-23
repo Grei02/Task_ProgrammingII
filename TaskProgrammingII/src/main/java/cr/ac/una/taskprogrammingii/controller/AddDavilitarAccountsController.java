@@ -39,6 +39,7 @@ import javafx.scene.input.TransferMode;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import java.util.HashSet;
 import java.util.Set;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -52,6 +53,8 @@ public class AddDavilitarAccountsController extends Controller implements Initia
    Associated associated = new Associated();
    Boolean hasAmount=false;
    
+   @FXML
+    private AnchorPane root;
     @FXML
     private MFXLegacyTableView<String> tbvAccountTypesTable;
  @FXML

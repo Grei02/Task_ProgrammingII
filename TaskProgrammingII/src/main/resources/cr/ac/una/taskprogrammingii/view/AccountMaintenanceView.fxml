@@ -8,47 +8,47 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.AccountMaintenanceController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.AccountMaintenanceController">
    <children>
-      <StackPane layoutX="110.0" layoutY="70.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="402.0" fitWidth="601.0" pickOnBounds="true" preserveRatio="true" />
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+            <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" prefHeight="44.0" prefWidth="571.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="32.0" prefWidth="571.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="571.0" styleClass="jfx-titulo-label" text="Mantenimiento de cuentas " VBox.vgrow="ALWAYS" />
+                  <HBox alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="571.0" spacing="5.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="571.0" styleClass="jfx-titulo-label" text="Mantenimiento de cuentas " VBox.vgrow="ALWAYS" />
-                        <HBox alignment="TOP_RIGHT" prefHeight="15.0" prefWidth="571.0" spacing="5.0">
-                           <children>
-                              <MFXButton fx:id="btnrefreshWindown" alignment="CENTER" buttonType="RAISED" onAction="#OnActionBtnRefreshWindown" prefHeight="25.0" prefWidth="104.0" styleClass="jfx-btn-refreshWindown" text="Actualizar">
-                                 <graphic>
-                                    <ImageView fitHeight="13.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </MFXButton>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <MFXLegacyTableView fx:id="tbvAccountsList" prefHeight="257.0" prefWidth="571.0" VBox.vgrow="ALWAYS">
-                     <columns>
-                        <TableColumn fx:id="tbcAccountsColumn" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="600.0" text="Cuentas " />
-                     </columns>
-                  </MFXLegacyTableView>
-                  <HBox alignment="CENTER" prefHeight="48.0" prefWidth="601.0" spacing="10.0">
-                     <children>
-                        <MFXButton fx:id="btnExit" onAction="#onActionBtnExit" text="Cancelar" />
-                        <MFXButton fx:id="btnDelete" onAction="#OnActionBtnDelete" styleClass="btnExit" text="Eliminar " />
+                        <MFXButton fx:id="btnrefreshWindown" alignment="CENTER" buttonType="RAISED" onAction="#OnActionBtnRefreshWindown" prefHeight="25.0" prefWidth="104.0" styleClass="jfx-btn-refreshWindown" text="Actualizar">
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </MFXButton>
                      </children>
                   </HBox>
                </children>
-               <padding>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </padding>
             </VBox>
+            <MFXLegacyTableView fx:id="tbvAccountsList" prefHeight="257.0" prefWidth="571.0" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="tbcAccountsColumn" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="600.0" text="Cuentas " />
+               </columns>
+            </MFXLegacyTableView>
+            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="601.0" spacing="10.0">
+               <children>
+                  <MFXButton fx:id="btnExit" maxWidth="1.7976931348623157E308" onAction="#onActionBtnExit" text="Cancelar" HBox.hgrow="ALWAYS" />
+                  <MFXButton fx:id="btnDelete" maxWidth="1.7976931348623157E308" onAction="#OnActionBtnDelete" styleClass="btnExit" text="Eliminar " HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
          </children>
-      </StackPane>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </VBox>
    </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 </AnchorPane>

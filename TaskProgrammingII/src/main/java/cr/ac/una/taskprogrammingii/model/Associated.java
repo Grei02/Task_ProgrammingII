@@ -27,6 +27,7 @@ public class Associated implements Serializable {
         addressPhotography=null;
         acountList=null;
     }
+    
     public Associated(String name,String lastName,String secondLastName,String folio,String age){
         this.name=name;
         this.lastName=lastName;

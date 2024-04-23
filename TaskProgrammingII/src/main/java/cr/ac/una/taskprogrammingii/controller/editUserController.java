@@ -27,6 +27,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -37,7 +38,7 @@ import javafx.stage.FileChooser;
  *
  * @author USUARIO PZ UNA
  */
-public class UserMaintenenceController extends Controller  implements Initializable {
+public class editUserController extends Controller  implements Initializable {
 
     @FXML
     private MFXTextField txtFoil;
@@ -49,11 +50,19 @@ public class UserMaintenenceController extends Controller  implements Initializa
     private MFXButton btnSave;
     @FXML
     private ImageView imgUser;
+    @FXML
+    private TextField txtAge;
+    @FXML
+    private TextField txtLastName;
+    @FXML
+    private TextField txtSecondLastName;
+    @FXML
+    private TextField txtName;
     
    Mensaje message = new Mensaje();
-   FileManager fileManager= new FileManager();
+   FileManager fileManager= new FileManager(); 
    Associated associated = new Associated();
-
+   List<Associated> associatedList=null;
     Boolean isFoil=false;
     
     /**
@@ -62,38 +71,44 @@ public class UserMaintenenceController extends Controller  implements Initializa
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        enableComponent(true);
+        cleanComponent();
     }    
     
-  public void cleanComponents(){
+    public void cleanComponent(){
         txtFoil.setText(null);
         imgUser.setImage(null);
+        txtAge.setText(null);
+        txtName.setText(null);
+        txtLastName.setText(null);
+        txtSecondLastName.setText(null);
     }
 
     @FXML
     private void onActionBtnSearch(ActionEvent event) {
-        String folio = txtFoil.getText(); 
-      
-    if (!folio.isEmpty()) { 
-        Associated associated = findAssociateByFolio(folio); 
-        if (associated != null) {
-  
+              
+        if (findAssociateByFolio()) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmación");
             alert.setHeaderText("Asociado encontrado por folio:");
             alert.setContentText("Nombre: " + associated.getName() + " " + associated.getLastName()+ " " + associated.getSecondLastName() + "\n¿Deseas desplegar las cuentas de este asociado?");
+            txtName.setText(associated.getName());
+            txtLastName.setText(associated.getLastName());
+            txtSecondLastName.setText(associated.getSecondLastName());
+            txtAge.setText(associated.getAge());
+            enableComponent(false);
             
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 displayAssociatedImage(associated);
                 isFoil=true;
             }
-        } else {
-            message.show(Alert.AlertType.ERROR, "Error", "No se encontró ningún asociado con el número de folio proporcionado.");
-        }
-    } else {
-        message.show(Alert.AlertType.ERROR, "Error", "Por favor, introduce un número de folio.");
-    }
-    }
+        } 
+        else {
+                    message.show(Alert.AlertType.ERROR, "Error", "No se encontró ningún asociado con el número de folio proporcionado.");
+                }
+    } 
+
 
     @FXML
     private void onImageClicked(MouseEvent event) {
@@ -115,26 +130,43 @@ public class UserMaintenenceController extends Controller  implements Initializa
 
     @FXML
     private void onActionBtnExit(ActionEvent event) {
-        cleanComponents();
+        enableComponent(true);
+        cleanComponent();
     }
 
     @FXML
     private void onActionBtnSave(ActionEvent event) {
-        
-String routeRoot = System.getProperty("user.dir");
-String imagePath = routeRoot + File.separator + "AssociatedPhotographs" + File.separator + associated.getFolio() + ".png";
-associated.setAddressPhotography(imagePath);
- }
-
-    private Associated findAssociateByFolio(String folio) {
-    List<Associated> associatedList = fileManager.deserialize("ListAssociated.txt");
-    for (Associated associated : associatedList) {
-        if (folio.equals(associated.getFolio())) {
-            return associated;
-        }
+        if(!txtAge.getText().isEmpty()&&!txtLastName.getText().isEmpty()&&!txtName.getText().isEmpty()&&
+                !txtSecondLastName.getText().isEmpty()){
+            obtainUserData();
+            fileManager.serialization(associatedList, "ListAssociated.txt");
+            enableComponent(true);
+            cleanComponent();
+//        String routeRoot = System.getProperty("user.dir");
+//        String imagePath = routeRoot + File.separator + "AssociatedPhotographs" + File.separator + associated.getFolio() + ".png";
+//        associated.setAddressPhotography(imagePath);
+                }
+         }
+    
+    public void obtainUserData(){
+        associated.setName(txtName.getText());
+        associated.setLastName(txtLastName.getText());
+        associated.setSecondLastName(txtSecondLastName.getText());
+        associated.setAge(txtAge.getText());
     }
-    return null;
+
+    private Boolean findAssociateByFolio( ) {
+    associatedList = fileManager.deserialize("ListAssociated.txt");
+    if(!txtFoil.getText().isEmpty())
+        for (Associated associatedCompare : associatedList) {
+            if (txtFoil.getText().trim().toUpperCase().equals(associatedCompare.getFolio())) {
+                 associated=associatedCompare;
+                 return true;
+            }
+        }
+    return false;
 }
+    
     private void displayAssociatedImage(Associated associated) {
     String userDir = System.getProperty("user.dir");
     String imagePath = userDir + File.separator + "AssociatedPhotographs" + File.separator + associated.getFolio() + ".png";
@@ -148,9 +180,20 @@ associated.setAddressPhotography(imagePath);
         message.show(Alert.AlertType.WARNING, "Advertencia", "La imagen asociada no está disponible.");
     }
 }
-  
+    
+    public void enableComponent(Boolean anable){
+        txtFoil.setDisable(!anable);
+        btnSearch.setDisable(!anable);
+        txtAge.setDisable(anable);
+        txtName.setDisable(anable);
+        txtLastName.setDisable(anable);
+        txtSecondLastName.setDisable(anable);
+        btnSave.setDisable(anable);
+    }
     
  @Override
     public void initialize() {
+        enableComponent(true);
     }
+    
 }

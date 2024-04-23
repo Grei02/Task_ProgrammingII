@@ -66,7 +66,7 @@ public class EditWindowController extends Controller implements Initializable {
             String fileName = "logo.png";
             String userDir=System.getProperty("user.dir");
            // Path destination = Paths.get(userDir+"/src/main/resources/cr/ac/una/taskprogrammingii/resources/" + fileName);
-              Path destination = Paths.get(userDir+"\\target\\classes\\cr\\ac\\una\\taskprogrammingii\\resources\\" + fileName);
+           Path destination = Paths.get(userDir+"\\target\\classes\\cr\\ac\\una\\taskprogrammingii\\resources\\" + fileName);
 
             File outputFile = destination.toFile();
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", outputFile);

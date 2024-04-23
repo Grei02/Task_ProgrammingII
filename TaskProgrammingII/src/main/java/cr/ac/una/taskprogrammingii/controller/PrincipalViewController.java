@@ -131,7 +131,7 @@ public class PrincipalViewController extends Controller implements Initializable
     }
      @FXML
     private void onActionBtnUserMaintenance(ActionEvent event) {
-         FlowController.getInstance().goView("userMaintenanceView");
+         FlowController.getInstance().goView("UserMaintenenceView");
     }
 
     private void setButtonVisibility() {

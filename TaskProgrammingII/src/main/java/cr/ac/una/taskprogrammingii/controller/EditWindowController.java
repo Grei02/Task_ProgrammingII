@@ -54,39 +54,56 @@ public class EditWindowController extends Controller implements Initializable {
     //String coopName = (String) AppContext.getInstance().get("coopName");
     //Image coopLogo = (Image) AppContext.getInstance().get("coopLogo");
     }
-    
-    @FXML
-    private void onActionBtnSave(ActionEvent event) {
+    //se debe crear-consultar-
+  @FXML
+private void onActionBtnSave(ActionEvent event) {
     String newName = txtNameCoop.getText();
    
     if (!newName.isEmpty() && imgLogoCoop.getImage() != null) {
-   
         try {
             Image image = imgLogoCoop.getImage();
-            String fileName = "logo.png";
-            String userDir=System.getProperty("user.dir");
-           // Path destination = Paths.get(userDir+"/src/main/resources/cr/ac/una/taskprogrammingii/resources/" + fileName);
-           Path destination = Paths.get(userDir+"\\cr\\ac\\una\\taskprogrammingii\\resources\\" + fileName);
-
-            File outputFile = destination.toFile();
-            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", outputFile);
+            String fileName = "logo_" + newName + ".png";
             
-            //AppContext.getInstance().set("coopName", newName);
-            //AppContext.getInstance().set("coopLogo", image);
+           String destinationPath = System.getProperty("user.dir") + "/resources/" + fileName;
+            // Crear el archivo de destino
+            File outputFile = new File(destinationPath);
+            
+            // Verificar si se puede escribir en el directorio de destino
+            if (!outputFile.getParentFile().exists() && !outputFile.getParentFile().mkdirs()) {
+                // No se pudo crear el directorio de destino
+                throw new IOException("No se puede crear el directorio de destino");
+            }
+            
+            // Escribir la imagen en el archivo
+            if (!ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", outputFile)) {
+                // La escritura de la imagen falló
+                throw new IOException("La escritura de la imagen falló");
+            }
+            
+            // Mostrar mensaje de confirmación
+            message.show(Alert.AlertType.INFORMATION, "Confirmación", "Los cambios se han guardado exitosamente.");
+ 
+            // Almacenar el nombre de la cooperativa en el contexto de la aplicación
+            AppContext.getInstance().set("coopName", newName);
+            
+            // No es recomendable almacenar la imagen en el contexto de la aplicación debido a su tamaño
+            // AppContext.getInstance().set("coopLogo", image);
         } catch (IOException e) {
+            // Manejar la excepción
             e.printStackTrace();
-            message.show(Alert.AlertType.ERROR, "Error:", "Error al guardar la imagen.");
+            message.show(Alert.AlertType.ERROR, "Error", "Error al guardar la imagen: " + e.getMessage());
         }
-         message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Los cambios se han guardado exitosamente.");
-      
     } else {
+        // Mostrar mensajes de error si el nombre de la cooperativa o la imagen están ausentes
         if (newName.isEmpty() && imgLogoCoop.getImage() == null) {
-             message.show(Alert.AlertType.ERROR, "Error:", "Falta ingresar el nombre de la cooperativa y seleccionar un logo.");
-        } else{
-             message.show(Alert.AlertType.ERROR, "Error:", "Falta seleccionar un logo.");
+            message.show(Alert.AlertType.ERROR, "Error", "Falta ingresar el nombre de la cooperativa y seleccionar un logo.");
+        } else if (newName.isEmpty()) {
+            message.show(Alert.AlertType.ERROR, "Error", "Falta ingresar el nombre de la cooperativa.");
+        } else {
+            message.show(Alert.AlertType.ERROR, "Error", "Falta seleccionar un logo.");
         }
     }
-}   
+}
     @FXML
     private void onImageClicked(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();

@@ -62,7 +62,7 @@ private void onActionBtnSave(ActionEvent event) {
     if (!newName.isEmpty() && imgLogoCoop.getImage() != null) {
         try {
             Image image = imgLogoCoop.getImage();
-            String fileName = "logo_" + newName + ".png";
+            String fileName = "logo.png";
             
            String destinationPath = System.getProperty("user.dir") + "/resources/" + fileName;
             // Crear el archivo de destino

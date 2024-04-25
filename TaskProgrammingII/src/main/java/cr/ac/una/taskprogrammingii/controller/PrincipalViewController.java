@@ -7,7 +7,10 @@ package cr.ac.una.taskprogrammingii.controller;
 import cr.ac.una.taskprogrammingii.util.AppContext;
 import cr.ac.una.taskprogrammingii.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import java.io.File;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,15 +60,16 @@ public class PrincipalViewController extends Controller implements Initializable
     
      @FXML
     private MFXButton btnConsultDeleteAssociated;
+    @FXML
+    private ImageView imgCoop;
+    @FXML
+    private Label txtCoopName;
     
  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        //String coopName = (String) AppContext.getInstance().get("coopName");
-        //mage coopLogo = (Image) AppContext.getInstance().get("coopLogo");
-        //updateCoopName(coopName);
-       // updateCoopLogo(coopLogo);
+        // updateCoopName();
+       updateCoopLogo();
         setButtonVisibility();
     }    
 
@@ -73,13 +77,14 @@ public class PrincipalViewController extends Controller implements Initializable
     public void initialize() {
     }
 
-//    public void updateCoopName(String newName) {
-//        lblNameCoop.setText(newName);
-//    }
+    public void updateCoopName(String newName) {
+        txtCoopName.setText(newName);
+    }
 
-//    public void updateCoopLogo(Image newLogo) {
-//        imgImageCoop.setImage(newLogo);
-//    }
+    public void updateCoopLogo() {
+        Image image = new Image("src/main/resources/cr/ac/una/taskprogrammingii/resources/50colones");
+       imgCoop.setImage(image);
+    }
 
     @FXML
     void OnActionBtnAccountInquiry(ActionEvent event) {

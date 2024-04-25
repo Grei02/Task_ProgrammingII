@@ -5,6 +5,7 @@
 package cr.ac.una.taskprogrammingii.model;
 
 import cr.ac.una.taskprogrammingii.model.Associated;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,21 +16,26 @@ import java.util.ArrayList;
 import static java.util.Collections.addAll;
 import java.util.List;
 
-
 public class FileManager<T> {
 
     public void serialization(List<T> list, String filename) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+     String userDir = System.getProperty("user.dir");
+     String destinationPath = userDir + "/FileManager/" + filename;
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(destinationPath))) {
             oos.writeObject(list); 
-            System.out.println("Objeto serializado con éxito.");
+            System.out.println("Objeto serializado con éxito");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
     public List<T> deserialize(String filename) {
         List<T> list = new ArrayList<>();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
+String userDir = System.getProperty("user.dir");
+String destinationPath = userDir + "/FileManager/" + filename;
+
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(destinationPath))) {
             List<T> deserializedList = (List<T>) ois.readObject();
             list.addAll(deserializedList); 
         } catch (FileNotFoundException e) {
@@ -39,8 +45,10 @@ public class FileManager<T> {
         }
         return list;
     }
-    
      public void serializationRemove(List<T> elementsToRemove, String filename) {
+ String userDir = System.getProperty("user.dir");
+String destinationPath = userDir + "/FileManager/" + filename;
+
     List<T> list = deserialize(filename);
     list.removeAll(elementsToRemove);
     
@@ -52,6 +60,5 @@ public class FileManager<T> {
     
         }
      }
-
 }
 

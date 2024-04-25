@@ -19,7 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 
-
 public class CreateAccountController extends Controller   implements Initializable {
     Mensaje message= new Mensaje();
     private FileManager fileManager = new FileManager<>();
@@ -37,7 +36,7 @@ public class CreateAccountController extends Controller   implements Initializab
     if (!newAccount.isEmpty()) {
         List<String> existingAccounts = fileManager.deserialize("accounts.txt");
         for(String accountTypeCompare:existingAccounts) {
-            if(!(accountTypeCompare.trim().toUpperCase().equals(accountTypeCompare.trim().toUpperCase()))){
+            if(!(accountTypeCompare.trim().toUpperCase().equals(newAccount.trim().toUpperCase()))){
                 listDeserialization=fileManager.deserialize("accounts.txt");
                 listDeserialization.add(newAccount);
                 fileManager.serialization(listDeserialization, "accounts.txt");

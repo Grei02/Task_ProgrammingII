@@ -158,6 +158,7 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     initializeTable(associated);
     Optional<ButtonType> result = alert.showAndWait();
     if (result.isPresent() && result.get() == ButtonType.OK) {
+     typesAccountsAvailable(associated);
     displayAssociatedAccounts(associated);
     }
     } else {
@@ -220,19 +221,18 @@ public class AddDavilitarAccountsController extends Controller implements Initia
         ObservableList<String> accountTypesObservableList = FXCollections.observableArrayList();
         List<String> accountTypes = fileManager.deserialize("accounts.txt");
         Boolean typeAvailable=false;
-        
-        if(accountList!=null){
+
+        if(accountTypes!=null && !accountTypes.isEmpty()){
             for(String type:accountTypes){
-                for(Account account:accountList){
-                    if(type.equals(account.getType())){
-                        typeAvailable=true;
-                        break;
+                if(accountList!=null && !accountList.isEmpty()){
+                    for(Account account:accountList){
+                        if(!type.equals(account.getType())){
+                            accountTypesObservableList.add(type);
+                            break;
+                        }
                     }
                 }
-                if(!typeAvailable){
-                    accountTypesObservableList.add(type);
-                }
-                typeAvailable=false;
+                accountTypesObservableList.add(type);
             }
             tbvAccountTypesTable.setItems(accountTypesObservableList);
         }
@@ -297,11 +297,11 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     List <Account> listOriginalUserAccount=associated.getAcountList();
     Boolean accountExists= false;
     for(String typeAccountCompare: listTypeAccount){
-    for(Account accountCompare:listOriginalUserAccount){
-    if(typeAccountCompare.equals(accountCompare.getType())){
-        accountExists=true;
-        break;
-    }
+        for(Account accountCompare:listOriginalUserAccount){
+            if(typeAccountCompare.equals(accountCompare.getType())){
+                accountExists=true;
+                break;
+            }
     }
     if(!accountExists){
     associated.addAccount(new Account(typeAccountCompare, 0, null));

@@ -35,6 +35,7 @@ public class CreateAccountController extends Controller   implements Initializab
     String newAccount = txtNameAccount.getText();
     if (!newAccount.isEmpty()) {
         List<String> existingAccounts = fileManager.deserialize("accounts.txt");
+<<<<<<< Updated upstream
         for(String accountTypeCompare:existingAccounts) {
             if(!(accountTypeCompare.trim().toUpperCase().equals(newAccount.trim().toUpperCase()))){
                 listDeserialization=fileManager.deserialize("accounts.txt");
@@ -42,12 +43,26 @@ public class CreateAccountController extends Controller   implements Initializab
                 fileManager.serialization(listDeserialization, "accounts.txt");
                 message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Cuenta guardada con éxito.");
                 break;
+=======
+        if(existingAccounts!=null  && !existingAccounts.isEmpty()){
+            for(String accountTypeCompare:existingAccounts) {
+                if(!accountTypeCompare.trim().toUpperCase().equals(newAccount.trim().toUpperCase())){
+                    existingAccounts.add(newAccount);
+                    fileManager.serialization(existingAccounts,"accounts.txt");
+                    message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Cuenta guardada con éxito.");
+                    break;
+                }
+                else {
+                 message.show(Alert.AlertType.ERROR, "Error", "La cuenta ya está registrada..");
+                 break;
+                }
+>>>>>>> Stashed changes
             }
-            else {
-             message.show(Alert.AlertType.ERROR, "Error", "La cuenta ya está registrada..");
-             break;
         } 
-
+        else if(existingAccounts ==null || existingAccounts.isEmpty()){
+              existingAccounts.add(newAccount);  
+              fileManager.serialization(existingAccounts,"accounts.txt");
+              
         }
     } else {
          message.show(Alert.AlertType.ERROR, "Error", "El nombre de la cuenta no puede estar vacío.");

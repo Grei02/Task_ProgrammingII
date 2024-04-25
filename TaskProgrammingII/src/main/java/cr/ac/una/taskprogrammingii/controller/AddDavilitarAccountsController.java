@@ -77,21 +77,20 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     String accountType = tbvAccountTypesTable.getSelectionModel().getSelectedItem();
 
     if (accountType != null) {
-    Dragboard dragboard = tbvAccountTypesTable.startDragAndDrop(TransferMode.MOVE);
-    ClipboardContent content = new ClipboardContent();
-    content.putString(accountType);
-    dragboard.setContent(content);
-
-    tbvAccountTypesTable.getItems().remove(accountType);
+        Dragboard dragboard = tbvAccountTypesTable.startDragAndDrop(TransferMode.MOVE);
+        ClipboardContent content = new ClipboardContent();
+        content.putString(accountType);
+        dragboard.setContent(content);
+        tbvAccountTypesTable.getItems().remove(accountType);
     }
     event.consume();
     }
 
     @FXML
     private void onDragOverToUserAccountsTable(DragEvent event) {
-    if (event.getGestureSource() != tbvUserAccountsTable && event.getDragboard().hasString()) {
-    event.acceptTransferModes(TransferMode.MOVE);
-    }
+        if (event.getGestureSource() != tbvUserAccountsTable && event.getDragboard().hasString()) {
+            event.acceptTransferModes(TransferMode.MOVE);
+        }
     event.consume();
     }
 
@@ -150,23 +149,25 @@ public class AddDavilitarAccountsController extends Controller implements Initia
 
     if (!folio.isEmpty()) { 
     Associated associated = findAssociateByFolio(folio); 
-    if (associated != null) {
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    alert.setTitle("Confirmación");
-    alert.setHeaderText("Asociado encontrado por folio:");
-    alert.setContentText("Nombre: " + associated.getName() + " " + associated.getLastName()+ " " + associated.getSecondLastName() + "\n¿Deseas desplegar las cuentas de este asociado?");
-    initializeTable(associated);
-    Optional<ButtonType> result = alert.showAndWait();
-    if (result.isPresent() && result.get() == ButtonType.OK) {
-     typesAccountsAvailable(associated);
-    displayAssociatedAccounts(associated);
-    }
-    } else {
-    message.show(Alert.AlertType.ERROR, "Error", "No se encontró ningún asociado con el número de folio proporcionado.");
-    }
-    } else {
-    message.show(Alert.AlertType.ERROR, "Error", "Por favor, introduce un número de folio.");
-    }
+        if (associated != null) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setHeaderText("Asociado encontrado por folio:");
+        alert.setContentText("Nombre: " + associated.getName() + " " + associated.getLastName()+ " " + associated.getSecondLastName() + "\n¿Deseas desplegar las cuentas de este asociado?");
+        initializeTable(associated);
+        Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                 typesAccountsAvailable(associated);
+                displayAssociatedAccounts(associated);
+            }
+        } 
+        else {
+            message.show(Alert.AlertType.ERROR, "Error", "No se encontró ningún asociado con el número de folio proporcionado.");
+        }
+    } 
+        else {
+            message.show(Alert.AlertType.ERROR, "Error", "Por favor, introduce un número de folio.");
+        }
     }
 
     @FXML
@@ -293,7 +294,7 @@ public class AddDavilitarAccountsController extends Controller implements Initia
 
     public void addAccount(List <String> listTypeAccount){
 
-    if(((associated.getAcountList()!=null) || (listTypeAccount!=null) ||(!associated.getAcountList().isEmpty()) || (!listTypeAccount.isEmpty()))){
+    if(((associated.getAcountList()!=null) && (listTypeAccount!=null) && (!associated.getAcountList().isEmpty()) || (!listTypeAccount.isEmpty()))){
     List <Account> listOriginalUserAccount=associated.getAcountList();
     Boolean accountExists= false;
     for(String typeAccountCompare: listTypeAccount){
@@ -304,11 +305,11 @@ public class AddDavilitarAccountsController extends Controller implements Initia
             }
     }
     if(!accountExists){
-    associated.addAccount(new Account(typeAccountCompare, 0, null));
-    }
-    accountExists=false;
-    }
-    }
+            associated.addAccount(new Account(typeAccountCompare, 0, null));
+            }
+            accountExists=false;
+            }
+        }
     }
 
     public void deleteAccount(List<String> availableAccountsList){

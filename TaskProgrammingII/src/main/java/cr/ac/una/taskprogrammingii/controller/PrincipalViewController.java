@@ -69,22 +69,22 @@ public class PrincipalViewController extends Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // updateCoopName();
-       updateCoopLogo();
-        setButtonVisibility();
+//       updateCoopLogo();
+//        setButtonVisibility();
     }    
 
     @Override
     public void initialize() {
     }
 
-    public void updateCoopName(String newName) {
-        txtCoopName.setText(newName);
-    }
-
-    public void updateCoopLogo() {
-        Image image = new Image("src/main/resources/cr/ac/una/taskprogrammingii/resources/50colones");
-       imgCoop.setImage(image);
-    }
+//    public void updateCoopName(String newName) {
+//        txtCoopName.setText(newName);
+//    }
+//
+//    public void updateCoopLogo() {
+//        Image image = new Image("src/main/resources/cr/ac/una/taskprogrammingii/resources/50colones");
+//       imgCoop.setImage(image);
+//    }
 
     @FXML
     void OnActionBtnAccountInquiry(ActionEvent event) {

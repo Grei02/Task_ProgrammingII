@@ -35,15 +35,15 @@ public class CreateAccountController extends Controller   implements Initializab
     String newAccount = txtNameAccount.getText();
     if (!newAccount.isEmpty()) {
         List<String> existingAccounts = fileManager.deserialize("accounts.txt");
-<<<<<<< Updated upstream
-        for(String accountTypeCompare:existingAccounts) {
-            if(!(accountTypeCompare.trim().toUpperCase().equals(newAccount.trim().toUpperCase()))){
-                listDeserialization=fileManager.deserialize("accounts.txt");
-                listDeserialization.add(newAccount);
-                fileManager.serialization(listDeserialization, "accounts.txt");
-                message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Cuenta guardada con éxito.");
-                break;
-=======
+//<<<<<<< Updated upstream
+//        for(String accountTypeCompare:existingAccounts) {
+//            if(!(accountTypeCompare.trim().toUpperCase().equals(newAccount.trim().toUpperCase()))){
+//                listDeserialization=fileManager.deserialize("accounts.txt");
+//                listDeserialization.add(newAccount);
+//                fileManager.serialization(listDeserialization, "accounts.txt");
+//                message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Cuenta guardada con éxito.");
+//                break;
+//=======
         if(existingAccounts!=null  && !existingAccounts.isEmpty()){
             for(String accountTypeCompare:existingAccounts) {
                 if(!accountTypeCompare.trim().toUpperCase().equals(newAccount.trim().toUpperCase())){
@@ -56,7 +56,6 @@ public class CreateAccountController extends Controller   implements Initializab
                  message.show(Alert.AlertType.ERROR, "Error", "La cuenta ya está registrada..");
                  break;
                 }
->>>>>>> Stashed changes
             }
         } 
         else if(existingAccounts ==null || existingAccounts.isEmpty()){

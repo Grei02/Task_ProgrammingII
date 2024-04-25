@@ -26,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Priority;
 
@@ -37,6 +38,9 @@ public class AccountInquiryController extends Controller implements Initializabl
     private Account accountChose=new Account();
     private Associated associated;
     
+    @FXML
+    private AnchorPane root;
+
     @FXML
     private Button btnDetailed;
 

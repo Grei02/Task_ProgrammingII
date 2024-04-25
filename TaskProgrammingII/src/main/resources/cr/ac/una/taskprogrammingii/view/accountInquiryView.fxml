@@ -6,14 +6,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.AccountInquiryController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.AccountInquiryController">
    <children>
-      <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label prefHeight="17.0" prefWidth="108.0" text="Consultar cuenta " />
             <HBox prefHeight="562.0" prefWidth="600.0" spacing="15.0">
@@ -22,51 +23,54 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="36.0" prefWidth="193.0" spacing="6.0">
                            <children>
-                              <Label text="Folio:" />
-                              <TextField fx:id="txtFolio" onAction="#onActionTxtFolio" />
+                              <Label text="Folio:" HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="txtFolio" maxWidth="1.7976931348623157E308" onAction="#onActionTxtFolio" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                         <Label text="Despues de ingresar folio de le control." />
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="211.0" prefHeight="43.0" prefWidth="300.0" spacing="6.0">
                            <children>
                               <Label text="Cuenta:" />
-                              <MFXComboBox fx:id="cmbAccounts" onAction="#onActionCmbAccounts" prefHeight="40.0" prefWidth="196.0" HBox.hgrow="ALWAYS" />
+                              <MFXComboBox fx:id="cmbAccounts" maxWidth="1.7976931348623157E308" onAction="#onActionCmbAccounts" prefHeight="40.0" prefWidth="196.0" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="43.0" prefWidth="300.0" spacing="6.0">
                            <children>
                               <Label text="Nombre:" />
-                              <TextField fx:id="txtName" />
+                              <TextField fx:id="txtName" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="34.0" prefWidth="300.0" spacing="6.0">
                            <children>
                               <Label text="Apellidos:" />
-                              <TextField fx:id="txtLastName" />
+                              <TextField fx:id="txtLastName" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="43.0" prefWidth="300.0" spacing="6.0">
                            <children>
                               <Label text="Edad:" />
-                              <TextField fx:id="txtAge" />
+                              <TextField fx:id="txtAge" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="45.0" prefWidth="300.0" spacing="6.0">
                            <children>
                               <Label text="Saldo:" />
-                              <TextField fx:id="txtTotalAmount" />
+                              <TextField fx:id="txtTotalAmount" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="39.0" prefWidth="301.0" spacing="15.0">
                            <children>
-                              <Label text="Ver el estado de cuentas de manera:" />
-                              <Button fx:id="btnSummarized" mnemonicParsing="false" onAction="#onActionBtnSummarized" text="Resumido" />
-                              <Button fx:id="btnDetailed" mnemonicParsing="false" onAction="#onActionBtnDetailed" text="Detallado" />
+                              <Label text="Ver el estado de cuentas de manera:" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnSummarized" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnSummarized" text="Resumido" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnDetailed" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnDetailed" text="Detallado" HBox.hgrow="ALWAYS" />
                            </children>
+                           <VBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </VBox.margin>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="31.0" prefWidth="301.0">
                            <children>
-                              <Button fx:id="btnReady" mnemonicParsing="false" onAction="#onActionBtnReady" text="Listo" />
+                              <Button fx:id="btnReady" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnReady" text="Listo" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                      </children>
@@ -75,9 +79,12 @@
                      <children>
                         <MFXLegacyTableView fx:id="ltvTransferTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn fx:id="tbcTransferType" prefWidth="121.0" text="Transferencia" />
-                              <TableColumn fx:id="tbcAmount" minWidth="-1.0" prefWidth="139.0" text="Monto" />
+                              <TableColumn fx:id="tbcTransferType" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="121.0" text="Transferencia" />
+                              <TableColumn fx:id="tbcAmount" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="139.0" text="Monto" />
                            </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </MFXLegacyTableView>
                      </children></VBox>
                </children>

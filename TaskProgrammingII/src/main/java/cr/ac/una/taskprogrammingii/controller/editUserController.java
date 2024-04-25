@@ -76,7 +76,7 @@ public class editUserController extends Controller  implements Initializable {
     }    
     
     public void cleanComponent(){
-        txtFoil.setText(null);
+        txtFoil.clear();
         imgUser.setImage(null);
         txtAge.setText(null);
         txtName.setText(null);
@@ -136,17 +136,32 @@ public class editUserController extends Controller  implements Initializable {
 
     @FXML
     private void onActionBtnSave(ActionEvent event) {
-        if(!txtAge.getText().isEmpty()&&!txtLastName.getText().isEmpty()&&!txtName.getText().isEmpty()&&
-                !txtSecondLastName.getText().isEmpty()){
+        if(!checkUserDataNull()){
             obtainUserData();
+            String routeRoot = System.getProperty("user.dir");
+            String imagePath = routeRoot + File.separator + "AssociatedPhotographs" + File.separator + associated.getFolio() + ".png";
+            associated.setAddressPhotography(imagePath);
             fileManager.serialization(associatedList, "ListAssociated.txt");
             enableComponent(true);
             cleanComponent();
-//        String routeRoot = System.getProperty("user.dir");
-//        String imagePath = routeRoot + File.separator + "AssociatedPhotographs" + File.separator + associated.getFolio() + ".png";
-//        associated.setAddressPhotography(imagePath);
-                }
+            }
          }
+    
+    public Boolean checkUserDataEmpty(){
+        if(txtAge.getText().isEmpty() || txtLastName.getText().isEmpty() || txtName.getText().isEmpty() ||
+                txtSecondLastName.getText().isEmpty()){
+            return false;
+        }
+        return true;
+    }
+    
+    public Boolean checkUserDataNull(){
+        if (txtAge.getText()==null || txtLastName.getText()==null || txtName.getText()==null || 
+                txtSecondLastName.getText()==null || checkUserDataEmpty()){
+                return false;
+        }
+        return true;
+    }
     
     public void obtainUserData(){
         associated.setName(txtName.getText());
@@ -157,7 +172,7 @@ public class editUserController extends Controller  implements Initializable {
 
     private Boolean findAssociateByFolio( ) {
     associatedList = fileManager.deserialize("ListAssociated.txt");
-    if(!txtFoil.getText().isEmpty())
+    if(txtFoil.getText()!=null && !txtFoil.getText().isEmpty())
         for (Associated associatedCompare : associatedList) {
             if (txtFoil.getText().trim().toUpperCase().equals(associatedCompare.getFolio())) {
                  associated=associatedCompare;

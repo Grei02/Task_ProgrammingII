@@ -47,6 +47,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   -fx-background-radius: 10px;
   -fx-background-insets: 0px;
 }
+.btnDelete{
+  -fx-background-color: #600404;
+  -fx-background-radius: 10px;
+  -fx-background-insets: 0px;
+}
+
+.btnSearchName{
+    -fx-background-color: none;
+    -fx-text-fill: #0033ff;
+    -fx-font-size: 12;
+    -fx-cursor: hand;
+}
 
 .jfx-panelfondo{
     -fx-effect:dropshadow(gaussian,rgba(0.0,0.0,0.0,0.15),10.0,0.7,0.0,1.5);
@@ -129,7 +141,7 @@ fx-table-view .virtual-flow {
   -fx-background-color: transparent;
   -track-color: rgb(230, 230, 230);
   -thumb-color: rgb(137, 137, 137);
-  -thumb-hover-color: rgb(89, 88, 91);
+  -thumb-hover-color: rgb(51, 51, 255);
 }
 .jfx-btn-delete>ImageView{
     -fx-image:url("../resources/imgDelete.png");
@@ -138,9 +150,13 @@ fx-table-view .virtual-flow {
     -fx-image:url("../resources/imgMantenimiento.png");
 }
  .jfx-btnDelete->ImageView{
-    -fx-image:url("../resources/imgDelete.png");
+    -fx-image:url("../resources/imageDelete.png");
 }
-.jfx-btnDelete->ImageView{
-    -fx-image:url("../resources/imgSave.png");
+.jfx-btnSave->ImageView{
+    -fx-image:url("../resources/imageSave.png");
+}
+}
+.jfx-btnExit->ImageView{
+    -fx-image:url("../resources/imgExit.png");
 }
 }

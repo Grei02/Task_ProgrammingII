@@ -55,10 +55,10 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private MFXButton btnEditUser;
     
+     @FXML
+    private MFXButton btnConsultDeleteAssociated;
     
-    /**
-     * Initializes the controller class.
-     */
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -129,6 +129,11 @@ public class PrincipalViewController extends Controller implements Initializable
     void onActionBtnEditUser(ActionEvent event) {
          FlowController.getInstance().goView("editUserView");
     }
+    
+    @FXML
+    void onActionBtnConsultDeleteAssociated(ActionEvent event) {
+        FlowController.getInstance().goView("consultDeleteUserView");
+    }
 
     private void setButtonVisibility() {
         String args=(String) AppContext.getInstance().get("typeIncome");
@@ -155,6 +160,7 @@ public class PrincipalViewController extends Controller implements Initializable
                 btnAccountsOpening.setVisible(true);
                 btnMailboxStudent.setVisible(true);
                 btnTransfers.setVisible(true);
+                btnEditUser.setVisible(true);
                 
                 btnEdit.setManaged(true);
                 btnCreateAccount.setManaged(true);
@@ -165,7 +171,7 @@ public class PrincipalViewController extends Controller implements Initializable
                 btnAccountsOpening.setManaged(true);
                 btnMailboxStudent.setManaged(true);
                 btnTransfers.setManaged(true);
-
+                btnEditUser.setManaged(true);
             
                 btnEdit.setDisable(false);
                 btnCreateAccount.setDisable(false);
@@ -176,6 +182,7 @@ public class PrincipalViewController extends Controller implements Initializable
                 btnAccountsOpening.setDisable(false);
                 btnMailboxStudent.setDisable(false);
                 btnTransfers.setDisable(false);
+                btnEditUser.setDisable(false);
             }
             default -> {
             }
@@ -187,19 +194,16 @@ public class PrincipalViewController extends Controller implements Initializable
             btnCreateAccount.setVisible(true);
             btnAccountInquiry.setVisible(true);
             btnAccountMant.setVisible(true);
-            btnEditUser.setVisible(true);
-            
+           
             btnEdit.setManaged(true);
             btnCreateAccount.setManaged(true);
             btnAccountInquiry.setManaged(true);
             btnAccountMant.setManaged(true);
-            btnEditUser.setManaged(true);
             
             btnEdit.setDisable(false);
             btnCreateAccount.setDisable(false);
             btnAccountInquiry.setDisable(false);
             btnAccountMant.setDisable(false);
-            btnEditUser.setDisable(false);
     }
     
     public void buttonDisabledTeacher(){
@@ -208,18 +212,24 @@ public class PrincipalViewController extends Controller implements Initializable
             btnAccountsOpening.setVisible(false);
             btnMailboxStudent.setVisible(false);
             btnTransfers.setVisible(false);
+            btnEditUser.setVisible(false);
+            btnConsultDeleteAssociated.setVisible(false);
             
             btnRegister.setManaged(false);
             btnDeposit.setManaged(false);
             btnAccountsOpening.setManaged(false);
             btnMailboxStudent.setManaged(false);
             btnTransfers.setManaged(false);
+            btnEditUser.setManaged(false);
+            btnConsultDeleteAssociated.setManaged(false);
             
             btnRegister.setDisable(true);
             btnDeposit.setDisable(true);
             btnAccountsOpening.setDisable(true);
             btnMailboxStudent.setDisable(true);
             btnTransfers.setDisable(true);
+            btnEditUser.setDisable(true);
+            btnEditUser.setDisable(true);
     }
     
     public void buttonEnabledAssociate(){
@@ -244,6 +254,7 @@ public class PrincipalViewController extends Controller implements Initializable
             btnMailboxStudent.setVisible(false);
             btnTransfers.setVisible(false);
             btnEditUser.setVisible(false);
+            btnConsultDeleteAssociated.setVisible(false);
             
             btnEdit.setManaged(false);
             btnCreateAccount.setManaged(false);
@@ -252,6 +263,7 @@ public class PrincipalViewController extends Controller implements Initializable
             btnMailboxStudent.setManaged(false);
             btnTransfers.setManaged(false);
             btnEditUser.setManaged(false);
+            btnConsultDeleteAssociated.setManaged(false);
             
             btnEdit.setDisable(true);
             btnCreateAccount.setDisable(true);
@@ -260,20 +272,27 @@ public class PrincipalViewController extends Controller implements Initializable
             btnMailboxStudent.setDisable(true);
             btnTransfers.setDisable(true);
             btnEditUser.setDisable(true);
+            btnEditUser.setDisable(true);
     }
     
     public void buttonEnabledStudent(){
             btnMailboxStudent.setVisible(true);
             btnTransfers.setVisible(true);
             btnAccountsOpening.setVisible(true);
+            btnEditUser.setVisible(true);
+            btnConsultDeleteAssociated.setVisible(true);
             
             btnMailboxStudent.setManaged(true);
             btnTransfers.setManaged(true);
             btnAccountsOpening.setManaged(true);
+            btnEditUser.setManaged(true);
+            btnConsultDeleteAssociated.setManaged(true);
             
             btnMailboxStudent.setDisable(false);
             btnTransfers.setDisable(false);
             btnAccountsOpening.setDisable(false);
+            btnEditUser.setDisable(false);
+            btnConsultDeleteAssociated.setDisable(false);
     }
 
     public void buttonDisabledStudent(){
@@ -283,7 +302,6 @@ public class PrincipalViewController extends Controller implements Initializable
             btnEdit.setVisible(false);
             btnCreateAccount.setVisible(false);
             btnAccountMant.setVisible(false);
-            btnEditUser.setVisible(false);
             
             btnAccountInquiry.setManaged(false);
             btnRegister.setManaged(false);
@@ -291,7 +309,6 @@ public class PrincipalViewController extends Controller implements Initializable
             btnEdit.setManaged(false);
             btnCreateAccount.setManaged(false);
             btnAccountMant.setManaged(false);
-            btnEditUser.setManaged(false);
             
             btnAccountInquiry.setDisable(true);
             btnRegister.setDisable(true);
@@ -299,7 +316,6 @@ public class PrincipalViewController extends Controller implements Initializable
             btnEdit.setDisable(true);
             btnCreateAccount.setDisable(true);
             btnAccountMant.setDisable(true);
-            btnEditUser.setDisable(true);
     }
 
 }

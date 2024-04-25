@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.EditWindowController">
    <children>
       <VBox alignment="CENTER" layoutX="333.0" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="800.0" spacing="30.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -25,7 +24,10 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <MFXButton styleClass="btnExit" text="Cancelar " />
-                  <MFXButton fx:id="btnSave" onAction="#onActionBtnSave" styleClass="btnSave" stylesheets="@Style.css" text="Guardar " />
+                  <MFXButton fx:id="btnSave" onAction="#onActionBtnSave" styleClass="btnSave" stylesheets="@Style.css" text="Guardar ">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic></MFXButton>
                </children>
             </HBox>
          </children>

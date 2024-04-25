@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -33,10 +34,17 @@
                   <TableColumn fx:id="tbcAccountsColumn" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="600.0" text="Cuentas " />
                </columns>
             </MFXLegacyTableView>
-            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="601.0" spacing="10.0">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="601.0" spacing="15.0">
                <children>
-                  <MFXButton fx:id="btnExit" maxWidth="1.7976931348623157E308" onAction="#onActionBtnExit" text="Cancelar" HBox.hgrow="ALWAYS" />
-                  <MFXButton fx:id="btnDelete" maxWidth="1.7976931348623157E308" onAction="#OnActionBtnDelete" styleClass="btnExit" text="Eliminar " HBox.hgrow="ALWAYS" />
+                  <MFXButton fx:id="btnExit" onAction="#onActionBtnExit" prefHeight="34.0" prefWidth="95.0" text="Cancelar" HBox.hgrow="ALWAYS" />
+                  <MFXButton fx:id="btnDelete" onAction="#OnActionBtnDelete" text="Eliminar " HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="btnExit" />
+                        <String fx:value="jfx-btn-delete" />
+                     </styleClass></MFXButton>
                </children>
                <padding>
                   <Insets left="20.0" right="20.0" />

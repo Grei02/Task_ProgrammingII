@@ -118,7 +118,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }*/
 ///configuacion para las matas 
 .mfx-table-view {
-    -fx-background-color:#4886d3;
+    -fx-background-color:#5686d3;
   -fx-background-radius: 5;
   -fx-border-color: lightgray;
   -fx-border-radius: 5;
@@ -130,4 +130,17 @@ fx-table-view .virtual-flow {
   -track-color: rgb(230, 230, 230);
   -thumb-color: rgb(137, 137, 137);
   -thumb-hover-color: rgb(89, 88, 91);
+}
+.jfx-btn-delete>ImageView{
+    -fx-image:url("../resources/imgDelete.png");
+}
+.jfx-btn-mantinence>ImageView{
+    -fx-image:url("../resources/imgMantenimiento.png");
+}
+ .jfx-btnDelete->ImageView{
+    -fx-image:url("../resources/imgDelete.png");
+}
+.jfx-btnDelete->ImageView{
+    -fx-image:url("../resources/imgSave.png");
+}
 }

@@ -136,7 +136,7 @@ public class editUserController extends Controller  implements Initializable {
 
     @FXML
     private void onActionBtnSave(ActionEvent event) {
-        if(!checkUserDataNull()){
+        if(checkUserDataEmpty()){
             obtainUserData();
             String routeRoot = System.getProperty("user.dir");
             String imagePath = routeRoot + File.separator + "AssociatedPhotographs" + File.separator + associated.getFolio() + ".png";
@@ -145,22 +145,21 @@ public class editUserController extends Controller  implements Initializable {
             enableComponent(true);
             cleanComponent();
             }
-         }
+        else if(!txtAge.getText().matches("[0-9]+")){
+            message.show(Alert.AlertType.WARNING, "Error","En la edad solo se permiten numeros.");
+        }
+        else{
+            message.show(Alert.AlertType.WARNING, "Advertencia", "Recuerda que solo el nombre puede llevar dos palabras, no se permiten los espacios al inicio o al final y sobre todo revisa no haber dejado ningun espacio en blanco");
+        }
+     }
     
     public Boolean checkUserDataEmpty(){
-        if(txtAge.getText().isEmpty() || txtLastName.getText().isEmpty() || txtName.getText().isEmpty() ||
-                txtSecondLastName.getText().isEmpty()){
-            return false;
+        String expresionRegular = "^[a-zA-Z]+$";
+        if(txtAge.getText().matches("[0-9]+") && txtLastName.getText().matches(expresionRegular) && txtName.getText().matches("^[a-zA-Z]+(\\s[a-zA-Z]+)*$") &&
+                txtSecondLastName.getText().matches(expresionRegular)){
+            return true;
         }
-        return true;
-    }
-    
-    public Boolean checkUserDataNull(){
-        if (txtAge.getText()==null || txtLastName.getText()==null || txtName.getText()==null || 
-                txtSecondLastName.getText()==null || checkUserDataEmpty()){
-                return false;
-        }
-        return true;
+        return false;
     }
     
     public void obtainUserData(){

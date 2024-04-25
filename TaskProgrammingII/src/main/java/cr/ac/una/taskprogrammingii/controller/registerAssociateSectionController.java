@@ -87,7 +87,7 @@ public class registerAssociateSectionController extends Controller implements In
     @FXML
     void onActionBtnTakePhoto(ActionEvent event) {
         String expresionRegular = "^[a-zA-Z]+$";
-        if((txtuserName.getText().matches(expresionRegular))&&(txtUserLastName.getText().matches(expresionRegular))&&
+        if((txtuserName.getText().matches("^[a-zA-Z]+(\\s[a-zA-Z]+)*$"))&&(txtUserLastName.getText().matches(expresionRegular))&&
                 (txtSecondUserLastName.getText().matches(expresionRegular))){
             associated.setName(txtuserName.getText().trim());
             associated.setLastName(txtUserLastName.getText().trim());
@@ -102,7 +102,7 @@ public class registerAssociateSectionController extends Controller implements In
             }
         }
         else{
-                message.show(Alert.AlertType.WARNING, "Alerta", "Estas ingresando numeros en un espacio de texto.");
+                message.show(Alert.AlertType.WARNING, "Advertencia", "Recuerda que solo el nombre puede llevar dos palabras, no se permiten los espacios al inicio o final y sobre todo revisa no haber dejado ningun espacio en blanco");
         }
     }
     

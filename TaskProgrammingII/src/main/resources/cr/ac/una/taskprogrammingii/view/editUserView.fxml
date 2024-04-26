@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -20,10 +21,14 @@
                   <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="176.0" prefWidth="600.0" spacing="15.0" VBox.vgrow="ALWAYS">
                      <children>
                         <MFXTextField fx:id="txtFoil" floatingText="Ingrese el folio" prefHeight="49.0" prefWidth="272.0" />
-                        <MFXButton fx:id="btnSearch" onAction="#onActionBtnSearch" styleClass="jfx-btn-Search" text="Buscar">
+                        <MFXButton fx:id="btnSearch" onAction="#onActionBtnSearch" text="Buscar">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
+                           <styleClass>
+                              <String fx:value="jfx-btn-Search" />
+                              <String fx:value="btnSearch" />
+                           </styleClass>
                         </MFXButton>
                      </children>
                   </HBox>
@@ -60,9 +65,30 @@
                   <ImageView fx:id="imgUser" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                      <children>
-                        <MFXButton fx:id="btnExit" onAction="#onActionBtnExit" styleClass="btnExit" text="Cancelar " />
-                        <MFXButton fx:id="btnSave" onAction="#onActionBtnSave" styleClass="btnSave" text="Guardar " />
-                        <MFXButton text="Tomar foto" />
+                        <MFXButton fx:id="btnExit" onAction="#onActionBtnExit" text="Cancelar ">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="btnExit" />
+                              <String fx:value="jfx-btnExit-" />
+                           </styleClass></MFXButton>
+                        <MFXButton fx:id="btnSave" onAction="#onActionBtnSave" text="Guardar ">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="btnSave" />
+                              <String fx:value="jfx-btnSave-" />
+                           </styleClass></MFXButton>
+                        <MFXButton text="Tomar foto">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="btnTakePhoto" />
+                              <String fx:value="jfx-btnTakePhoto-" />
+                           </styleClass></MFXButton>
                      </children>
                   </HBox>
                </children>

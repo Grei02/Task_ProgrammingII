@@ -2,8 +2,10 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -20,8 +22,22 @@
             <MFXTextField fx:id="txtNameAccount" alignment="CENTER" floatingText="Nombre de la cuenta " prefHeight="49.0" prefWidth="620.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <MFXButton styleClass="btnExit" text="Cancelar " />
-                  <MFXButton fx:id="btnSave" onAction="#OnActionBtnSave" styleClass="btnSave" text="Guardar" />
+                  <MFXButton text="Cancelar ">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="btnExit" />
+                        <String fx:value="jfx-btnExit-" />
+                     </styleClass></MFXButton>
+                  <MFXButton fx:id="btnSave" onAction="#OnActionBtnSave" text="Guardar">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="btnSave" />
+                        <String fx:value="jfx-btnSave-" />
+                     </styleClass></MFXButton>
                </children>
             </HBox>
          </children>

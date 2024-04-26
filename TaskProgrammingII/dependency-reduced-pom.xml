@@ -51,7 +51,7 @@
           </execution>
         </executions>
         <configuration>
-          <mainClass>cr.ac.una.taskprogrammingii.App</mainClass>
+          <mainClass>cr.ac.una.cooperativaescolar.App</mainClass>
         </configuration>
       </plugin>
       <plugin>
@@ -66,7 +66,7 @@
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <transformers>
                 <transformer>
-                  <mainClass>cr.ac.una.taskprogrammingii.Main</mainClass>
+                  <mainClass>cr.ac.una.cooperativaescolar.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>

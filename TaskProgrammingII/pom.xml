@@ -67,7 +67,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>cr.ac.una.taskprogrammingii.App</mainClass>
+                    <mainClass>cr.ac.una.cooperativaescolar.App</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -123,7 +123,7 @@
                             <transformers>
                                 <transformer implementation=
                                                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>cr.ac.una.taskprogrammingii.Main</mainClass>
+                                    <mainClass>cr.ac.una.cooperativaescolar.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

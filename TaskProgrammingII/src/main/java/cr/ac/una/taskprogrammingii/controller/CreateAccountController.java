@@ -33,6 +33,7 @@ public class CreateAccountController extends Controller   implements Initializab
     @FXML
     void OnActionBtnSave(ActionEvent event) {
     String newAccount = txtNameAccount.getText();
+   
     if (!newAccount.isEmpty()) {
         List<String> existingAccounts = fileManager.deserialize("accounts.txt");
         if(existingAccounts!=null  && !existingAccounts.isEmpty()){

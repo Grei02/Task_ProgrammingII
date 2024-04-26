@@ -90,6 +90,7 @@ public class Associated implements Serializable {
     }
     
     public void addAccount(Account account) {
+        acountList = new ArrayList<>();
     if (account != null) {
         acountList.add(account);
         System.out.println("Cuenta agregada correctamente: " + account.getType());

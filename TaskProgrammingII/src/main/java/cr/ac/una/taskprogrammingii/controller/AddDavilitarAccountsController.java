@@ -221,7 +221,6 @@ public class AddDavilitarAccountsController extends Controller implements Initia
         List<Account> accountList = associated.getAcountList();
         ObservableList<String> accountTypesObservableList = FXCollections.observableArrayList();
         List<String> accountTypes = fileManager.deserialize("accounts.txt");
-        Boolean typeAvailable=false;
 
         if(accountTypes!=null && !accountTypes.isEmpty()){
             for(String type:accountTypes){
@@ -233,11 +232,12 @@ public class AddDavilitarAccountsController extends Controller implements Initia
                         }
                     }
                 }
-                accountTypesObservableList.add(type);
+                else{
+                    accountTypesObservableList.add(type);
+                }
             }
             tbvAccountTypesTable.setItems(accountTypesObservableList);
-        }
-        
+        } 
     }
     
     public void displayAssociatedAccounts(Associated associated) {
@@ -245,8 +245,8 @@ public class AddDavilitarAccountsController extends Controller implements Initia
         ObservableList<String> accountData = FXCollections.observableArrayList();
         if(accountList!=null){
             for (Account account : accountList) {
-            String accountInfo = account.getType();
-            accountData.add(accountInfo);
+                String accountInfo = account.getType();
+                accountData.add(accountInfo);
             }
             tbvUserAccountsTable.setItems(accountData);
         }
@@ -274,12 +274,12 @@ public class AddDavilitarAccountsController extends Controller implements Initia
     }
 
     public void loadTableValues(List<String> userAccountsList,List<String> availableAccountsList){
-    for (Object item : tbvUserAccountsTable.getItems()) {
-    userAccountsList.add(tbcUserAccountsTable.getCellData(item.toString()));
-    }
-    for (Object item : tbvAccountTypesTable.getItems()) {
-    availableAccountsList.add(tbcAccountTypesTable.getCellData(item.toString()));
-    }
+        for (Object item : tbvUserAccountsTable.getItems()) {
+        userAccountsList.add(tbcUserAccountsTable.getCellData(item.toString()));
+        }
+        for (Object item : tbvAccountTypesTable.getItems()) {
+        availableAccountsList.add(tbcAccountTypesTable.getCellData(item.toString()));
+        }
     }
 
     public void  searchAssociated(List <Associated> associatedList){
@@ -291,43 +291,45 @@ public class AddDavilitarAccountsController extends Controller implements Initia
             }
         }
     }
-
+    
     public void addAccount(List <String> listTypeAccount){
 
-    if(((associated.getAcountList()!=null) && (listTypeAccount!=null) && (!associated.getAcountList().isEmpty()) || (!listTypeAccount.isEmpty()))){
-    List <Account> listOriginalUserAccount=associated.getAcountList();
-    Boolean accountExists= false;
-    for(String typeAccountCompare: listTypeAccount){
-        for(Account accountCompare:listOriginalUserAccount){
-            if(typeAccountCompare.equals(accountCompare.getType())){
-                accountExists=true;
-                break;
+    if ((listTypeAccount!=null) && (!listTypeAccount.isEmpty())){
+            List <Account> listOriginalUserAccount=associated.getAcountList();
+            Boolean accountExists= false;
+            for(String typeAccountCompare: listTypeAccount){
+                if((listOriginalUserAccount!=null) && (listOriginalUserAccount.isEmpty())){
+                    for(Account accountCompare:listOriginalUserAccount){
+                        if(typeAccountCompare.equals(accountCompare.getType())){
+                            accountExists=true;
+                            break;
+                        }
+                    }
+                }
+            if(!accountExists){
+                    associated.addAccount(new Account(typeAccountCompare, 0, null));
+                    }
+                    accountExists=false;
+                }
             }
-    }
-    if(!accountExists){
-            associated.addAccount(new Account(typeAccountCompare, 0, null));
-            }
-            accountExists=false;
-            }
-        }
     }
 
     public void deleteAccount(List<String> availableAccountsList){
-    if(((associated.getAcountList()!=null) || (!availableAccountsList.isEmpty()) || (!associated.getAcountList().isEmpty())||(!availableAccountsList.isEmpty()))){
-    List <Account> listOriginalUserAccount=associated.getAcountList();
-    for(String typeAccountCompare: availableAccountsList){
-    for(Account accountCompare:listOriginalUserAccount){ 
-    if(typeAccountCompare.equals(accountCompare.getType())){
-        if(accountCompare.getAmount()==0){
-            listOriginalUserAccount.remove(accountCompare);
+    if ((associated.getAcountList()!=null) && (!associated.getAcountList().isEmpty())){
+        List <Account> listOriginalUserAccount=associated.getAcountList();
+            for(String typeAccountCompare: availableAccountsList){
+                for(Account accountCompare:listOriginalUserAccount){ 
+                    if(typeAccountCompare.equals(accountCompare.getType())){
+                        if(accountCompare.getAmount()==0){
+                            listOriginalUserAccount.remove(accountCompare);
+                        }
+                        else{
+                            hasAmount=true;
+                        }
+                        break;
+                }
+            }
         }
-        else{
-            hasAmount=true;
-        }
-        break;
-    }
-    }
-    }
     }
 
     }
@@ -339,10 +341,10 @@ public class AddDavilitarAccountsController extends Controller implements Initia
         tbvAccountTypesTable.getItems().clear();
         tbvUserAccountsTable.getItems().clear();
         btnSave.setDisable(true);
-        txtFoil.setText(null);
 
         btnSearchWithFoil.setDisable(false);
         btnSearchWithName.setDisable(false);
+        txtFoil.clear();
     }
 
     // Método para actualizar los datos del asociado en el archivo

@@ -28,7 +28,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   -fx-background-radius: 10px;
   -fx-background-insets: 0px;
 }
-
+.btnTakePhoto{
+    -fx-background-color: #ffff33;
+}
+.btnTakePhoto:pressed{
+    -fx-background-color: #ffff99;
+}
 .btnPrincipals{
     -fx-background-color: #33ffff;
 }
@@ -66,6 +71,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.5, 0.0, 0.0);
 }
 .btnDelete:hover{
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.5, 0.0, 0.0);
+}
+.btnTakePhoto:hover{
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.5, 0.0, 0.0);
 }
 .btnSearchName{
@@ -180,4 +188,7 @@ fx-table-view .virtual-flow {
 }
 .jfx-btnSearch->ImageView{
     -fx-image:url("../resources/imgSearch.png");
+}
+.jfx-btnTakePhoto->ImageView{
+    -fx-image:url("../resources/imgCamera.png");
 }

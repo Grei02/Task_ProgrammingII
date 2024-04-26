@@ -74,7 +74,6 @@ public class ConsultDeleteUserController extends Controller implements Initializ
         }
     }
 
-    @FXML
     void onActionBtnSaveUser(ActionEvent event) {
         
     }
@@ -149,6 +148,10 @@ public class ConsultDeleteUserController extends Controller implements Initializ
     @Override
     public void initialize() {
         
+    }
+
+    @FXML
+    private void onActionBtSaveUser(ActionEvent event) {
     }
     
 }

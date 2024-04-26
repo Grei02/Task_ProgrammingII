@@ -61,6 +61,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .btnSearch:pressed{
   -fx-background-color: #990099;
 }
+.btnPdf{
+  -fx-background-color: #ff0000;
+}
+.btnPdf:pressed{
+  -fx-background-color: #ffffff;
+}
 .btnSave{
     -fx-background-color: #009900;
 }

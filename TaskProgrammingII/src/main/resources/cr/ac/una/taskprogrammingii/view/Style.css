@@ -28,6 +28,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   -fx-background-radius: 10px;
   -fx-background-insets: 0px;
 }
+.btnDetailedSummarized{
+    -fx-background-color: #999999;
+}
+.btnDetailedSummarized:pressed{
+    -fx-background-color: #cccccc;
+}
 .btnTakePhoto{
     -fx-background-color: #ffff33;
 }
@@ -75,6 +81,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 .btnTakePhoto:hover{
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.5, 0.0, 0.0);
+}
+.btnDetailedSummarized{
+   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.5, 0.0, 0.0);
 }
 .btnSearchName{
     -fx-background-color: none;

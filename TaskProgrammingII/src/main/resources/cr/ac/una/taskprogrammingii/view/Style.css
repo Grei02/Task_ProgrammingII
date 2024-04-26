@@ -73,6 +73,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .btnSave:pressed{
     -fx-background-color: #009900;
 }
+.btnAcept{
+    -fx-background-color: #009900;
+}
+.btnAcept:pressed{
+    -fx-background-color: #99ff99;
+}
 .btnPrincipals:focused {
     -fx-background-color: #99ffff;
 }

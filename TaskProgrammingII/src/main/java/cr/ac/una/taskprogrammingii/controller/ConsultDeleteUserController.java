@@ -4,7 +4,9 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.Associated;
+import cr.ac.una.taskprogrammingii.model.Deposits;
 import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
 import java.io.File;
@@ -59,7 +61,17 @@ public class ConsultDeleteUserController extends Controller implements Initializ
 
     @FXML
     void onActionBtnDeleteUser(ActionEvent event) {
-        
+        if(associateHasFunds()&&associateHasPendingDeposits()){
+           listAssocieated.remove(associated);
+           message.show(Alert.AlertType.INFORMATION, "Confirmacion", "Se a eliminado el asociado con exito.");
+           fileManager.serialization(listAssocieated, "ListAssociated.txt");
+        }
+        else if(!associateHasPendingDeposits()){
+            message.show(Alert.AlertType.ERROR, "Aviso", "Este asociado tiene un deposito pendiente.");
+        }
+        else if(!associateHasFunds()){
+            message.show(Alert.AlertType.ERROR, "Recordatorio", "No se puede eliminar un asociado con fondos.");
+        }
     }
 
     @FXML
@@ -83,10 +95,34 @@ public class ConsultDeleteUserController extends Controller implements Initializ
         }
     }
     
+    public Boolean associateHasPendingDeposits(){
+        List<Deposits> listDeposit=fileManager.deserialize("DepositList.txt");
+        if(listDeposit!=null && !listDeposit.isEmpty()){
+            for(Deposits depositCompare: listDeposit){
+                if(depositCompare.getFolio().equals(associated.getFolio())){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    public Boolean associateHasFunds(){
+        List<Account> listAccount=associated.getAcountList();
+        if(listAccount!=null && !listAccount.isEmpty()){
+            for(Account accountCompare:listAccount){
+                if(accountCompare.getAmount()!=0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
      public Boolean searchAssociated(){
         String folio=txtFolio.getText().trim().toUpperCase();
-        List <Associated> associatedList= fileManager.deserialize("ListAssociated.txt");
-        for(Associated compareAssociated:associatedList){
+        listAssocieated= fileManager.deserialize("ListAssociated.txt");
+        for(Associated compareAssociated:listAssocieated){
             if(compareAssociated.getFolio().equals(folio)){
                 associated=compareAssociated;
                 return true;
@@ -99,8 +135,8 @@ public class ConsultDeleteUserController extends Controller implements Initializ
         txtAge.setText(associated.getAge());
         txtName.setText(associated.getName());
         txtLastName.setText(associated.getLastName()+" "+associated.getSecondLastName());
-        Image image=new Image(associated.getAddressPhotography());
-        imvUserPhoto.setImage(image);
+//        Image image=new Image(associated.getAddressPhotography());
+//        imvUserPhoto.setImage(image);
     }
 
     @Override

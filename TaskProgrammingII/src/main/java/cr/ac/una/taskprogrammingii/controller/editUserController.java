@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package cr.ac.una.taskprogrammingii.controller;
 
 
@@ -33,11 +30,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
-/**
- * FXML Controller class
- *
- * @author USUARIO PZ UNA
- */
+
 public class editUserController extends Controller  implements Initializable {
 
     @FXML
@@ -64,10 +57,6 @@ public class editUserController extends Controller  implements Initializable {
    Associated associated = new Associated();
    List<Associated> associatedList=null;
     Boolean isFoil=false;
-    
-    /**
-     * Initializes the controller class.
-     */
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -19,6 +19,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-font-weight: bold;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 2, 0.0, 1, 2);
 }
+.jfx-titulo2-label{
+    -fx-font-size: 12.0px;
+    -fx-padding: 5 0 5 0;
+    -fx-text-fill: -fx-base-color-titulos;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 2, 0.0, 1, 2);
+}
 
 .mfx-button {
   -fx-font-family: "Open Sans Bold";
@@ -78,6 +85,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 .btnAcept:pressed{
     -fx-background-color: #99ff99;
+}
+.btnNext{
+    -fx-background-color: #c1c161;
+}
+.btnNext:pressed{
+    -fx-background-color: #ffffff;
 }
 .btnPrincipals:focused {
     -fx-background-color: #99ffff;
@@ -140,6 +153,9 @@ fx-table-view .virtual-flow {
 }
 .btnRefresh{
     -fx-background-color: #009900;
+}
+.btnRefresh:pressed{
+    -fx-background-color: #33ff33;
 }
 .jfx-btn-refreshWindown>ImageView{
     -fx-image:url("../resources/ButtonRefresh.png");

@@ -20,7 +20,7 @@
             <ImageView fitHeight="469.0" fitWidth="789.0" pickOnBounds="true" preserveRatio="true" styleClass="jdx-bagroundITeacher" />
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="690.0">
                <children>
-                  <MFXButton fx:id="btnNext" alignment="CENTER" onAction="#OnActionBtnNext" styleClass="mfx-button" stylesheets="@Style.css" text="Siguiente" />
+                  <MFXButton fx:id="btnNext" alignment="CENTER" onAction="#OnActionBtnNext" styleClass="btnNext" stylesheets="@Style.css" text="Siguiente" />
                </children>
             </HBox>
          </children>

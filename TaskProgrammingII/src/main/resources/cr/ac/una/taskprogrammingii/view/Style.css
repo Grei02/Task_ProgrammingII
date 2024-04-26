@@ -24,56 +24,94 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   -fx-font-family: "Open Sans Bold";
   -fx-text-fill: -mfx-text-he;
 }
-
 .mfx-button {
   -fx-background-radius: 10px;
   -fx-background-insets: 0px;
 }
 
-.mfx-button,
-.mfx-button:armed,
-.mfx-button:focused {
-    -fx-background-color: #befdf1;
+.btnPrincipals{
+    -fx-background-color: #33ffff;
 }
-
-.btnSave{
-  -fx-background-color: #33ff33;
-  -fx-background-radius: 10px;
-  -fx-background-insets: 0px;
-}
-
 .btnExit{
-  -fx-background-color: #ff0000;
-  -fx-background-radius: 10px;
-  -fx-background-insets: 0px;
+    -fx-background-color: #ff0000;
+}
+.btnExit:pressed{
+    -fx-background-color: #ff0000;
 }
 .btnDelete{
   -fx-background-color: #600404;
-  -fx-background-radius: 10px;
-  -fx-background-insets: 0px;
 }
-
+.btnDelete:pressed{
+  -fx-background-color: #600404;
+}
+.btnSearch{
+  -fx-background-color: #990099;
+}
+.btnSearch:pressed{
+  -fx-background-color: #990099;
+}
+.btnSave{
+    -fx-background-color: #009900;
+}
+.btnSave:pressed{
+    -fx-background-color: #009900;
+}
+.btnPrincipals:focused {
+    -fx-background-color: #99ffff;
+}
+.btnSave:hover{
+     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.5, 0.0, 0.0);
+}
+.btnExit:hover{
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.5, 0.0, 0.0);
+}
+.btnDelete:hover{
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.5, 0.0, 0.0);
+}
 .btnSearchName{
     -fx-background-color: none;
     -fx-text-fill: #0033ff;
     -fx-font-size: 12;
     -fx-cursor: hand;
 }
-
+.btnSearchName:hover{
+    -fx-underline: true;
+}
+.btnSearchName:pressed{
+    -fx-text-fill: #666666;
+}
 .jfx-panelfondo{
     -fx-effect:dropshadow(gaussian,rgba(0.0,0.0,0.0,0.15),10.0,0.7,0.0,1.5);
     -fx-background-color: #a4dcfc;
 }
+.mfx-table-view {
+   -fx-background-color:#5686d3;
+  -fx-background-radius: 5;
+  -fx-border-color: lightgray;
+  -fx-border-radius: 5;
+  -fx-padding: 0 0 2 0;
+}
+fx-table-view .virtual-flow {
+  -fx-background-color: transparent;
+  -track-color: rgb(153, 153, 153);
+  -thumb-color: rgb(51, 51, 51);
+  -thumb-hover-color: rgb(51, 51, 255);
+}
 
 .jdx-bagroundITeacher{
      -fx-image:url("../resources/startTeacher.png");
+}
+.jdx-imageAddPhoto{
+     -fx-image:url("../resources/imgAddImage.png");
 }
 
 .jfx-backgroundImage{
     -fx-image:url("../resources/BackgroundFotography.png");
     -fx-preserve-ratio: false;
 }
-
+.btnRefresh{
+    -fx-background-color: #009900;
+}
 .jfx-btn-refreshWindown>ImageView{
     -fx-image:url("../resources/ButtonRefresh.png");
 }
@@ -124,27 +162,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .jfx-imv-20000colones{
     -fx-image:url("../resources/20000colones.png");
 }
-/*jfx-panelfondo{
-    -fx-effect:dropshadow(gaussian,rgba(0.0,0.0,0.0,0.15),10.0,0.7,0.0,1.5);
-    -fx-background-color: #ecc663
-}*/
-///configuacion para las matas 
-.mfx-table-view {
-    -fx-background-color:#5686d3;
-  -fx-background-radius: 5;
-  -fx-border-color: lightgray;
-  -fx-border-radius: 5;
-  -fx-padding: 0 0 2 0;
-}
-//para cuando se muve
-fx-table-view .virtual-flow {
-  -fx-background-color: transparent;
-  -track-color: rgb(230, 230, 230);
-  -thumb-color: rgb(137, 137, 137);
-  -thumb-hover-color: rgb(51, 51, 255);
-}
+
 .jfx-btn-delete>ImageView{
-    -fx-image:url("../resources/imgDelete.png");
+    -fx-image:url("../resources/imageDelete.png");
 }
 .jfx-btn-mantinence>ImageView{
     -fx-image:url("../resources/imgMantenimiento.png");
@@ -155,8 +175,9 @@ fx-table-view .virtual-flow {
 .jfx-btnSave->ImageView{
     -fx-image:url("../resources/imageSave.png");
 }
-}
 .jfx-btnExit->ImageView{
     -fx-image:url("../resources/imgExit.png");
 }
+.jfx-btnSearch->ImageView{
+    -fx-image:url("../resources/imgSearch.png");
 }

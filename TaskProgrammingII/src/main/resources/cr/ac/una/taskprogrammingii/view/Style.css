@@ -143,6 +143,9 @@ fx-table-view .virtual-flow {
 .jdx-bagroundITeacher{
      -fx-image:url("../resources/startTeacher.png");
 }
+.jdx-bagroundStartOfficer{
+     -fx-image:url("../resources/startStudentOfficer.png");
+}
 .jdx-imageAddPhoto{
      -fx-image:url("../resources/imgAddImage.png");
 }

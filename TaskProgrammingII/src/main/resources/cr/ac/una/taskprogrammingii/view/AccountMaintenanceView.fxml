@@ -27,7 +27,7 @@
                            </graphic>
                            <styleClass>
                               <String fx:value="jfx-btn-refreshWindown" />
-                              <String fx:value="btnSave" />
+                              <String fx:value="btnRefresh" />
                            </styleClass>
                         </MFXButton>
                      </children>

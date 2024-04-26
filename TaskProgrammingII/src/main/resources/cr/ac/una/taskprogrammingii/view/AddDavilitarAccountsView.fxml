@@ -28,10 +28,14 @@
                         <MFXTextField fx:id="txtFoil" floatingText="Buscar con el folio " maxWidth="1.7976931348623157E308" prefHeight="49.0" prefWidth="313.0" HBox.hgrow="ALWAYS" />
                         <HBox alignment="CENTER" prefHeight="45.0" prefWidth="105.0">
                            <children>
-                              <MFXButton fx:id="btnSearchWithFoil" maxWidth="1.7976931348623157E308" onAction="#onActionBtnSearchWithFoil" prefHeight="29.0" prefWidth="92.0" styleClass="jfx-btn-Search" text="Buscar " HBox.hgrow="ALWAYS">
+                              <MFXButton fx:id="btnSearchWithFoil" maxWidth="1.7976931348623157E308" onAction="#onActionBtnSearchWithFoil" prefHeight="29.0" prefWidth="92.0" text="Buscar " HBox.hgrow="ALWAYS">
                                  <graphic>
                                     <ImageView fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" smooth="false" />
                                  </graphic>
+                                 <styleClass>
+                                    <String fx:value="jfx-btn-Search" />
+                                    <String fx:value="btnSearch" />
+                                 </styleClass>
                               </MFXButton>
                            </children>
                         </HBox>

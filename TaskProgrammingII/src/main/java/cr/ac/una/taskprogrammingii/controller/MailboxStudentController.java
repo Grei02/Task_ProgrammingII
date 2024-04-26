@@ -241,7 +241,7 @@ public class MailboxStudentController extends Controller implements Initializabl
     
     public void addTransfer(){
          List<Transfer> listTransfer=accountChose.getListTransfer();
-         if(listTransfer==null){
+         if(listTransfer==null || listTransfer.isEmpty()){
              listTransfer=new ArrayList<>();
          }
          listTransfer.add(new Transfer("Deposito", String.valueOf(deposit.getTotal())));

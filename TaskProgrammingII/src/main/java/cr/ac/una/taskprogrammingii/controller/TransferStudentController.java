@@ -147,7 +147,7 @@ public class TransferStudentController extends Controller implements Initializab
     
     public void addTransfer(){
         List<Transfer> listTransfer=accountChose.getListTransfer();
-        if(listTransfer==null){
+        if(listTransfer==null || listTransfer.isEmpty()){
              listTransfer=new ArrayList<>();
          }
         listTransfer.add(new Transfer(cmbTransferType.getText(),txtAmountTransfer.getText()));

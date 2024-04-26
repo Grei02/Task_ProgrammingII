@@ -110,8 +110,8 @@ public class registerAssociateSectionController extends Controller implements In
     void onActionbtnSave(ActionEvent event) throws IOException  {
          if ((BufferedImage)AppContext.getInstance().get("bufferedImageAssociated")!=null) {
              savePhoto();
-             userCard();
-             Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
+             //userCard();
+             //Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
              
              listDeserialization= fileManager.deserialize("ListAssociated.txt");
              listDeserialization.add(associated);
@@ -189,8 +189,8 @@ public class registerAssociateSectionController extends Controller implements In
     
     public void savePhoto(){
      String routeRoot = System.getProperty("user.dir");
-     String  dirección="\\AssociatedPhotographs\\"+associated.getFolio()+".png";
-     File savePhoto = new File(routeRoot+dirección);
+     String  dirección=associated.getFolio()+".png";
+     File savePhoto = new File(dirección);
      associated.setAddressPhotography(dirección);
       try {
           ImageIO.write((BufferedImage)AppContext.getInstance().get("bufferedImageAssociated"), "png", savePhoto);
@@ -257,13 +257,6 @@ public class registerAssociateSectionController extends Controller implements In
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initializeComponents();
-//       associatedList=fileManager.deserialize("ListAssociated.txt");
-//       txtuserName.setText(associatedList.get(2).getName());
-//       txtUserLastName.setText(associatedList.get(2).getLastName());
-//       txtUserAge.setText(associatedList.get(2).getAge());
-//        System.out.println(associatedList.get(2).getFolio());
-//        Image userImage= new Image("file:///"+associatedList.get(2).getAddressPhotography());
-//        imvUserImage.setImage(userImage);
     }
 
     @Override

@@ -48,7 +48,7 @@ public class FileManager<T> {
     }
      public void serializationRemove(List<T> elementsToRemove, String filename) {
  String userDir = System.getProperty("user.dir");
-String destinationPath = userDir + "/FileManager/" + filename;
+String destinationPath = userDir +"/" +filename;
 
     List<T> list = deserialize(filename);
     list.removeAll(elementsToRemove);

@@ -4,12 +4,23 @@
  */
 package cr.ac.una.taskprogrammingii.controller;
 
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import cr.ac.una.taskprogrammingii.model.Account;
 import cr.ac.una.taskprogrammingii.model.Associated;
 import cr.ac.una.taskprogrammingii.model.Deposits;
 import cr.ac.una.taskprogrammingii.model.FileManager;
 import cr.ac.una.taskprogrammingii.util.Mensaje;
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,8 +90,9 @@ public class ConsultDeleteUserController extends Controller implements Initializ
     }
 
     @FXML
-    void onActionPdf(ActionEvent event) {
-        
+    void onActionPdf(ActionEvent event) throws IOException {
+        userCard();
+        Desktop.getDesktop().open(new File (System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf"));
     }
 
     @FXML
@@ -93,6 +105,54 @@ public class ConsultDeleteUserController extends Controller implements Initializ
             txtFolio.setText(null);
         }
     }
+    
+    public void userCard(){
+    String address=System.getProperty("user.dir")+"\\UserCard\\"+associated.getFolio()+".pdf";
+    String backgroundImagePath="src/main/resources/cr/ac/una/taskprogrammingii/resources/UserCard.png";
+    String addresAssociatedPhotograsphs="AssociatedPhotographs/"+associated.getFolio()+".png";
+    Document document;
+    try{
+        PdfWriter writePdf=  new PdfWriter(address);
+        PdfDocument pdf= new PdfDocument(writePdf);
+        PageSize pdfSize= new PageSize(549, 303);
+
+        pdf.setDefaultPageSize(pdfSize);
+        document=new Document(pdf);
+
+        ImageData backgroundImage=ImageDataFactory.create(backgroundImagePath);
+        PdfCanvas canva= new PdfCanvas(pdf.addNewPage());
+        canva.addImage(backgroundImage, 0,0,pdfSize.getWidth(), false);
+
+        ImageData imageDataUser =ImageDataFactory.create(addresAssociatedPhotograsphs);
+        canva.addImage(imageDataUser,new Rectangle(420, 100, 115, 91), false);
+
+        Paragraph paragraphName=new Paragraph("Nombre: "+associated.getName()+" "+associated.getLastName()+" "+associated.getSecondLastName())
+            .setFontSize(14)
+            .setMarginTop(97)
+            .setMarginLeft(35);
+
+        Paragraph paragraphAge=new Paragraph("Edad: "+associated.getAge())
+            .setFontSize(14)
+            .setMarginTop(6)
+            .setMarginLeft(35);
+
+        Paragraph paragraphFolio=new Paragraph("Folio: "+associated.getFolio())
+            .setFontSize(14)
+            .setMarginTop(6)
+            .setMarginLeft(35);
+
+
+
+        document.add(paragraphName);
+        document.add(paragraphAge);
+        document.add(paragraphFolio);
+
+        document.close();
+    }
+    catch(IOException e){
+      System.out.println("Error:"+e);
+    }
+}
     
     public Boolean associateHasPendingDeposits(){
         List<Deposits> listDeposit=fileManager.deserialize("DepositList.txt");

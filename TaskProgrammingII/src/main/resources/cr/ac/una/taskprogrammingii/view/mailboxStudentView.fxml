@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXSpinner?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="450.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.MailboxStudentController">
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="450.0" prefWidth="700.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.taskprogrammingii.controller.MailboxStudentController">
    <children>
       <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -23,7 +24,15 @@
                   <MFXComboBox fx:id="cmbFolios" onAction="#onActionCmbFolios" />
                   <Label prefHeight="17.0" prefWidth="94.0" text="Num.Depositos:" />
                   <MFXComboBox fx:id="cmbDepositNumber" onAction="#onActionCmbDepositNumber" prefHeight="40.0" prefWidth="118.0" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" text="Cancelar" />
+                  <MFXButton fx:id="btnCancel" onAction="#onActionBtnCancel" text="Cancelar">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="btnExit" />
+                        <String fx:value="jfx-btnExit-" />
+                     </styleClass>
+                  </MFXButton>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
@@ -137,7 +146,15 @@
                                  </font>
                               </Label>
                               <TextField fx:id="txtTotalAmount" />
-                              <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionbtnSave" text="Guardar" />
+                              <MFXButton fx:id="btnSave" onAction="#onActionbtnSave" prefHeight="33.0" prefWidth="103.0" text="Guardar">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="btnSave" />
+                                    <String fx:value="jfx-btnSave-" />
+                                 </styleClass>
+                              </MFXButton>
                            </children>
                         </HBox>
                      </children>
